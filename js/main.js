@@ -204,7 +204,14 @@
         if (idx === currentIndex) {
           dot.classList.add('active');
           if (dotsContainer) {
-            dot.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            // Scroll ONLY the dotsContainer horizontally without affecting window/page scroll
+            const dotLeft = dot.offsetLeft;
+            const dotWidth = dot.offsetWidth;
+            const containerWidth = dotsContainer.clientWidth;
+            dotsContainer.scrollTo({
+              left: dotLeft - (containerWidth / 2) + (dotWidth / 2),
+              behavior: 'smooth'
+            });
           }
         } else {
           dot.classList.remove('active');
@@ -250,20 +257,26 @@
       });
     }
 
-    // Touch Swipe Support
+    // Touch Swipe Support (differentiates horizontal swipe from vertical page scroll)
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     if (wrapper) {
       wrapper.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
       }, { passive: true });
 
       wrapper.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].clientX;
-        const diff = touchEndX - touchStartX;
-        if (Math.abs(diff) > 40) {
-          if (diff < 0) {
+        touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        // Only trigger slide transition if horizontal swipe is clearly dominant
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < 0) {
             nextSlide();
           } else {
             prevSlide();
@@ -320,8 +333,28 @@
       });
     }
 
-    // Responsive window resize recalculation
-    window.addEventListener('resize', update3DSlides);
+    // Responsive window resize recalculation (ignores vertical address bar resize on mobile)
+    let lastWidth = window.innerWidth;
+    window.addEventListener('resize', () => {
+      if (window.innerWidth !== lastWidth) {
+        lastWidth = window.innerWidth;
+        update3DSlides();
+      }
+    });
+
+    // Pause autoplay when hero slider is offscreen to save mobile battery and avoid background ticks
+    if ('IntersectionObserver' in window && wrapper) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            stopAutoplay();
+          } else if (isPlaying) {
+            startAutoplay();
+          }
+        });
+      }, { threshold: 0.1 });
+      heroObserver.observe(wrapper);
+    }
 
     // Initial render & start autoplay
     update3DSlides();
