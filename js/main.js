@@ -438,9 +438,14 @@
       });
     });
 
-    // Handle Nav links pointing to #windows, #doors, #conservatories-roofing
-    document.querySelectorAll('.nav-link').forEach((link) => {
+    // Handle Nav links & Hero Pillars pointing to #windows, #doors, #conservatories-roofing
+    document.querySelectorAll('.nav-link, .hero-pillar-card').forEach((link) => {
       link.addEventListener('click', () => {
+        const catFilter = link.getAttribute('data-category-filter');
+        if (catFilter) {
+          applyFilter(catFilter);
+          return;
+        }
         const href = link.getAttribute('href') || '';
         const hash = href.split('#')[1];
         if (hash === 'windows') {
