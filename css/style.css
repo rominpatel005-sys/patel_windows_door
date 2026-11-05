@@ -1881,74 +1881,74 @@ ul {
 }
 
 /* ===================================================================
-   TESTIMONIALS & GLOBAL CLIENTS
+   INDUSTRY-LEADING PROFILE & BRAND PARTNERS SECTION (6 LOGOS)
    =================================================================== */
-.testimonials-section {
-  padding: 110px 0;
+.partners-section {
+  padding: 85px 0 105px 0;
   background: var(--bg-primary);
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.testimonial-card {
-  background: var(--bg-glass-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 32px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.stars {
-  color: var(--gold-primary);
-  margin-bottom: 18px;
-  font-size: 1rem;
-}
-
-.testimonial-text {
-  font-size: 0.95rem;
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-bottom: 24px;
-  font-style: italic;
-  flex-grow: 1;
-}
-
-.client-meta {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-top: 16px;
+  overflow: hidden;
   border-top: 1px solid var(--border-subtle);
 }
 
-.client-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: #1e293b;
+.partners-section .partners-container {
+  max-width: 100%;
+  width: 100%;
+  padding-left: clamp(24px, 4vw, 64px);
+  padding-right: clamp(24px, 4vw, 64px);
+  box-sizing: border-box;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+  margin-top: 44px;
+}
+
+.partner-card {
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  color: var(--gold-light);
-  border: 1px solid var(--border-active);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  position: relative;
+  overflow: hidden;
 }
 
-.client-info h4 {
-  font-size: 0.92rem;
-  color: #fff;
-  font-weight: 600;
+.partner-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 160, 89, 0.45);
+  box-shadow: 0 18px 36px -8px rgba(0, 0, 0, 0.75), 0 0 25px rgba(197, 160, 89, 0.16);
 }
 
-.client-info p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
+.partner-logo-wrapper {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 96px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-normal);
+}
+
+.partner-card:hover .partner-logo-wrapper {
+  transform: scale(1.03);
+}
+
+.partner-logo-img {
+  max-width: 100%;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===================================================================
@@ -2627,9 +2627,14 @@ ul {
   .zigzag-row .empty-space {
     display: none;
   }
-  .zigzag-row.row-repairs .zigzag-col-media,
-  .zigzag-row.row-commitment .zigzag-col-media {
-    order: 2;
+  /* On mobile, all images appear FIRST (above their descriptions).
+     Row 2 (products) and Row 4 (why-choose): text is first in HTML,
+     image is second -> give image order: -1 so it floats above text.
+     Row 3 (repairs) and Row 5 (commitment): image is already first in HTML
+     -> they stack correctly by default (image top, text below). */
+  .zigzag-row.row-products .zigzag-col-media,
+  .zigzag-row.row-why-choose .zigzag-col-media {
+    order: -1;
   }
   .zigzag-image-frame {
     min-height: 240px;
@@ -2664,6 +2669,9 @@ ul {
 
     .testimonials-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+    .partners-grid {
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -2970,6 +2978,9 @@ ul {
 
                 .testimonials-grid {
                   grid-template-columns: 1fr;
+                }
+                .partners-grid {
+                  grid-template-columns: repeat(2, 1fr);
                   gap: 16px;
                 }
 
