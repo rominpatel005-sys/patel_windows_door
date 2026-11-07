@@ -18,7 +18,7 @@
 
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e17'/><rect x='15' y='15' width='70' height='70' rx='6' fill='none' stroke='%23d4af37' stroke-width='8'/><line x1='50' y1='15' x2='50' y2='85' stroke='%23d4af37' stroke-width='6'/><line x1='15' y1='50' x2='85' y2='50' stroke='%23d4af37' stroke-width='6'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d0d0d'/><rect x='15' y='15' width='70' height='70' rx='6' fill='none' stroke='%23c97b3a' stroke-width='8'/><line x1='50' y1='15' x2='50' y2='85' stroke='%23c97b3a' stroke-width='6'/><line x1='15' y1='50' x2='85' y2='50' stroke='%23c97b3a' stroke-width='6'/></svg>">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -527,12 +527,16 @@
             <!-- System Type -->
             <div class="control-group">
               <label class="control-label">1. Select System Type</label>
-              <div class="option-pill-grid">
-                <div class="option-pill active" data-system="bifold">Bi-Fold Door</div>
-                <div class="option-pill" data-system="sliding">Sliding Wall</div>
-                <div class="option-pill" data-system="pivot">Pivot Door</div>
-                <div class="option-pill" data-system="casement">Casement Win</div>
-                <div class="option-pill" data-system="tilt_turn">Tilt & Turn</div>
+              <div class="option-pill-grid category-selector" style="grid-template-columns:1fr;gap:8px;">
+                <div class="option-pill category-pill active" data-system="door" data-category="door" style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
+                  <span style="font-size:1.3rem;">&#128682;</span> Door
+                </div>
+                <div class="option-pill category-pill" data-system="casement" data-category="window" style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
+                  <span style="font-size:1.3rem;">&#129695;</span> Window
+                </div>
+                <div class="option-pill category-pill" data-system="conservatory" data-category="conservatory" style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
+                  <span style="font-size:1.3rem;">&#127968;</span> Conservatories &amp; Roofing
+                </div>
               </div>
             </div>
 
@@ -552,10 +556,39 @@
               <div class="swatch-grid">
                 <div class="color-swatch swatch-black active" data-color="black" title="Matte Obsidian Black"></div>
                 <div class="color-swatch swatch-bronze" data-color="bronze" title="Architectural Bronze Anodized"></div>
-                <div class="color-swatch swatch-charcoal" data-color="charcoal" title="Dark Charcoal Grey (RAL 7016)">
-                </div>
+                <div class="color-swatch swatch-charcoal" data-color="charcoal" title="Dark Charcoal Grey (RAL 7016)"></div>
                 <div class="color-swatch swatch-white" data-color="white" title="Pure Traffic White"></div>
-                <div class="color-swatch swatch-wood" data-color="natural_oak" title="Natural Thermo Oak Woodgrain">
+                <div class="color-swatch swatch-wood" data-color="natural_oak" title="Natural Thermo Oak Woodgrain"></div>
+              </div>
+              <!-- Full Colour Range -->
+              <div class="colour-palette-box" style="margin-top:14px;">
+                <p class="colour-palette-title">Full Colour Range — 27 Options</p>
+                <div class="colour-swatches-grid">
+                  <div class="colour-swatch" style="background:#1a2340;" title="Dark Blue" data-colour-key="dark_blue"><span>Dark Blue</span></div>
+                  <div class="colour-swatch" style="background:#f5f0e8;border:1px solid #aaa;" title="Ivory" data-colour-key="ivory"><span>Ivory</span></div>
+                  <div class="colour-swatch" style="background:#b0b0b0;" title="Light Grey" data-colour-key="light_grey"><span>Light Grey</span></div>
+                  <div class="colour-swatch" style="background:#6e6e6e;" title="Dark Grey" data-colour-key="dark_grey"><span>Dark Grey</span></div>
+                  <div class="colour-swatch" style="background:#e8e8e8;border:1px solid #aaa;" title="White Foil" data-colour-key="white_foil"><span>White Foil</span></div>
+                  <div class="colour-swatch" style="background:#3a3a38;" title="Anthracite Matte" data-colour-key="anthracite_matte"><span>Anthracite Matte</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#8b5e3c,#c49a6c);" title="Irish Oak" data-colour-key="irish_oak"><span>Irish Oak</span></div>
+                  <div class="colour-swatch" style="background:#f0f0f0;border:1px solid #aaa;" title="White" data-colour-key="white_plain"><span>White</span></div>
+                  <div class="colour-swatch" style="background:#3c3c3c;" title="Basalt" data-colour-key="basalt"><span>Basalt</span></div>
+                  <div class="colour-swatch" style="background:#7a1a1a;" title="Dark Red" data-colour-key="dark_red"><span>Dark Red</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#9e7c5c,#c8a882);" title="Winchester" data-colour-key="winchester"><span>Winchester</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#5c3318,#8b5e3c);" title="Mahogany" data-colour-key="mahogany"><span>Mahogany</span></div>
+                  <div class="colour-swatch" style="background:#6b1f1f;" title="Burgundy" data-colour-key="burgundy"><span>Burgundy</span></div>
+                  <div class="colour-swatch" style="background:#e8dfc8;border:1px solid #aaa;" title="Cream Foil" data-colour-key="cream_foil"><span>Cream Foil</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#4a4a4a,#5a5a58);" title="Anthracite Grained" data-colour-key="anthracite_grained"><span>Anthracite Grained</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#b89028,#d4b840);" title="Golden Oak" data-colour-key="golden_oak"><span>Golden Oak</span></div>
+                  <div class="colour-swatch" style="background:#1e3a1e;" title="Dark Green" data-colour-key="dark_green"><span>Dark Green</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#a07840,#c89a58);" title="Swamp Oak" data-colour-key="swamp_oak"><span>Swamp Oak</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#c8a060,#dab878);" title="Oregon" data-colour-key="oregon"><span>Oregon</span></div>
+                  <div class="colour-swatch" style="background:#1a1a1a;" title="Black Foil" data-colour-key="black_foil"><span>Black Foil</span></div>
+                  <div class="colour-swatch" style="background:#9ea0a0;" title="Agate Grey" data-colour-key="agate_grey"><span>Agate Grey</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#a0784a,#c89860);" title="Cedarwood" data-colour-key="cedarwood"><span>Cedarwood</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#7a5838,#9e7850);" title="Rustic Oak" data-colour-key="rustic_oak"><span>Rustic Oak</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#5c3c28,#7a5838);" title="Sapeli" data-colour-key="sapeli"><span>Sapeli</span></div>
+                  <div class="colour-swatch" style="background:linear-gradient(135deg,#8c6840,#b08858);" title="Anteak" data-colour-key="anteak"><span>Anteak</span></div>
                 </div>
               </div>
             </div>

@@ -8,14 +8,15 @@
 
   // Application State
   const state = {
-    system: 'bifold', // bifold, sliding, pivot, casement, tilt_turn
-    material: 'aluminum', // aluminum, wood_clad, upvc
-    color: 'black', // black, bronze, charcoal, white, natural_oak
-    glass: 'double_lowe', // double_lowe, triple_glaze, hurricane_impact
+    system: 'door',      // door, window (casement), conservatory
+    category: 'door',   // door, window, conservatory
+    material: 'aluminum',
+    color: 'black',
+    glass: 'double_lowe',
     widthFt: 12,
     heightFt: 8,
-    gridStyle: 'none', // none, colonial, prairie
-    viewMode: '3d', // '3d' or '2d'
+    gridStyle: 'none',
+    viewMode: '3d',
     isOpen: false,
     openProgress: 0.0,
     targetOpenProgress: 0.0,
@@ -24,19 +25,71 @@
 
   // Color Palettes for 2D & 3D
   const colorPalettes = {
-    black: { frame: '#181b20', border: '#323742', handle: '#d4af37', glassFill: 'rgba(56, 189, 248, 0.12)' },
-    bronze: { frame: '#3a2d24', border: '#5a4638', handle: '#e6ca65', glassFill: 'rgba(212, 175, 55, 0.12)' },
-    charcoal: { frame: '#2d3748', border: '#4a5568', handle: '#cbd5e1', glassFill: 'rgba(56, 189, 248, 0.10)' },
-    white: { frame: '#e2e8f0', border: '#cbd5e1', handle: '#1e293b', glassFill: 'rgba(203, 213, 225, 0.15)' },
-    natural_oak: { frame: '#6e4726', border: '#8b5a2b', handle: '#1c1c1c', glassFill: 'rgba(245, 222, 179, 0.12)' }
+    black:          { frame: '#181b20', border: '#323742', handle: '#c97b3a', glassFill: 'rgba(56, 189, 248, 0.12)' },
+    bronze:         { frame: '#3a2d24', border: '#5a4638', handle: '#e8a87c', glassFill: 'rgba(212, 175, 55, 0.12)' },
+    charcoal:       { frame: '#2d3748', border: '#4a5568', handle: '#cbd5e1', glassFill: 'rgba(56, 189, 248, 0.10)' },
+    white:          { frame: '#e2e8f0', border: '#cbd5e1', handle: '#1e293b', glassFill: 'rgba(203, 213, 225, 0.15)' },
+    natural_oak:    { frame: '#6e4726', border: '#8b5a2b', handle: '#1c1c1c', glassFill: 'rgba(245, 222, 179, 0.12)' },
+    // Full 27 Colour Range
+    dark_blue:      { frame: '#1a2340', border: '#2a3560', handle: '#c97b3a', glassFill: 'rgba(56,100,200,0.12)' },
+    ivory:          { frame: '#f5f0e8', border: '#d8d0c0', handle: '#3a3020', glassFill: 'rgba(220,215,200,0.15)' },
+    light_grey:     { frame: '#b0b0b0', border: '#909090', handle: '#2a2a2a', glassFill: 'rgba(180,180,180,0.12)' },
+    dark_grey:      { frame: '#6e6e6e', border: '#4e4e4e', handle: '#c0c0c0', glassFill: 'rgba(120,120,120,0.12)' },
+    white_foil:     { frame: '#e8e8e8', border: '#c8c8c8', handle: '#2a2a2a', glassFill: 'rgba(220,220,220,0.15)' },
+    anthracite_matte:{ frame: '#3a3a38', border: '#525250', handle: '#c97b3a', glassFill: 'rgba(80,80,76,0.12)' },
+    irish_oak:      { frame: '#8b5e3c', border: '#a07050', handle: '#1c1c1c', glassFill: 'rgba(180,140,90,0.12)' },
+    white_plain:    { frame: '#f0f0f0', border: '#d0d0d0', handle: '#1e293b', glassFill: 'rgba(220,220,220,0.15)' },
+    basalt:         { frame: '#3c3c3c', border: '#585858', handle: '#c0c0c0', glassFill: 'rgba(80,80,80,0.12)' },
+    dark_red:       { frame: '#7a1a1a', border: '#a02828', handle: '#f0d0d0', glassFill: 'rgba(160,60,60,0.12)' },
+    winchester:     { frame: '#9e7c5c', border: '#b89070', handle: '#1c1c1c', glassFill: 'rgba(190,160,120,0.12)' },
+    mahogany:       { frame: '#5c3318', border: '#7a4a28', handle: '#c8a060', glassFill: 'rgba(140,80,40,0.12)' },
+    burgundy:       { frame: '#6b1f1f', border: '#8a3030', handle: '#f0d0c0', glassFill: 'rgba(150,50,50,0.12)' },
+    cream_foil:     { frame: '#e8dfc8', border: '#c8c0a8', handle: '#3a3020', glassFill: 'rgba(220,210,185,0.15)' },
+    anthracite_grained:{ frame: '#4a4a4a', border: '#606060', handle: '#c97b3a', glassFill: 'rgba(90,90,88,0.12)' },
+    golden_oak:     { frame: '#c8a832', border: '#a88820', handle: '#1c1c1c', glassFill: 'rgba(220,180,60,0.12)' },
+    dark_green:     { frame: '#1e3a1e', border: '#2a502a', handle: '#c8c8c8', glassFill: 'rgba(40,100,40,0.12)' },
+    swamp_oak:      { frame: '#a07840', border: '#b89058', handle: '#1c1c1c', glassFill: 'rgba(190,150,80,0.12)' },
+    oregon:         { frame: '#c8a060', border: '#a88040', handle: '#1c1c1c', glassFill: 'rgba(210,170,100,0.12)' },
+    black_foil:     { frame: '#1a1a1a', border: '#303030', handle: '#c97b3a', glassFill: 'rgba(40,40,40,0.12)' },
+    agate_grey:     { frame: '#9ea0a0', border: '#808080', handle: '#2a2a2a', glassFill: 'rgba(160,162,162,0.12)' },
+    cedarwood:      { frame: '#a0784a', border: '#886030', handle: '#1c1c1c', glassFill: 'rgba(190,140,80,0.12)' },
+    rustic_oak:     { frame: '#7a5838', border: '#5a3818', handle: '#c8b090', glassFill: 'rgba(160,110,70,0.12)' },
+    sapeli:         { frame: '#5c3c28', border: '#3c2010', handle: '#c8a080', glassFill: 'rgba(130,80,50,0.12)' },
+    anteak:         { frame: '#8c6840', border: '#6c4820', handle: '#1c1c1c', glassFill: 'rgba(170,130,80,0.12)' },
   };
 
   const threePalettes = {
-    black: { frame: 0x15181d, border: 0x2e3541, handle: 0xd4af37, roughness: 0.32, metalness: 0.70 },
-    bronze: { frame: 0x382a20, border: 0x5a4638, handle: 0xe6ca65, roughness: 0.30, metalness: 0.75 },
-    charcoal: { frame: 0x262e3a, border: 0x3d495b, handle: 0xd1d5db, roughness: 0.35, metalness: 0.62 },
-    white: { frame: 0xedf1f5, border: 0xcdd5df, handle: 0x1f2937, roughness: 0.42, metalness: 0.18 },
-    natural_oak: { frame: 0x724621, border: 0x8a5528, handle: 0x1e2229, roughness: 0.75, metalness: 0.05 }
+    black:          { frame: 0x15181d, border: 0x2e3541, handle: 0xc97b3a, roughness: 0.32, metalness: 0.70 },
+    bronze:         { frame: 0x382a20, border: 0x5a4638, handle: 0xe8a87c, roughness: 0.30, metalness: 0.75 },
+    charcoal:       { frame: 0x262e3a, border: 0x3d495b, handle: 0xd1d5db, roughness: 0.35, metalness: 0.62 },
+    white:          { frame: 0xedf1f5, border: 0xcdd5df, handle: 0x1f2937, roughness: 0.42, metalness: 0.18 },
+    natural_oak:    { frame: 0x724621, border: 0x8a5528, handle: 0x1e2229, roughness: 0.75, metalness: 0.05 },
+    // Full 27 Colour Range — Three.js hex
+    dark_blue:      { frame: 0x1a2340, border: 0x2a3560, handle: 0xc97b3a, roughness: 0.30, metalness: 0.60 },
+    ivory:          { frame: 0xf5f0e8, border: 0xd8d0c0, handle: 0x3a3020, roughness: 0.50, metalness: 0.10 },
+    light_grey:     { frame: 0xb0b0b0, border: 0x909090, handle: 0x2a2a2a, roughness: 0.40, metalness: 0.30 },
+    dark_grey:      { frame: 0x6e6e6e, border: 0x4e4e4e, handle: 0xc0c0c0, roughness: 0.35, metalness: 0.45 },
+    white_foil:     { frame: 0xe8e8e8, border: 0xc8c8c8, handle: 0x2a2a2a, roughness: 0.45, metalness: 0.15 },
+    anthracite_matte:{ frame: 0x3a3a38, border: 0x525250, handle: 0xc97b3a, roughness: 0.60, metalness: 0.20 },
+    irish_oak:      { frame: 0x8b5e3c, border: 0xa07050, handle: 0x1c1c1c, roughness: 0.80, metalness: 0.05 },
+    white_plain:    { frame: 0xf0f0f0, border: 0xd0d0d0, handle: 0x1e293b, roughness: 0.45, metalness: 0.15 },
+    basalt:         { frame: 0x3c3c3c, border: 0x585858, handle: 0xc0c0c0, roughness: 0.50, metalness: 0.35 },
+    dark_red:       { frame: 0x7a1a1a, border: 0xa02828, handle: 0xf0d0d0, roughness: 0.40, metalness: 0.25 },
+    winchester:     { frame: 0x9e7c5c, border: 0xb89070, handle: 0x1c1c1c, roughness: 0.75, metalness: 0.05 },
+    mahogany:       { frame: 0x5c3318, border: 0x7a4a28, handle: 0xc8a060, roughness: 0.80, metalness: 0.05 },
+    burgundy:       { frame: 0x6b1f1f, border: 0x8a3030, handle: 0xf0d0c0, roughness: 0.42, metalness: 0.22 },
+    cream_foil:     { frame: 0xe8dfc8, border: 0xc8c0a8, handle: 0x3a3020, roughness: 0.48, metalness: 0.12 },
+    anthracite_grained:{ frame: 0x4a4a4a, border: 0x606060, handle: 0xc97b3a, roughness: 0.65, metalness: 0.18 },
+    golden_oak:     { frame: 0xc8a832, border: 0xa88820, handle: 0x1c1c1c, roughness: 0.78, metalness: 0.05 },
+    dark_green:     { frame: 0x1e3a1e, border: 0x2a502a, handle: 0xc8c8c8, roughness: 0.42, metalness: 0.28 },
+    swamp_oak:      { frame: 0xa07840, border: 0xb89058, handle: 0x1c1c1c, roughness: 0.78, metalness: 0.05 },
+    oregon:         { frame: 0xc8a060, border: 0xa88040, handle: 0x1c1c1c, roughness: 0.76, metalness: 0.05 },
+    black_foil:     { frame: 0x1a1a1a, border: 0x303030, handle: 0xc97b3a, roughness: 0.55, metalness: 0.15 },
+    agate_grey:     { frame: 0x9ea0a0, border: 0x808080, handle: 0x2a2a2a, roughness: 0.38, metalness: 0.35 },
+    cedarwood:      { frame: 0xa0784a, border: 0x886030, handle: 0x1c1c1c, roughness: 0.80, metalness: 0.05 },
+    rustic_oak:     { frame: 0x7a5838, border: 0x5a3818, handle: 0xc8b090, roughness: 0.82, metalness: 0.04 },
+    sapeli:         { frame: 0x5c3c28, border: 0x3c2010, handle: 0xc8a080, roughness: 0.82, metalness: 0.04 },
+    anteak:         { frame: 0x8c6840, border: 0x6c4820, handle: 0x1c1c1c, roughness: 0.80, metalness: 0.05 },
   };
 
   const glassSpecs = {
@@ -119,13 +172,24 @@
       });
     }
 
-    // System selector pills
+    // System / Category selector pills (Door, Window, Conservatory)
     document.querySelectorAll('[data-system]').forEach((el) => {
       el.addEventListener('click', () => {
         document.querySelectorAll('[data-system]').forEach((p) => p.classList.remove('active'));
         el.classList.add('active');
-        state.system = el.getAttribute('data-system');
-        // Reset open state on system change for clean transition
+        const cat = el.getAttribute('data-category') || el.getAttribute('data-system');
+        state.category = cat;
+        // Map category to 3D system
+        if (cat === 'door') {
+          state.system = 'bifold';
+        } else if (cat === 'window') {
+          state.system = 'casement';
+        } else if (cat === 'conservatory') {
+          state.system = 'conservatory';
+        } else {
+          state.system = el.getAttribute('data-system');
+        }
+        // Reset open state
         state.isOpen = false;
         state.openProgress = 0.0;
         state.targetOpenProgress = 0.0;
@@ -147,13 +211,28 @@
       });
     });
 
-    // Color Swatches
+    // Color Swatches (original 5)
     document.querySelectorAll('.color-swatch').forEach((el) => {
       el.addEventListener('click', () => {
         document.querySelectorAll('.color-swatch').forEach((s) => s.classList.remove('active'));
         el.classList.add('active');
         state.color = el.getAttribute('data-color');
         render();
+      });
+    });
+
+    // Full Colour Range — 27 swatches (.colour-swatch with data-colour-key)
+    document.querySelectorAll('.colour-swatch').forEach((el) => {
+      el.addEventListener('click', () => {
+        // Remove active from both swatch types
+        document.querySelectorAll('.color-swatch').forEach((s) => s.classList.remove('active'));
+        document.querySelectorAll('.colour-swatch').forEach((s) => s.classList.remove('colour-active'));
+        el.classList.add('colour-active');
+        const colourKey = el.getAttribute('data-colour-key');
+        if (colourKey) {
+          state.color = colourKey;
+          render();
+        }
       });
     });
 
@@ -689,8 +768,15 @@
     // SYSTEM-SPECIFIC ARCHITECTURAL CONFIGURATIONS
     // =========================================================
     const sys = state.system;
+    const cat = state.category || 'door';
 
-    if (sys === 'bifold') {
+    // Category → system mapping for 3D rendering
+    const renderSys = cat === 'door' ? 'bifold'
+                    : cat === 'window' ? 'casement'
+                    : cat === 'conservatory' ? 'conservatory'
+                    : sys;
+
+    if (renderSys === 'bifold') {
       // BI-FOLD ACCORDION PANELS
       const panelCount = state.widthFt >= 16 ? 5 : state.widthFt >= 10 ? 4 : 3;
       const panelW = innerW / panelCount;
@@ -895,6 +981,38 @@
       animatedKinematics.push((t) => {
         tiltHinge.rotation.x = -t * 0.28; // ~16 deg inward ventilation tilt
       });
+
+    } else if (renderSys === 'conservatory' || sys === 'conservatory') {
+      // CONSERVATORY & ROOFING — Wide glazed structure with roof
+      const panelCount = state.widthFt >= 14 ? 5 : 4;
+      const panelW = innerW / panelCount;
+      const panelH = innerH;
+      const roofH = innerH * 0.4;
+
+      // Side wall panels (glazed)
+      for (let i = 0; i < panelCount; i++) {
+        const pX = -halfW + frameThick + i * panelW;
+        const sash = buildSash(panelW, panelH, null);
+        sash.position.set(pX, innerStartY, 0);
+        doorRootGroup.add(sash);
+      }
+
+      // Roof lantern ridge — sloping roof geometry
+      const roofGeom = new THREE.ConeGeometry(halfW * 0.9, roofH, 4);
+      const roofMat = new THREE.MeshStandardMaterial({
+        color: threePal.frame,
+        roughness: threePal.roughness + 0.1,
+        metalness: threePal.metalness,
+        transparent: true,
+        opacity: 0.75
+      });
+      const roof = new THREE.Mesh(roofGeom, roofMat);
+      roof.rotation.y = Math.PI / 4;
+      roof.position.set(0, innerStartY + panelH + roofH / 2, 0);
+      doorRootGroup.add(roof);
+
+      // No kinematic animation for conservatory
+      animatedKinematics.push(() => {});
     }
 
     scene.add(doorRootGroup);
@@ -923,7 +1041,10 @@
   function updateLabels() {
     if (dimTagWidth) dimTagWidth.textContent = `${state.widthFt} ft (${Math.round(state.widthFt * 304.8)} mm)`;
     if (dimTagHeight) dimTagHeight.textContent = `${state.heightFt} ft (${Math.round(state.heightFt * 304.8)} mm)`;
-    if (systemTagDisplay) systemTagDisplay.textContent = state.system.replace('_', ' ').toUpperCase();
+    if (systemTagDisplay) {
+      const labelMap = { door: 'DOOR', window: 'WINDOW', conservatory: 'CONSERVATORIES & ROOFING' };
+      systemTagDisplay.textContent = labelMap[state.category] || state.system.replace('_', ' ').toUpperCase();
+    }
     if (glassTagDisplay) glassTagDisplay.textContent = state.glass.replace('_', ' ').toUpperCase();
   }
 
@@ -968,14 +1089,16 @@
     const innerH = frameH - frameThickness * 2;
 
     let panelCount = 1;
-    if (state.system === 'bifold') {
+    if (state.system === 'bifold' || state.category === 'door') {
       panelCount = state.widthFt >= 16 ? 5 : state.widthFt >= 10 ? 4 : 3;
     } else if (state.system === 'sliding') {
       panelCount = state.widthFt >= 14 ? 4 : 3;
-    } else if (state.system === 'casement' || state.system === 'tilt_turn') {
+    } else if (state.system === 'casement' || state.system === 'tilt_turn' || state.category === 'window') {
       panelCount = state.widthFt >= 10 ? 3 : 2;
     } else if (state.system === 'pivot') {
       panelCount = 1;
+    } else if (state.system === 'conservatory' || state.category === 'conservatory') {
+      panelCount = state.widthFt >= 14 ? 5 : 4; // Conservatory wide glazing
     }
 
     const panelW = innerW / panelCount;
