@@ -464,6 +464,38 @@ ul {
   cursor: pointer;
   padding: 6px;
   flex-shrink: 0;
+  flex-direction: column;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* Hamburger lines */
+.toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  min-height: 2px;
+  background: #ffffff !important;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Animated X when open */
+.mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.mobile-toggle[aria-expanded="true"] .toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ===================================================================
@@ -2804,23 +2836,59 @@ ul {
           }
 
           .mobile-toggle {
-            display: flex;
+            display: flex !important;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 5px;
             width: 42px;
             height: 42px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+          }
+          .mobile-toggle .toggle-bar {
+            display: block !important;
+            width: 22px !important;
+            height: 2px !important;
+            min-height: 2px !important;
+            background: #ffffff !important;
+            border-radius: 2px !important;
+            flex-shrink: 0 !important;
           }
 
           .mobile-toggle:hover {
             background: rgba(212, 175, 55, 0.15);
             border-color: var(--gold-primary);
+            color: var(--gold-primary);
+          }
+
+          .mobile-toggle svg {
+            display: block;
+            color: inherit;
+            stroke: currentColor;
+          }
+
+          .mobile-toggle .toggle-bar {
+            display: block !important;
+            width: 22px !important;
+            height: 2px !important;
+            min-height: 2px !important;
+            background: #ffffff !important;
+            border-radius: 2px !important;
+            flex-shrink: 0;
           }
 
           .header-actions .btn {
             display: none;
+          }
+
+          .header-actions {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
           }
 
           .slider-3d-wrapper {
