@@ -2620,9 +2620,41 @@ ul {
   .hero-zigzag-container {
     gap: 40px;
   }
-  .zigzag-row {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  /* Mobile: single column, full width, no overflow */
+  .zigzag-row,
+  .zigzag-row:not(.row-intro) {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start !important;
+  }
+  .zigzag-col-left,
+  .zigzag-col-right,
+  .zigzag-col-media {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  /* Prevent text overflow in hero section on mobile */
+  .hero-split-section * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-split-title {
+    font-size: clamp(1.9rem, 7vw, 2.5rem);
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .hero-services-title {
+    font-size: 1.2rem;
+  }
+  .hero-pill-tag {
+    white-space: normal;
+    word-break: break-word;
   }
   .zigzag-row .empty-space {
     display: none;
@@ -2637,16 +2669,18 @@ ul {
     order: -1;
   }
   .zigzag-image-frame {
-    min-height: 240px;
-    max-height: 340px;
-    aspect-ratio: 16 / 10;
+    min-height: 220px;
+    max-height: 280px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
   }
   .zigzag-row:not(:last-child)::after {
     bottom: -20px;
   }
   .hero-split-section {
-    padding: 75px 0 65px 0;
+    padding: 60px 0 50px 0;
     min-height: auto;
+    overflow: visible;
   }
   .hero-glass-reflection, .hero-glass-mullions {
     display: none;
