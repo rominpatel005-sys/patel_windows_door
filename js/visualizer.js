@@ -25,18 +25,18 @@
 
   // Color Palettes for 2D & 3D
   const colorPalettes = {
-    black:          { frame: '#181b20', border: '#323742', handle: '#c97b3a', glassFill: 'rgba(56, 189, 248, 0.12)' },
-    bronze:         { frame: '#3a2d24', border: '#5a4638', handle: '#e8a87c', glassFill: 'rgba(212, 175, 55, 0.12)' },
-    charcoal:       { frame: '#2d3748', border: '#4a5568', handle: '#cbd5e1', glassFill: 'rgba(56, 189, 248, 0.10)' },
+    black:          { frame: '#101B3D', border: '#323742', handle: '#D6B36A', glassFill: 'rgba(91, 155, 213, 0.12)' },
+    bronze:         { frame: '#3a2d24', border: '#5a4638', handle: '#EDD28E', glassFill: 'rgba(212, 175, 55, 0.12)' },
+    charcoal:       { frame: '#152046', border: '#4a5568', handle: '#cbd5e1', glassFill: 'rgba(91, 155, 213, 0.10)' },
     white:          { frame: '#e2e8f0', border: '#cbd5e1', handle: '#1e293b', glassFill: 'rgba(203, 213, 225, 0.15)' },
     natural_oak:    { frame: '#6e4726', border: '#8b5a2b', handle: '#1c1c1c', glassFill: 'rgba(245, 222, 179, 0.12)' },
     // Full 27 Colour Range
-    dark_blue:      { frame: '#1a2340', border: '#2a3560', handle: '#c97b3a', glassFill: 'rgba(56,100,200,0.12)' },
+    dark_blue:      { frame: '#1a2340', border: '#2a3560', handle: '#D6B36A', glassFill: 'rgba(56,100,200,0.12)' },
     ivory:          { frame: '#f5f0e8', border: '#d8d0c0', handle: '#3a3020', glassFill: 'rgba(220,215,200,0.15)' },
     light_grey:     { frame: '#b0b0b0', border: '#909090', handle: '#2a2a2a', glassFill: 'rgba(180,180,180,0.12)' },
     dark_grey:      { frame: '#6e6e6e', border: '#4e4e4e', handle: '#c0c0c0', glassFill: 'rgba(120,120,120,0.12)' },
     white_foil:     { frame: '#e8e8e8', border: '#c8c8c8', handle: '#2a2a2a', glassFill: 'rgba(220,220,220,0.15)' },
-    anthracite_matte:{ frame: '#3a3a38', border: '#525250', handle: '#c97b3a', glassFill: 'rgba(80,80,76,0.12)' },
+    anthracite_matte:{ frame: '#3a3a38', border: '#525250', handle: '#D6B36A', glassFill: 'rgba(80,80,76,0.12)' },
     irish_oak:      { frame: '#8b5e3c', border: '#a07050', handle: '#1c1c1c', glassFill: 'rgba(180,140,90,0.12)' },
     white_plain:    { frame: '#f0f0f0', border: '#d0d0d0', handle: '#1e293b', glassFill: 'rgba(220,220,220,0.15)' },
     basalt:         { frame: '#3c3c3c', border: '#585858', handle: '#c0c0c0', glassFill: 'rgba(80,80,80,0.12)' },
@@ -45,12 +45,12 @@
     mahogany:       { frame: '#5c3318', border: '#7a4a28', handle: '#c8a060', glassFill: 'rgba(140,80,40,0.12)' },
     burgundy:       { frame: '#6b1f1f', border: '#8a3030', handle: '#f0d0c0', glassFill: 'rgba(150,50,50,0.12)' },
     cream_foil:     { frame: '#e8dfc8', border: '#c8c0a8', handle: '#3a3020', glassFill: 'rgba(220,210,185,0.15)' },
-    anthracite_grained:{ frame: '#4a4a4a', border: '#606060', handle: '#c97b3a', glassFill: 'rgba(90,90,88,0.12)' },
+    anthracite_grained:{ frame: '#4a4a4a', border: '#606060', handle: '#D6B36A', glassFill: 'rgba(90,90,88,0.12)' },
     golden_oak:     { frame: '#c8a832', border: '#a88820', handle: '#1c1c1c', glassFill: 'rgba(220,180,60,0.12)' },
     dark_green:     { frame: '#1e3a1e', border: '#2a502a', handle: '#c8c8c8', glassFill: 'rgba(40,100,40,0.12)' },
     swamp_oak:      { frame: '#a07840', border: '#b89058', handle: '#1c1c1c', glassFill: 'rgba(190,150,80,0.12)' },
     oregon:         { frame: '#c8a060', border: '#a88040', handle: '#1c1c1c', glassFill: 'rgba(210,170,100,0.12)' },
-    black_foil:     { frame: '#1a1a1a', border: '#303030', handle: '#c97b3a', glassFill: 'rgba(40,40,40,0.12)' },
+    black_foil:     { frame: '#101B3D', border: '#303030', handle: '#D6B36A', glassFill: 'rgba(40,40,40,0.12)' },
     agate_grey:     { frame: '#9ea0a0', border: '#808080', handle: '#2a2a2a', glassFill: 'rgba(160,162,162,0.12)' },
     cedarwood:      { frame: '#a0784a', border: '#886030', handle: '#1c1c1c', glassFill: 'rgba(190,140,80,0.12)' },
     rustic_oak:     { frame: '#7a5838', border: '#5a3818', handle: '#c8b090', glassFill: 'rgba(160,110,70,0.12)' },
@@ -390,7 +390,7 @@
     // 6. Luxury Dark Studio Showroom Floor
     const floorGeo = new THREE.PlaneGeometry(36, 36);
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0x090d16,
+      color: 0x0A1230,
       roughness: 0.55,
       metalness: 0.25
     });

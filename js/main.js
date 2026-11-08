@@ -648,7 +648,7 @@
       fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
           fileMsg.textContent = `Attached: ${fileInput.files[0].name} (${(fileInput.files[0].size / 1024 / 1024).toFixed(2)} MB)`;
-          fileMsg.style.color = '#38bdf8';
+          fileMsg.style.color = '#5B9BD5';
         }
       });
     }
