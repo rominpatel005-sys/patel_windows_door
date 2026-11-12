@@ -96,10 +96,10 @@
       <div class="di-welcome-inner">
         <div class="di-logo-wrap">
           <svg width="72" height="72" viewBox="0 0 100 100" fill="none">
-            <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4"/>
-            <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6"/>
-            <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="4.5"/>
-            <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="4.5"/>
+            <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4" />
+            <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6" />
+            <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="4.5" />
+            <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="4.5" />
           </svg>
         </div>
         <div class="di-gold-line"></div>
@@ -114,319 +114,439 @@
   </div><!-- /#door-intro -->
 
   <style>
-  /* ============================================================
+    /* ============================================================
      3D DOOR INTRO ANIMATION
   ============================================================ */
-  #door-intro {
-    position: fixed; inset: 0; z-index: 99999;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden; pointer-events: all;
-    background: radial-gradient(ellipse at 50% 60%, #1e2f60 0%, #101B3D 55%, #060d20 100%);
-  }
+    #door-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      pointer-events: all;
+      background: radial-gradient(ellipse at 50% 60%, #1e2f60 0%, #101B3D 55%, #060d20 100%);
+    }
 
-  /* ---- background particles ---- */
-  .di-bg { position:absolute; inset:0; pointer-events:none; }
-  .di-particle {
-    position: absolute;
-    bottom: -20px;
-    width: 2px; height: 2px;
-    background: #D6B36A;
-    border-radius: 50%;
-    opacity: 0;
-    animation: diFloat 4s ease-in infinite;
-  }
-  @keyframes diFloat {
-    0%   { opacity:0; transform: translateY(0) scale(1); }
-    10%  { opacity:0.6; }
-    90%  { opacity:0.2; }
-    100% { opacity:0; transform: translateY(-100vh) scale(0.4); }
-  }
+    /* ---- background particles ---- */
+    .di-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
-  /* ---- 3D scene wrapper ---- */
-  .di-scene {
-    position: relative;
-    width: min(600px, 90vw);
-    height: min(680px, 88vh);
-    perspective: 1800px;
-    perspective-origin: 50% 38%;
-  }
+    .di-particle {
+      position: absolute;
+      bottom: -20px;
+      width: 2px;
+      height: 2px;
+      background: #D6B36A;
+      border-radius: 50%;
+      opacity: 0;
+      animation: diFloat 4s ease-in infinite;
+    }
 
-  /* ---- floor & step ---- */
-  .di-floor {
-    position: absolute;
-    bottom: -40px; left: -60px; right: -60px;
-    height: 80px;
-    background: linear-gradient(to bottom, #0d1835, #080f20);
-    transform: rotateX(70deg);
-    transform-origin: bottom;
-    border-top: 2px solid rgba(214,179,106,0.18);
-  }
-  .di-step {
-    position: absolute;
-    bottom: 0; left: 15%; right: 15%;
-    height: 22px;
-    background: linear-gradient(to bottom, #1e2d58, #0d1835);
-    border-radius: 3px 3px 0 0;
-    border: 1px solid rgba(214,179,106,0.2);
-    border-bottom: none;
-    z-index: 1;
-  }
+    @keyframes diFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(1);
+      }
 
-  /* ---- door frame ---- */
-  .di-frame {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-  }
-  .di-frame-top {
-    position: absolute;
-    top: 0; left: 4%; right: 4%;
-    height: 36px;
-    background: linear-gradient(to bottom, #1f3070, #152046);
-    border: 2px solid rgba(214,179,106,0.35);
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
-  }
-  .di-frame-left, .di-frame-right {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 5%;
-    background: linear-gradient(to right, #152046, #1f3070, #152046);
-    border: 2px solid rgba(214,179,106,0.30);
-  }
-  .di-frame-left  { left: 4%;  border-right: none; border-radius: 4px 0 0 4px; }
-  .di-frame-right { right: 4%; border-left: none;  border-radius: 0 4px 4px 0; }
+      10% {
+        opacity: 0.6;
+      }
 
-  /* ---- door leaves ---- */
-  .di-door {
-    position: absolute;
-    top: 36px; bottom: 0;
-    width: 45.5%;
-    transform-style: preserve-3d;
-    transition: transform 1.3s cubic-bezier(0.68, -0.02, 0.265, 1.05);
-    z-index: 3;
-  }
-  .di-door-left  { left: 9%;   transform-origin: left center; }
-  .di-door-right { right: 9%;  transform-origin: right center; }
+      90% {
+        opacity: 0.2;
+      }
 
-  /* door face (front surface) */
-  .di-door-face {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(145deg, #1e3068 0%, #152046 45%, #0e1a38 100%);
-    border: 1.5px solid rgba(214,179,106,0.25);
-    overflow: hidden;
-    display: flex; flex-direction: column;
-    padding: 20px 18px;
-    gap: 10px;
-    backface-visibility: hidden;
-  }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.4);
+      }
+    }
 
-  /* panel insets */
-  .di-door-inset {
-    border: 1.5px solid rgba(214,179,106,0.28);
-    border-radius: 3px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(214,179,106,0.04) 100%);
-    box-shadow: inset 0 3px 10px rgba(0,0,0,0.4), inset 0 -1px 0 rgba(255,255,255,0.04),
-                0 1px 0 rgba(255,255,255,0.06);
-  }
-  .di-inset-1 { flex:1; }
-  .di-inset-2 { flex:1; }
-  .di-inset-3 { flex:1.6; }
-  .di-inset-4 { flex:0.8; }
+    /* ---- 3D scene wrapper ---- */
+    .di-scene {
+      position: relative;
+      width: min(600px, 90vw);
+      height: min(680px, 88vh);
+      perspective: 1800px;
+      perspective-origin: 50% 38%;
+    }
 
-  /* glass fanlight strip */
-  .di-door-glass {
-    height: 55px;
-    background: linear-gradient(135deg,
-      rgba(91,155,213,0.08) 0%,
-      rgba(214,179,106,0.06) 50%,
-      rgba(91,155,213,0.05) 100%);
-    border: 1px solid rgba(214,179,106,0.22);
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-  }
-  .di-door-glass::after {
-    content: '';
-    position: absolute;
-    top: 10px; left: 10px; right: 10px; bottom: 10px;
-    background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.12), transparent 60%);
-  }
+    /* ---- floor & step ---- */
+    .di-floor {
+      position: absolute;
+      bottom: -40px;
+      left: -60px;
+      right: -60px;
+      height: 80px;
+      background: linear-gradient(to bottom, #0d1835, #080f20);
+      transform: rotateX(70deg);
+      transform-origin: bottom;
+      border-top: 2px solid rgba(214, 179, 106, 0.18);
+    }
 
-  /* door side (thickness / depth face) */
-  .di-door-side {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 28px;
-    background: linear-gradient(to bottom, #0e1a38, #0a1228);
-    backface-visibility: hidden;
-  }
-  .di-door-side-left  { right: -28px; transform: rotateY(90deg); transform-origin: left; }
-  .di-door-side-right { left: -28px;  transform: rotateY(-90deg); transform-origin: right; }
+    .di-step {
+      position: absolute;
+      bottom: 0;
+      left: 15%;
+      right: 15%;
+      height: 22px;
+      background: linear-gradient(to bottom, #1e2d58, #0d1835);
+      border-radius: 3px 3px 0 0;
+      border: 1px solid rgba(214, 179, 106, 0.2);
+      border-bottom: none;
+      z-index: 1;
+    }
 
-  /* door top face */
-  .di-door-top {
-    position: absolute;
-    top: -18px; left: 0; right: 0;
-    height: 18px;
-    background: linear-gradient(to bottom, #1a2855, #0e1a38);
-    transform: rotateX(90deg);
-    transform-origin: bottom;
-  }
+    /* ---- door frame ---- */
+    .di-frame {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
 
-  /* handles */
-  .di-handle {
-    position: absolute;
-    top: 48%; transform: translateY(-50%);
-    width: 14px; height: 90px;
-    background: linear-gradient(180deg, #EDD28E 0%, #D6B36A 30%, #B8924A 60%, #EDD28E 100%);
-    border-radius: 7px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.6),
-                inset 0 1px 3px rgba(255,255,255,0.4),
-                inset 0 -1px 3px rgba(0,0,0,0.3);
-  }
-  .di-handle::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #B8924A;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  }
-  .di-handle-r { right: 14px; }
-  .di-handle-l { left: 14px; }
+    .di-frame-top {
+      position: absolute;
+      top: 0;
+      left: 4%;
+      right: 4%;
+      height: 36px;
+      background: linear-gradient(to bottom, #1f3070, #152046);
+      border: 2px solid rgba(214, 179, 106, 0.35);
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
 
-  /* centre seam gold glow */
-  .di-seam {
-    position: absolute;
-    left: 50%; top: 36px; bottom: 0;
-    width: 4px; transform: translateX(-50%);
-    background: linear-gradient(180deg,
-      rgba(214,179,106,0.9) 0%,
-      #EDD28E 50%,
-      rgba(214,179,106,0.9) 100%);
-    z-index: 10;
-    box-shadow: 0 0 18px rgba(214,179,106,0.7), 0 0 40px rgba(214,179,106,0.3);
-  }
+    .di-frame-left,
+    .di-frame-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 5%;
+      background: linear-gradient(to right, #152046, #1f3070, #152046);
+      border: 2px solid rgba(214, 179, 106, 0.30);
+    }
 
-  /* ---- Welcome text (behind doors) ---- */
-  .di-welcome {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: scale(0.88) translateY(20px);
-    transition: opacity 0.9s ease 1.0s, transform 0.9s ease 1.0s;
-  }
-  .di-welcome-inner {
-    text-align: center;
-    display: flex; flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    padding: 20px;
-  }
-  .di-logo-wrap {
-    filter: drop-shadow(0 0 24px rgba(214,179,106,0.5));
-    animation: diLogoPulse 2.5s ease-in-out infinite;
-  }
-  @keyframes diLogoPulse {
-    0%,100% { filter: drop-shadow(0 0 18px rgba(214,179,106,0.4)); }
-    50%      { filter: drop-shadow(0 0 36px rgba(214,179,106,0.75)); }
-  }
-  .di-gold-line {
-    width: 160px; height: 1.5px;
-    background: linear-gradient(90deg, transparent, #D6B36A 30%, #EDD28E 50%, #D6B36A 70%, transparent);
-  }
-  .di-sub {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(0.7rem, 2.2vw, 1rem);
-    letter-spacing: 0.45em;
-    color: #D6B36A;
-    font-weight: 700;
-    margin: 0;
-  }
-  .di-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.4rem, 7vw, 5.5rem);
-    font-weight: 900;
-    color: #FFFFFF;
-    line-height: 1.08;
-    margin: 0;
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 40px rgba(0,0,0,0.6), 0 0 60px rgba(16,27,61,0.8);
-  }
-  .di-title span {
-    color: #D6B36A;
-    display: block;
-    font-size: 85%;
-  }
-  .di-tagline {
-    font-size: clamp(0.75rem, 2vw, 1.05rem);
-    color: #C8D0E0;
-    letter-spacing: 0.12em;
-    margin: 0;
-    font-weight: 500;
-  }
-  .di-est {
-    font-size: clamp(0.55rem, 1.4vw, 0.72rem);
-    color: rgba(200,208,224,0.5);
-    letter-spacing: 0.28em;
-    margin: 0;
-    font-weight: 600;
-  }
+    .di-frame-left {
+      left: 4%;
+      border-right: none;
+      border-radius: 4px 0 0 4px;
+    }
 
-  /* ---- OPEN state ---- */
-  #door-intro.doors-opening #diDoorL {
-    transform: perspective(1800px) rotateY(-96deg);
-    box-shadow: 30px 0 60px rgba(0,0,0,0.6);
-  }
-  #door-intro.doors-opening #diDoorR {
-    transform: perspective(1800px) rotateY(96deg);
-    box-shadow: -30px 0 60px rgba(0,0,0,0.6);
-  }
-  #door-intro.doors-opening .di-welcome {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-  #door-intro.doors-opening .di-seam {
-    opacity: 0;
-    transition: opacity 0.25s ease 0.5s;
-  }
+    .di-frame-right {
+      right: 4%;
+      border-left: none;
+      border-radius: 0 4px 4px 0;
+    }
 
-  /* ---- FADE OUT ---- */
-  #door-intro.fade-out {
-    opacity: 0;
-    transition: opacity 1s ease;
-    pointer-events: none;
-  }
+    /* ---- door leaves ---- */
+    .di-door {
+      position: absolute;
+      top: 36px;
+      bottom: 0;
+      width: 45.5%;
+      transform-style: preserve-3d;
+      transition: transform 1.3s cubic-bezier(0.68, -0.02, 0.265, 1.05);
+      z-index: 3;
+    }
+
+    .di-door-left {
+      left: 9%;
+      transform-origin: left center;
+    }
+
+    .di-door-right {
+      right: 9%;
+      transform-origin: right center;
+    }
+
+    /* door face (front surface) */
+    .di-door-face {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #1e3068 0%, #152046 45%, #0e1a38 100%);
+      border: 1.5px solid rgba(214, 179, 106, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 18px;
+      gap: 10px;
+      backface-visibility: hidden;
+    }
+
+    /* panel insets */
+    .di-door-inset {
+      border: 1.5px solid rgba(214, 179, 106, 0.28);
+      border-radius: 3px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(214, 179, 106, 0.04) 100%);
+      box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+        0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .di-inset-1 {
+      flex: 1;
+    }
+
+    .di-inset-2 {
+      flex: 1;
+    }
+
+    .di-inset-3 {
+      flex: 1.6;
+    }
+
+    .di-inset-4 {
+      flex: 0.8;
+    }
+
+    /* glass fanlight strip */
+    .di-door-glass {
+      height: 55px;
+      background: linear-gradient(135deg,
+          rgba(91, 155, 213, 0.08) 0%,
+          rgba(214, 179, 106, 0.06) 50%,
+          rgba(91, 155, 213, 0.05) 100%);
+      border: 1px solid rgba(214, 179, 106, 0.22);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .di-door-glass::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.12), transparent 60%);
+    }
+
+    /* door side (thickness / depth face) */
+    .di-door-side {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 28px;
+      background: linear-gradient(to bottom, #0e1a38, #0a1228);
+      backface-visibility: hidden;
+    }
+
+    .di-door-side-left {
+      right: -28px;
+      transform: rotateY(90deg);
+      transform-origin: left;
+    }
+
+    .di-door-side-right {
+      left: -28px;
+      transform: rotateY(-90deg);
+      transform-origin: right;
+    }
+
+    /* door top face */
+    .di-door-top {
+      position: absolute;
+      top: -18px;
+      left: 0;
+      right: 0;
+      height: 18px;
+      background: linear-gradient(to bottom, #1a2855, #0e1a38);
+      transform: rotateX(90deg);
+      transform-origin: bottom;
+    }
+
+    /* handles */
+    .di-handle {
+      position: absolute;
+      top: 48%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 90px;
+      background: linear-gradient(180deg, #EDD28E 0%, #D6B36A 30%, #B8924A 60%, #EDD28E 100%);
+      border-radius: 7px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6),
+        inset 0 1px 3px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .di-handle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #B8924A;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .di-handle-r {
+      right: 14px;
+    }
+
+    .di-handle-l {
+      left: 14px;
+    }
+
+    /* centre seam gold glow */
+    .di-seam {
+      position: absolute;
+      left: 50%;
+      top: 36px;
+      bottom: 0;
+      width: 4px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg,
+          rgba(214, 179, 106, 0.9) 0%,
+          #EDD28E 50%,
+          rgba(214, 179, 106, 0.9) 100%);
+      z-index: 10;
+      box-shadow: 0 0 18px rgba(214, 179, 106, 0.7), 0 0 40px rgba(214, 179, 106, 0.3);
+    }
+
+    /* ---- Welcome text (behind doors) ---- */
+    .di-welcome {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.88) translateY(20px);
+      transition: opacity 0.9s ease 1.0s, transform 0.9s ease 1.0s;
+    }
+
+    .di-welcome-inner {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .di-logo-wrap {
+      filter: drop-shadow(0 0 24px rgba(214, 179, 106, 0.5));
+      animation: diLogoPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes diLogoPulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 18px rgba(214, 179, 106, 0.4));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 36px rgba(214, 179, 106, 0.75));
+      }
+    }
+
+    .di-gold-line {
+      width: 160px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, #D6B36A 30%, #EDD28E 50%, #D6B36A 70%, transparent);
+    }
+
+    .di-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(0.7rem, 2.2vw, 1rem);
+      letter-spacing: 0.45em;
+      color: #D6B36A;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .di-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.08;
+      margin: 0;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6), 0 0 60px rgba(16, 27, 61, 0.8);
+    }
+
+    .di-title span {
+      color: #D6B36A;
+      display: block;
+      font-size: 85%;
+    }
+
+    .di-tagline {
+      font-size: clamp(0.75rem, 2vw, 1.05rem);
+      color: #C8D0E0;
+      letter-spacing: 0.12em;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .di-est {
+      font-size: clamp(0.55rem, 1.4vw, 0.72rem);
+      color: rgba(200, 208, 224, 0.5);
+      letter-spacing: 0.28em;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    /* ---- OPEN state ---- */
+    #door-intro.doors-opening #diDoorL {
+      transform: perspective(1800px) rotateY(-96deg);
+      box-shadow: 30px 0 60px rgba(0, 0, 0, 0.6);
+    }
+
+    #door-intro.doors-opening #diDoorR {
+      transform: perspective(1800px) rotateY(96deg);
+      box-shadow: -30px 0 60px rgba(0, 0, 0, 0.6);
+    }
+
+    #door-intro.doors-opening .di-welcome {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    #door-intro.doors-opening .di-seam {
+      opacity: 0;
+      transition: opacity 0.25s ease 0.5s;
+    }
+
+    /* ---- FADE OUT ---- */
+    #door-intro.fade-out {
+      opacity: 0;
+      transition: opacity 1s ease;
+      pointer-events: none;
+    }
   </style>
 
   <script>
-  (function() {
-    var intro = document.getElementById('door-intro');
-    if (!intro) return;
-    document.body.style.overflow = 'hidden';
+    (function () {
+      var intro = document.getElementById('door-intro');
+      if (!intro) return;
+      document.body.style.overflow = 'hidden';
 
-    // Open doors at 500ms
-    setTimeout(function() { intro.classList.add('doors-opening'); }, 500);
+      // Open doors at 500ms
+      setTimeout(function () { intro.classList.add('doors-opening'); }, 500);
 
-    // Fade out at 3.6s
-    setTimeout(function() {
-      intro.classList.add('fade-out');
-      document.body.style.overflow = '';
-    }, 3600);
+      // Fade out at 3.6s
+      setTimeout(function () {
+        intro.classList.add('fade-out');
+        document.body.style.overflow = '';
+      }, 3600);
 
-    // Remove from DOM at 4.7s
-    setTimeout(function() {
-      if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
-    }, 4700);
-  })();
+      // Remove from DOM at 4.7s
+      setTimeout(function () {
+        if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+      }, 4700);
+    })();
   </script>
 
   <!-- ================= SITE HEADER ================= -->
@@ -454,6 +574,7 @@
         <a href="#windows" class="nav-link">Windows</a>
         <a href="doors.html" class="nav-link">Doors</a>
         <a href="conservatories.html" class="nav-link">Conservatories & Roofing</a>
+        <a href="glass.html" class="nav-link">Glass</a>
         <div class="mobile-nav-actions">
           <button class="btn btn-primary btn-sm mobile-quote-btn" data-open-modal="quoteModal">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1142,8 +1263,8 @@
     <section class="export-section" id="export">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">International Logistics & Assurance</span>
-          <h2 class="section-title">Zero-Damage Global Shipping Protocol</h2>
+
+          <h2 class="section-title">Zero-Damage </h2>
           <p class="section-subtitle">
             Every window and door system is manufactured, tested, and protected in heavy-duty maritime steel crates
             engineered to withstand international sea transport.
@@ -1170,21 +1291,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="export-card">
-            <div class="export-icon-box">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="1" y="3" width="15" height="13"></rect>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-              </svg>
-            </div>
-            <h3 class="export-card-title">Door-to-Jobsite Delivery</h3>
-            <p class="export-card-desc">
-              We handle ocean container shipping (FCL/LCL), customs clearance, and direct flatbed unloading to
-              construction sites in the US, Canada, UK & Australia.
-            </p>
-          </div>
+
 
           <!-- Card 3 -->
           <div class="export-card">
@@ -1211,7 +1318,7 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
             </div>
-            <h3 class="export-card-title">25-Year Warranty</h3>
+            <h3 class="export-card-title">10-Year Warranty</h3>
             <p class="export-card-desc">
               Uncompromising protection covering aluminum structural profiles, anodized powder coating adhesion, and
               hermetically sealed double/triple IGUs.
@@ -1366,14 +1473,8 @@
         <div>
           &copy; 2026 Patel Windows & Doors Ltd. All Rights Reserved. Architectural Fenestration Systems.
         </div>
-        <div class="footer-ports">
-          <span>PORT ACCESS:</span>
-          <span>US-WEST (LA/LGB)</span> •
-          <span>US-EAST (NYC/SAV)</span> •
-          <span>UK (Felixstowe)</span> •
-          <span>AU (Sydney/Melb)</span> •
-          <span>CA (Vancouver)</span>
-        </div>
+
+
       </div>
     </div>
   </footer>

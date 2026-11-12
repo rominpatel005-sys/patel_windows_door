@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glass | Patel Windows &amp; Doors Ltd</title>
+  <meta name="description"
+    content="Explore our premium glass solutions including double glazing, decorative glass, and toughened safety glass for windows and doors." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== GLASS PAGE STYLES ===== */
+    .glass-page-hero {
+      background: linear-gradient(135deg, #101B3D 0%, #152046 60%, #152046 100%);
+      padding: 120px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(197, 160, 89, 0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .glass-page-hero .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    .glass-page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 18px;
+      line-height: 1.15;
+    }
+
+    .glass-page-hero h1 span {
+      color: var(--gold-primary);
+    }
+
+    .glass-page-hero p {
+      font-size: 1.08rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Category Section */
+    .glass-cat-section {
+      padding: 70px 0 30px;
+      background: linear-gradient(180deg, #0A1230 0%, #080d18 100%);
+    }
+
+    .glass-cat-section:last-of-type {
+      padding-bottom: 90px;
+    }
+
+    .glass-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .glass-cat-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(197, 160, 89, 0.12);
+      border: 1px solid rgba(197, 160, 89, 0.35);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .glass-cat-title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .glass-cat-title span {
+      color: var(--gold-primary);
+    }
+
+    .glass-cat-desc {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 700px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .glass-cat-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.3) 40%, rgba(197, 160, 89, 0.3) 60%, transparent);
+      margin-bottom: 44px;
+    }
+
+    /* Glass Type Cards */
+    .glass-type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .glass-type-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(197, 160, 89, 0.18);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .glass-type-card:hover {
+      border-color: rgba(197, 160, 89, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .glass-type-card .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .glass-type-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin-bottom: 10px;
+    }
+
+    .glass-type-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Benefits strip */
+    .glass-benefits {
+      background: linear-gradient(135deg, rgba(197, 160, 89, 0.08) 0%, rgba(16, 27, 61, 0.5) 100%);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 20px;
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .glass-benefit-item {
+      text-align: center;
+    }
+
+    .glass-benefit-item .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .glass-benefit-item h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .glass-benefit-item p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* CTA Section */
+    .glass-cta {
+      background: linear-gradient(135deg, #101B3D 0%, #0A1230 100%);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .glass-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .glass-cta h2 span {
+      color: var(--gold-primary);
+    }
+
+    .glass-cta p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .glass-benefits {
+        padding: 32px 24px;
+        gap: 24px;
+      }
+
+      .glass-type-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="topbar-left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42C1.6 2.3 2.4 1.38 3.52 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          <span>Free Quote: <a href="tel:07123456789" style="color:var(--gold-primary);font-weight:600;">07123 456
+              789</a></span>
+        </div>
+        <div class="topbar-right">
+          <span>&#10003; Free Measurement &amp; Quote</span>
+          <span>&#10003; Professional Installation</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-inner container">
+      <a href="index.html" class="logo-link" aria-label="Patel Windows &amp; Doors Ltd Home">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="8" height="8" rx="1" />
+            <rect x="13" y="3" width="8" height="8" rx="1" />
+            <rect x="3" y="13" width="8" height="8" rx="1" />
+            <rect x="13" y="13" width="8" height="8" rx="1" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">PATEL <span>WINDOWS &amp; DOORS LTD</span></span>
+          <span class="logo-tagline">Quality You Can See. Service You Can Trust.</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#windows" class="nav-link">Windows</a>
+        <a href="doors.html" class="nav-link">Doors</a>
+        <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing</a>
+        <a href="glass.html" class="nav-link active">Glass</a>
+        <div class="mobile-nav-actions">
+          <button class="btn btn-primary btn-sm mobile-quote-btn" data-open-modal="quoteModal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            Request a Free Quote
+          </button>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          Request a Free Quote
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar"
+            style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+          <span class="toggle-bar"
+            style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+          <span class="toggle-bar"
+            style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="glass-page-hero">
+    <div class="container">
+      <span class="eyebrow">OUR GLASS SOLUTIONS</span>
+      <h1>Premium <span>Glass</span> for Every Home</h1>
+      <p>From energy-efficient double glazing to decorative and toughened safety glass — discover our full range of
+        high-quality glass options for windows and doors.</p>
+    </div>
+  </section>
+
+  <!-- ===== GLASS TYPES SECTION ===== -->
+  <section class="glass-cat-section">
+    <div class="container">
+      <div class="glass-cat-header">
+        <div class="glass-cat-icon">🪟</div>
+        <h2 class="glass-cat-title"><span>Glass</span> Types</h2>
+      </div>
+      <p class="glass-cat-desc">We offer a wide selection of glass solutions designed to improve thermal efficiency,
+        security, privacy and aesthetics in your home.</p>
+      <div class="glass-cat-divider"></div>
+
+      <div class="glass-type-grid">
+
+        <div class="glass-type-card">
+          <span class="card-icon">🏠</span>
+          <h3>Double Glazing</h3>
+          <p>Two panes of glass with an insulating argon gas fill. Reduces heat loss, cuts energy bills and minimises
+            external noise for a more comfortable home.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">❄️</span>
+          <h3>Triple Glazing</h3>
+          <p>Three glass panes for maximum thermal insulation and acoustic performance. Ideal for colder climates or
+            rooms facing busy roads.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">🛡️</span>
+          <h3>Toughened Safety Glass</h3>
+          <p>Thermally treated to be up to 5× stronger than standard glass. Shatters into small, safe fragments —
+            perfect for doors, low-level glazing and high-traffic areas.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">🌿</span>
+          <h3>Laminated Glass</h3>
+          <p>A plastic interlayer bonds two glass panes together. Even if broken, the glass stays in place — providing
+            excellent security and UV protection.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">🎨</span>
+          <h3>Decorative & Leaded Glass</h3>
+          <p>Add a classic or contemporary touch with frosted, etched, stained or leaded glass designs. Perfect for
+            front doors, side panels and bathroom windows.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">🔒</span>
+          <h3>Obscure / Privacy Glass</h3>
+          <p>Provides natural light while maintaining privacy. Available in various obscure levels — ideal for
+            bathrooms, en-suites and side-entrance doors.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">☀️</span>
+          <h3>Self-Cleaning Glass</h3>
+          <p>A special coating breaks down organic dirt and allows rainwater to wash it away — keeping your windows
+            cleaner for longer with minimal maintenance.</p>
+        </div>
+
+        <div class="glass-type-card">
+          <span class="card-icon">🔆</span>
+          <h3>Solar Control Glass</h3>
+          <p>Reduces solar heat gain while maintaining excellent light transmission. Keeps rooms cooler in summer and
+            reduces glare — ideal for south-facing windows and conservatories.</p>
+        </div>
+
+      </div>
+
+      <!-- Benefits Strip -->
+      <div class="glass-benefits">
+        <div class="glass-benefit-item">
+          <span class="benefit-icon">🌡️</span>
+          <h4>Energy Efficient</h4>
+          <p>Reduce heating costs with high-performance glazing</p>
+        </div>
+        <div class="glass-benefit-item">
+          <span class="benefit-icon">🔇</span>
+          <h4>Sound Reduction</h4>
+          <p>Minimise outside noise for a peaceful home</p>
+        </div>
+        <div class="glass-benefit-item">
+          <span class="benefit-icon">🛡️</span>
+          <h4>Enhanced Security</h4>
+          <p>Toughened &amp; laminated options for maximum protection</p>
+        </div>
+        <div class="glass-benefit-item">
+          <span class="benefit-icon">✨</span>
+          <h4>Custom Designs</h4>
+          <p>Decorative options to match your style</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="glass-cta">
+    <div class="container">
+      <h2>Not Sure Which <span>Glass</span> Is Right for You?</h2>
+      <p>Our expert team will help you choose the best glass solution for your windows, doors and home requirements.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem; padding:14px 32px;">
+          Get a Free Quote
+        </a>
+        <a href="tel:07123456789" class="btn btn-outline" style="font-size:1.05rem; padding:14px 32px;">
+          Call Us: 07123 456 789
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="8" height="8" rx="1" />
+                <rect x="13" y="3" width="8" height="8" rx="1" />
+                <rect x="3" y="13" width="8" height="8" rx="1" />
+                <rect x="13" y="13" width="8" height="8" rx="1" />
+              </svg>
+            </div>
+            <div>
+              <span class="logo-title" style="font-size:0.95rem;">PATEL <span>WINDOWS &amp; DOORS LTD</span></span>
+            </div>
+          </div>
+          <p class="footer-desc">Premium windows, doors, conservatories and glass solutions for every home.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#windows">Windows</a></li>
+            <li><a href="doors.html">Doors</a></li>
+            <li><a href="conservatories.html">Conservatories &amp; Roofing</a></li>
+            <li><a href="glass.html">Glass</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><a href="tel:07123456789">+ 44 7344168124</a></p>
+          <p><a href="mailto:info@patelwindowsdoors.co.uk">patelwindowsdoor@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Patel Windows &amp; Doors Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/447123456789" class="whatsapp-fab" target="_blank" rel="noopener"
+    aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
