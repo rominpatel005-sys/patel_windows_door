@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows | Patel Windows &amp; Doors Ltd</title>
+  <meta name="description" content="Explore our premium window range including uPVC, Aluminium, Flush Casement, Sliding Sash, Tilt and Turn and more." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== WINDOWS PAGE STYLES ===== */
+    .win-page-hero {
+      background: linear-gradient(135deg, #101B3D 0%, #152046 60%, #152046 100%);
+      padding: 120px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .win-page-hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(214,179,106,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .win-page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; color: #fff;
+      margin-bottom: 18px; line-height: 1.15;
+    }
+    .win-page-hero h1 span { color: var(--gold-primary); }
+    .win-page-hero p {
+      font-size: 1.08rem; color: var(--text-secondary);
+      max-width: 620px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* Side nav tabs */
+    .win-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      min-height: 600px;
+      background: #080d18;
+    }
+    .win-sidenav {
+      background: #0A1230;
+      border-right: 1px solid rgba(214,179,106,0.12);
+      padding: 32px 0;
+      position: sticky;
+      top: 70px;
+      height: fit-content;
+    }
+    .win-sidenav-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      padding: 0 20px 16px;
+      border-bottom: 1px solid rgba(214,179,106,0.1);
+      margin-bottom: 8px;
+    }
+    .win-sidenav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .win-sidenav-link:hover,
+    .win-sidenav-link.active {
+      color: #fff;
+      background: rgba(214,179,106,0.07);
+      border-left-color: var(--gold-primary);
+    }
+    .win-sidenav-link .sn-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px;
+      background: rgba(214,179,106,0.12);
+      border-radius: 5px;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--gold-primary);
+      flex-shrink: 0;
+    }
+    .win-sidenav-link.active .sn-num {
+      background: var(--gold-primary);
+      color: #101B3D;
+    }
+
+    /* Content area */
+    .win-content {
+      padding: 48px 40px;
+    }
+    .win-section {
+      display: none;
+      animation: fadeInSection 0.4s ease;
+    }
+    .win-section.active {
+      display: block;
+    }
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .win-section-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 12px;
+    }
+    .win-section-icon {
+      width: 48px; height: 48px;
+      background: rgba(214,179,106,0.12);
+      border: 1px solid rgba(214,179,106,0.35);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .win-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem; font-weight: 800; color: #fff; margin: 0;
+    }
+    .win-section-title span { color: var(--gold-primary); }
+    .win-section-desc {
+      color: var(--text-secondary);
+      font-size: 1rem; line-height: 1.65;
+      max-width: 750px; margin-bottom: 36px;
+    }
+    .win-section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(214,179,106,0.3) 40%, rgba(214,179,106,0.3) 60%, transparent);
+      margin-bottom: 36px;
+    }
+
+    /* Image Grid */
+    .win-img-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .win-img-card {
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 4/3;
+      border: 1px solid rgba(214,179,106,0.1);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .win-img-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      border-color: rgba(214,179,106,0.4);
+    }
+    .win-img-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .win-img-card:hover img { transform: scale(1.05); }
+    .win-img-card .img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,18,48,0.7) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .win-img-card:hover .img-overlay { opacity: 1; }
+
+    /* Coming soon placeholder */
+    .win-coming-soon {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 300px;
+      background: rgba(255,255,255,0.03);
+      border: 2px dashed rgba(214,179,106,0.2);
+      border-radius: 20px;
+      text-align: center; padding: 48px;
+    }
+    .win-coming-soon .cs-icon { font-size: 3rem; margin-bottom: 16px; }
+    .win-coming-soon h3 {
+      font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700;
+      color: var(--gold-primary); margin-bottom: 10px;
+    }
+    .win-coming-soon p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; }
+
+    /* Lightbox */
+    .win-lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.92); z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    .win-lightbox.open { display: flex; }
+    .win-lightbox img {
+      max-width: 90vw; max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+    .win-lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: rgba(255,255,255,0.1); border: none;
+      color: #fff; font-size: 1.8rem; width: 44px; height: 44px;
+      border-radius: 50%; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .win-lightbox-close:hover { background: rgba(214,179,106,0.3); }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .win-layout { grid-template-columns: 1fr; }
+      .win-sidenav { position: static; display: flex; overflow-x: auto; padding: 0; border-right: none; border-bottom: 1px solid rgba(214,179,106,0.12); }
+      .win-sidenav-title { display: none; }
+      .win-sidenav-link { flex-direction: column; gap: 4px; padding: 12px 14px; font-size: 0.78rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+      .win-sidenav-link.active, .win-sidenav-link:hover { border-left-color: transparent; border-bottom-color: var(--gold-primary); }
+      .win-content { padding: 28px 20px; }
+      .win-img-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+    @media (max-width: 540px) {
+      .win-img-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="topbar-left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42C1.6 2.3 2.4 1.38 3.52 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.29 6.29l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Free Quote: <a href="tel:07123456789" style="color:var(--gold-primary);font-weight:600;">07123 456 789</a></span>
+        </div>
+        <div class="topbar-right">
+          <span>&#10003; Free Measurement &amp; Quote</span>
+          <span>&#10003; Professional Installation</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-inner container">
+      <a href="index.html" class="logo-link" aria-label="Patel Windows &amp; Doors Ltd Home">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">PATEL <span>WINDOWS &amp; DOORS LTD</span></span>
+          <span class="logo-tagline">Quality You Can See. Service You Can Trust.</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-dropdown">
+          <a href="windows.html" class="nav-link active">Windows <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="windows.html#upvc" class="nav-dropdown-item" onclick="showSection('upvc')"><span class="item-num">1</span> uPVC Windows</a>
+            <a href="windows.html#aluminium" class="nav-dropdown-item" onclick="showSection('aluminium')"><span class="item-num">2</span> Aluminium Windows</a>
+            <a href="windows.html#flush-casement" class="nav-dropdown-item" onclick="showSection('flush-casement')"><span class="item-num">3</span> Flush Casement Windows</a>
+            <a href="windows.html#sliding-sash" class="nav-dropdown-item" onclick="showSection('sliding-sash')"><span class="item-num">4</span> Sliding Sash Windows</a>
+            <a href="windows.html#tilt-turn" class="nav-dropdown-item" onclick="showSection('tilt-turn')"><span class="item-num">5</span> Tilt and Turn Windows</a>
+            <a href="windows.html#french-casement" class="nav-dropdown-item" onclick="showSection('french-casement')"><span class="item-num">6</span> French Casement Windows</a>
+            <a href="windows.html#bay-bow" class="nav-dropdown-item" onclick="showSection('bay-bow')"><span class="item-num">7</span> Bay and Bow Windows</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="windows.html#heritage" class="nav-dropdown-item" onclick="showSection('heritage')"><span class="item-num">8</span> Heritage Windows</a>
+            <a href="windows.html#timber" class="nav-dropdown-item" onclick="showSection('timber')"><span class="item-num">9</span> Timber Windows</a>
+            <a href="windows.html#roof-skylights" class="nav-dropdown-item" onclick="showSection('roof-skylights')"><span class="item-num">10</span> Roof Windows &amp; Skylights</a>
+            <a href="windows.html#commercial" class="nav-dropdown-item" onclick="showSection('commercial')"><span class="item-num">11</span> Commercial Windows</a>
+            <a href="windows.html#bespoke" class="nav-dropdown-item" onclick="showSection('bespoke')"><span class="item-num">12</span> Bespoke Windows</a>
+          </div>
+        </div>
+        <a href="doors.html" class="nav-link">Doors</a>
+        <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing</a>
+        <div class="nav-dropdown">
+          <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="glass.html#clear-double" class="nav-dropdown-item"><span class="item-num">1</span> Clear Double Glazing</a>
+            <a href="glass.html#triple-glazing" class="nav-dropdown-item"><span class="item-num">2</span> Triple Glazing</a>
+            <a href="glass.html#low-e" class="nav-dropdown-item"><span class="item-num">3</span> Low-E Glass</a>
+            <a href="glass.html#toughened" class="nav-dropdown-item"><span class="item-num">4</span> Toughened Safety Glass</a>
+            <a href="glass.html#laminated" class="nav-dropdown-item"><span class="item-num">5</span> Laminated Safety Glass</a>
+            <a href="glass.html#acoustic" class="nav-dropdown-item"><span class="item-num">6</span> Acoustic Glass</a>
+            <a href="glass.html#solar-control" class="nav-dropdown-item"><span class="item-num">7</span> Solar-Control Glass</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="glass.html#obscure" class="nav-dropdown-item"><span class="item-num">8</span> Obscure Privacy Glass</a>
+            <a href="glass.html#frosted" class="nav-dropdown-item"><span class="item-num">9</span> Frosted Glass</a>
+            <a href="glass.html#georgian" class="nav-dropdown-item"><span class="item-num">10</span> Georgian Decorative Glass</a>
+            <a href="glass.html#leaded" class="nav-dropdown-item"><span class="item-num">11</span> Leaded Decorative Glass</a>
+            <a href="glass.html#tinted" class="nav-dropdown-item"><span class="item-num">12</span> Tinted Glass</a>
+          </div>
+        </div>
+        <div class="mobile-nav-actions">
+          <button class="btn btn-primary btn-sm mobile-quote-btn" data-open-modal="quoteModal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Request a Free Quote
+          </button>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+          Request a Free Quote
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="toggle-bar" style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+          <span class="toggle-bar" style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+          <span class="toggle-bar" style="display:block;width:22px;height:2px;background:#ffffff;border-radius:2px;"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="win-page-hero">
+    <div class="container">
+      <span class="eyebrow">OUR WINDOW COLLECTION</span>
+      <h1>Premium <span>Windows</span> for Every Home</h1>
+      <p>From energy-efficient uPVC to sleek aluminium and heritage timber — explore our complete range of high-quality window solutions.</p>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT: Side Nav + Content -->
+  <div class="win-layout">
+
+    <!-- SIDE NAV -->
+    <aside class="win-sidenav">
+      <div class="win-sidenav-title">Window Types</div>
+      <a class="win-sidenav-link active" href="#upvc" data-section="upvc"><span class="sn-num">1</span> uPVC Windows</a>
+      <a class="win-sidenav-link" href="#aluminium" data-section="aluminium"><span class="sn-num">2</span> Aluminium Windows</a>
+      <a class="win-sidenav-link" href="#flush-casement" data-section="flush-casement"><span class="sn-num">3</span> Flush Casement</a>
+      <a class="win-sidenav-link" href="#sliding-sash" data-section="sliding-sash"><span class="sn-num">4</span> Sliding Sash</a>
+      <a class="win-sidenav-link" href="#tilt-turn" data-section="tilt-turn"><span class="sn-num">5</span> Tilt and Turn</a>
+      <a class="win-sidenav-link" href="#french-casement" data-section="french-casement"><span class="sn-num">6</span> French Casement</a>
+      <a class="win-sidenav-link" href="#bay-bow" data-section="bay-bow"><span class="sn-num">7</span> Bay and Bow</a>
+      <a class="win-sidenav-link" href="#heritage" data-section="heritage"><span class="sn-num">8</span> Heritage</a>
+      <a class="win-sidenav-link" href="#timber" data-section="timber"><span class="sn-num">9</span> Timber</a>
+      <a class="win-sidenav-link" href="#roof-skylights" data-section="roof-skylights"><span class="sn-num">10</span> Roof &amp; Skylights</a>
+      <a class="win-sidenav-link" href="#commercial" data-section="commercial"><span class="sn-num">11</span> Commercial</a>
+      <a class="win-sidenav-link" href="#bespoke" data-section="bespoke"><span class="sn-num">12</span> Bespoke</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="win-content">
+
+      <!-- 1. uPVC Windows -->
+      <section class="win-section active" id="upvc">
+        <div class="win-section-header">
+          <div class="win-section-icon">🪟</div>
+          <h2 class="win-section-title"><span>uPVC</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Our uPVC windows combine exceptional thermal performance with low maintenance and long-lasting durability. Available in a wide range of styles, colours and finishes to perfectly complement your home.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-img-grid">
+          <div class="win-img-card" onclick="openLightbox(this)">
+            <img src="assets/images/products/upvc-window-1.jpg" alt="uPVC Window - White Double Casement" loading="lazy" />
+            <div class="img-overlay"></div>
+          </div>
+          <div class="win-img-card" onclick="openLightbox(this)">
+            <img src="assets/images/products/upvc-window-2.jpg" alt="uPVC Window - White Triple Open Casement" loading="lazy" />
+            <div class="img-overlay"></div>
+          </div>
+          <div class="win-img-card" onclick="openLightbox(this)">
+            <img src="assets/images/products/upvc-window-3.jpg" alt="uPVC Window - Anthracite Grey Casement" loading="lazy" />
+            <div class="img-overlay"></div>
+          </div>
+          <div class="win-img-card" onclick="openLightbox(this)">
+            <img src="assets/images/products/upvc-window-4.jpg" alt="uPVC Window - Oak Wood Grain Casement" loading="lazy" />
+            <div class="img-overlay"></div>
+          </div>
+          <div class="win-img-card" onclick="openLightbox(this)">
+            <img src="assets/images/products/upvc-window-5.jpg" alt="uPVC Window - White Georgian Bar Style" loading="lazy" />
+            <div class="img-overlay"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Aluminium Windows -->
+      <section class="win-section" id="aluminium">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏗️</div>
+          <h2 class="win-section-title"><span>Aluminium</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Sleek, slim-framed aluminium windows offer a contemporary look with excellent strength and durability. Ideal for modern homes and commercial properties seeking a minimalist aesthetic.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Aluminium Windows gallery will be updated shortly.<br>Contact us to see samples in person.</p>
+        </div>
+      </section>
+
+      <!-- 3. Flush Casement Windows -->
+      <section class="win-section" id="flush-casement">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏡</div>
+          <h2 class="win-section-title"><span>Flush Casement</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Flush casement windows sit flat within the frame for a clean, traditional appearance. Perfect for period properties and conservation areas, combining classic aesthetics with modern performance.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Flush Casement Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 4. Sliding Sash Windows -->
+      <section class="win-section" id="sliding-sash">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏛️</div>
+          <h2 class="win-section-title"><span>Sliding Sash</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Traditional sliding sash windows bring timeless elegance to your home. Our uPVC sash windows replicate the classic look while delivering excellent thermal and acoustic performance.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Sliding Sash Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 5. Tilt and Turn Windows -->
+      <section class="win-section" id="tilt-turn">
+        <div class="win-section-header">
+          <div class="win-section-icon">🔄</div>
+          <h2 class="win-section-title"><span>Tilt and Turn</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Versatile tilt and turn windows offer two opening options in one — tilt inward for ventilation or turn to open fully for easy cleaning. Popular in apartments and modern homes.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Tilt and Turn Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 6. French Casement Windows -->
+      <section class="win-section" id="french-casement">
+        <div class="win-section-header">
+          <div class="win-section-icon">🌿</div>
+          <h2 class="win-section-title"><span>French Casement</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">French casement windows feature two full-length sashes that open outward with no central bar, creating a wide, unobstructed view and maximum ventilation. Elegant and stylish.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our French Casement Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 7. Bay and Bow Windows -->
+      <section class="win-section" id="bay-bow">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏠</div>
+          <h2 class="win-section-title"><span>Bay and Bow</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Bay and bow windows project outward from the main wall to create extra space and flood your room with natural light. A stunning architectural feature for any home.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Bay and Bow Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 8. Heritage Windows -->
+      <section class="win-section" id="heritage">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏰</div>
+          <h2 class="win-section-title"><span>Heritage</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Our heritage windows are designed to replicate traditional steel or timber windows for listed buildings and conservation areas, meeting planning requirements while delivering modern energy efficiency.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Heritage Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 9. Timber Windows -->
+      <section class="win-section" id="timber">
+        <div class="win-section-header">
+          <div class="win-section-icon">🌲</div>
+          <h2 class="win-section-title"><span>Timber</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Natural timber windows offer unmatched warmth and character. Crafted from sustainably sourced wood, our timber windows are precision-engineered for durability and long-lasting beauty.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Timber Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 10. Roof Windows & Skylights -->
+      <section class="win-section" id="roof-skylights">
+        <div class="win-section-header">
+          <div class="win-section-icon">☀️</div>
+          <h2 class="win-section-title"><span>Roof Windows</span> &amp; Skylights</h2>
+        </div>
+        <p class="win-section-desc">Roof windows and skylights transform any room by flooding it with natural daylight from above. Available in fixed, opening and electric options to suit any roof type or pitch.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Roof Windows &amp; Skylights gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 11. Commercial Windows -->
+      <section class="win-section" id="commercial">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏢</div>
+          <h2 class="win-section-title"><span>Commercial</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">We supply and install high-performance commercial windows for offices, schools, retail and industrial buildings. Designed for durability, security and energy efficiency at scale.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Commercial Windows gallery will be updated shortly.</p>
+        </div>
+      </section>
+
+      <!-- 12. Bespoke Windows -->
+      <section class="win-section" id="bespoke">
+        <div class="win-section-header">
+          <div class="win-section-icon">✨</div>
+          <h2 class="win-section-title"><span>Bespoke</span> Windows</h2>
+        </div>
+        <p class="win-section-desc">Need something truly unique? Our bespoke window service allows you to design custom shapes, sizes and configurations. From arched windows to geometric designs — we can create any style.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Bespoke Windows gallery will be updated shortly.<br>Call us to discuss your custom requirements.</p>
+        </div>
+      </section>
+
+    </div><!-- /win-content -->
+  </div><!-- /win-layout -->
+
+  <!-- LIGHTBOX -->
+  <div class="win-lightbox" id="winLightbox" onclick="closeLightbox()">
+    <button class="win-lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="winLightboxImg" src="" alt="" onclick="event.stopPropagation()" />
+  </div>
+
+  <!-- CTA -->
+  <section style="background:#101B3D;padding:70px 0;text-align:center;">
+    <div class="container">
+      <h2 style="font-family:var(--font-heading);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:#fff;margin-bottom:14px;">Ready to <span style="color:var(--gold-primary);">Transform</span> Your Home?</h2>
+      <p style="color:var(--text-secondary);font-size:1.05rem;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;">Get a free, no-obligation quote for your new windows today.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:14px 32px;">Get a Free Quote</a>
+        <a href="tel:07123456789" class="btn btn-outline" style="font-size:1.05rem;padding:14px 32px;">Call: 07123 456 789</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+            </div>
+            <div><span class="logo-title" style="font-size:0.95rem;">PATEL <span>WINDOWS &amp; DOORS LTD</span></span></div>
+          </div>
+          <p class="footer-desc">Premium windows, doors, conservatories and glass solutions for every home.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="windows.html">Windows</a></li>
+            <li><a href="doors.html">Doors</a></li>
+            <li><a href="conservatories.html">Conservatories &amp; Roofing</a></li>
+            <li><a href="glass.html">Glass</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p><a href="tel:07123456789">07123 456 789</a></p>
+          <p><a href="mailto:info@patelwindowsdoors.co.uk">info@patelwindowsdoors.co.uk</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Patel Windows &amp; Doors Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/447123456789" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ===== WINDOWS PAGE TAB SYSTEM =====
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.win-section').forEach(function(s) {
+        s.classList.remove('active');
+      });
+      // Show target
+      var target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+        // Scroll to top of content
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      // Update sidenav active state
+      document.querySelectorAll('.win-sidenav-link').forEach(function(l) {
+        l.classList.remove('active');
+        if (l.getAttribute('data-section') === sectionId) {
+          l.classList.add('active');
+        }
+      });
+      // Update URL hash without page jump
+      history.replaceState(null, null, '#' + sectionId);
+    }
+
+    // Sidenav click handler
+    document.querySelectorAll('.win-sidenav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(this.getAttribute('data-section'));
+      });
+    });
+
+    // Open section from URL hash on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      var hash = window.location.hash.replace('#', '');
+      if (hash) {
+        showSection(hash);
+      }
+    });
+
+    // Lightbox
+    function openLightbox(card) {
+      var img = card.querySelector('img');
+      document.getElementById('winLightboxImg').src = img.src;
+      document.getElementById('winLightboxImg').alt = img.alt;
+      document.getElementById('winLightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('winLightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>
+

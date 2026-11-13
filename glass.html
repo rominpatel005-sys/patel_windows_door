@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ===== GLASS PAGE STYLES ===== */
-    .glass-page-hero {
+    .win-page-hero {
       background: linear-gradient(135deg, #101B3D 0%, #152046 60%, #152046 100%);
       padding: 120px 0 70px;
       text-align: center;
@@ -18,7 +18,7 @@
       overflow: hidden;
     }
 
-    .glass-page-hero::before {
+    .win-page-hero::before {
       content: '';
       position: absolute;
       top: 0;
@@ -29,12 +29,7 @@
       pointer-events: none;
     }
 
-    .glass-page-hero .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-    }
-
-    .glass-page-hero h1 {
+    .win-page-hero h1 {
       font-family: var(--font-heading);
       font-size: clamp(2.2rem, 4vw, 3.4rem);
       font-weight: 800;
@@ -43,11 +38,9 @@
       line-height: 1.15;
     }
 
-    .glass-page-hero h1 span {
-      color: var(--gold-primary);
-    }
+    .win-page-hero h1 span { color: var(--gold-primary); }
 
-    .glass-page-hero p {
+    .win-page-hero p {
       font-size: 1.08rem;
       color: var(--text-secondary);
       max-width: 620px;
@@ -55,105 +48,154 @@
       line-height: 1.7;
     }
 
-    /* Category Section */
-    .glass-cat-section {
-      padding: 70px 0 30px;
-      background: linear-gradient(180deg, #0A1230 0%, #080d18 100%);
+    .win-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      min-height: 600px;
+      background: #080d18;
     }
 
-    .glass-cat-section:last-of-type {
-      padding-bottom: 90px;
+    .win-sidenav {
+      background: #0A1230;
+      border-right: 1px solid rgba(214,179,106,0.12);
+      padding: 32px 0;
+      position: sticky;
+      top: 70px;
+      height: fit-content;
     }
 
-    .glass-cat-header {
+    .win-sidenav-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      padding: 0 20px 16px;
+      border-bottom: 1px solid rgba(214,179,106,0.1);
+      margin-bottom: 8px;
+    }
+
+    .win-sidenav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .win-sidenav-link:hover,
+    .win-sidenav-link.active {
+      color: #fff;
+      background: rgba(214,179,106,0.07);
+      border-left-color: var(--gold-primary);
+    }
+
+    .win-sidenav-link .sn-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: rgba(214,179,106,0.12);
+      border-radius: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      flex-shrink: 0;
+    }
+
+    .win-sidenav-link.active .sn-num {
+      background: var(--gold-primary);
+      color: #101B3D;
+    }
+
+    .win-content {
+      padding: 48px 40px;
+    }
+
+    .win-section { display: none; animation: fadeInSection 0.4s ease; }
+    .win-section.active { display: block; }
+
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .win-section-header {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 12px;
     }
 
-    .glass-cat-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(197, 160, 89, 0.12);
-      border: 1px solid rgba(197, 160, 89, 0.35);
-      border-radius: 10px;
+    .win-section-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(214,179,106,0.12);
+      border: 1px solid rgba(214,179,106,0.35);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
 
-    .glass-cat-title {
+    .win-section-title {
       font-family: var(--font-heading);
-      font-size: 1.75rem;
-      font-weight: 700;
+      font-size: 1.9rem;
+      font-weight: 800;
       color: #fff;
       margin: 0;
     }
 
-    .glass-cat-title span {
-      color: var(--gold-primary);
-    }
+    .win-section-title span { color: var(--gold-primary); }
 
-    .glass-cat-desc {
+    .win-section-desc {
       color: var(--text-secondary);
       font-size: 1rem;
-      max-width: 700px;
       line-height: 1.65;
+      max-width: 750px;
       margin-bottom: 36px;
     }
 
-    .glass-cat-divider {
+    .win-section-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.3) 40%, rgba(197, 160, 89, 0.3) 60%, transparent);
-      margin-bottom: 44px;
+      background: linear-gradient(90deg, transparent, rgba(214,179,106,0.3) 40%, rgba(214,179,106,0.3) 60%, transparent);
+      margin-bottom: 36px;
     }
 
-    /* Glass Type Cards */
-    .glass-type-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 20px;
+    .win-coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      background: rgba(255,255,255,0.03);
+      border: 2px dashed rgba(214,179,106,0.2);
+      border-radius: 20px;
+      text-align: center;
+      padding: 48px;
     }
 
-    .glass-type-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(197, 160, 89, 0.18);
-      border-radius: 16px;
-      padding: 32px 28px;
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
+    .win-coming-soon .cs-icon { font-size: 3rem; margin-bottom: 16px; }
 
-    .glass-type-card:hover {
-      border-color: rgba(197, 160, 89, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-    }
-
-    .glass-type-card .card-icon {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .glass-type-card h3 {
+    .win-coming-soon h3 {
       font-family: var(--font-heading);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--gold-primary);
       margin-bottom: 10px;
     }
 
-    .glass-type-card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
-    }
+    .win-coming-soon p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; }
 
     /* Benefits strip */
     .glass-benefits {
@@ -221,14 +263,39 @@
       line-height: 1.65;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .win-layout { grid-template-columns: 1fr; }
+      .win-sidenav {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(214,179,106,0.12);
+      }
+
+      .win-sidenav-title { display: none; }
+
+      .win-sidenav-link {
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 14px;
+        font-size: 0.78rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+      }
+
+      .win-sidenav-link.active,
+      .win-sidenav-link:hover {
+        border-left-color: transparent;
+        border-bottom-color: var(--gold-primary);
+      }
+
+      .win-content { padding: 28px 20px; }
       .glass-benefits {
         padding: 32px 24px;
         gap: 24px;
-      }
-
-      .glass-type-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -266,7 +333,7 @@
         <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
           <a href="index.html" class="nav-link">Home</a>
           <div class="nav-dropdown">
-            <a href="index.html#windows" class="nav-link">Windows <span class="dropdown-arrow"></span></a>
+            <a href="windows.html" class="nav-link">Windows <span class="dropdown-arrow"></span></a>
             <div class="nav-dropdown-menu">
               <a href="windows.html#upvc" class="nav-dropdown-item"><span class="item-num">1</span> uPVC Windows</a>
               <a href="windows.html#aluminium" class="nav-dropdown-item"><span class="item-num">2</span> Aluminium
@@ -354,7 +421,7 @@
   </header>
 
   <!-- ===== HERO ===== -->
-  <section class="glass-page-hero">
+  <section class="win-page-hero">
     <div class="container">
       <span class="eyebrow">OUR GLASS SOLUTIONS</span>
       <h1>Premium <span>Glass</span> for Every Home</h1>
@@ -363,101 +430,171 @@
     </div>
   </section>
 
-  <!-- ===== GLASS TYPES SECTION ===== -->
-  <section class="glass-cat-section">
-    <div class="container">
-      <div class="glass-cat-header">
-        <div class="glass-cat-icon">🪟</div>
-        <h2 class="glass-cat-title"><span>Glass</span> Types</h2>
-      </div>
-      <p class="glass-cat-desc">We offer a wide selection of glass solutions designed to improve thermal efficiency,
-        security, privacy and aesthetics in your home.</p>
-      <div class="glass-cat-divider"></div>
+  <!-- ===== GLASS TYPES: SIDEBAR + CONTENT ===== -->
+  <div class="win-layout">
+    <aside class="win-sidenav" aria-label="Glass types">
+      <div class="win-sidenav-title">Glass Types</div>
+      <a class="win-sidenav-link active" href="#clear-double" data-section="clear-double"><span class="sn-num">1</span> Clear Double Glazing</a>
+      <a class="win-sidenav-link" href="#triple-glazing" data-section="triple-glazing"><span class="sn-num">2</span> Triple Glazing</a>
+      <a class="win-sidenav-link" href="#low-e" data-section="low-e"><span class="sn-num">3</span> Low-E Glass</a>
+      <a class="win-sidenav-link" href="#toughened" data-section="toughened"><span class="sn-num">4</span> Toughened Safety Glass</a>
+      <a class="win-sidenav-link" href="#laminated" data-section="laminated"><span class="sn-num">5</span> Laminated Safety Glass</a>
+      <a class="win-sidenav-link" href="#acoustic" data-section="acoustic"><span class="sn-num">6</span> Acoustic Glass</a>
+      <a class="win-sidenav-link" href="#solar-control" data-section="solar-control"><span class="sn-num">7</span> Solar-Control Glass</a>
+      <a class="win-sidenav-link" href="#obscure" data-section="obscure"><span class="sn-num">8</span> Obscure Privacy Glass</a>
+      <a class="win-sidenav-link" href="#frosted" data-section="frosted"><span class="sn-num">9</span> Frosted Glass</a>
+      <a class="win-sidenav-link" href="#georgian" data-section="georgian"><span class="sn-num">10</span> Georgian Decorative Glass</a>
+      <a class="win-sidenav-link" href="#leaded" data-section="leaded"><span class="sn-num">11</span> Leaded Decorative Glass</a>
+      <a class="win-sidenav-link" href="#tinted" data-section="tinted"><span class="sn-num">12</span> Tinted Glass</a>
+    </aside>
 
-      <div class="glass-type-grid">
+    <main class="win-content">
+      <section class="win-section active" id="clear-double">
+        <div class="win-section-header">
+          <div class="win-section-icon">🏠</div>
+          <h2 class="win-section-title"><span>Clear Double</span> Glazing</h2>
+        </div>
+        <p class="win-section-desc">Two panes of clear glass with an insulating cavity help reduce heat loss and outside noise while keeping your rooms bright.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon">
+          <div class="cs-icon">📸</div>
+          <h3>Images Coming Soon</h3>
+          <p>Our Clear Double Glazing gallery will be updated shortly.<br>Contact us to see samples in person.</p>
+        </div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🏠</span>
-          <h3>Double Glazing</h3>
-          <p>Two panes of glass with an insulating argon gas fill. Reduces heat loss, cuts energy bills and minimises
-            external noise for a more comfortable home.</p>
+      <section class="win-section" id="triple-glazing">
+        <div class="win-section-header">
+          <div class="win-section-icon">❄️</div>
+          <h2 class="win-section-title"><span>Triple</span> Glazing</h2>
         </div>
+        <p class="win-section-desc">Three panes of glass provide an additional insulating layer and can help improve comfort and reduce outside noise.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Triple Glazing gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">❄️</span>
-          <h3>Triple Glazing</h3>
-          <p>Three glass panes for maximum thermal insulation and acoustic performance. Ideal for colder climates or
-            rooms facing busy roads.</p>
+      <section class="win-section" id="low-e">
+        <div class="win-section-header">
+          <div class="win-section-icon">🌡️</div>
+          <h2 class="win-section-title"><span>Low-E</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Low-emissivity glass has a special coating designed to reflect heat back into the room while allowing natural light to pass through.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Low-E Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🛡️</span>
-          <h3>Toughened Safety Glass</h3>
-          <p>Thermally treated to be up to 5× stronger than standard glass. Shatters into small, safe fragments —
-            perfect for doors, low-level glazing and high-traffic areas.</p>
+      <section class="win-section" id="toughened">
+        <div class="win-section-header">
+          <div class="win-section-icon">🛡️</div>
+          <h2 class="win-section-title"><span>Toughened Safety</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Heat-treated glass designed for increased strength. When broken, it typically fragments into smaller pieces than standard glass.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Toughened Safety Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🌿</span>
-          <h3>Laminated Glass</h3>
-          <p>A plastic interlayer bonds two glass panes together. Even if broken, the glass stays in place — providing
-            excellent security and UV protection.</p>
+      <section class="win-section" id="laminated">
+        <div class="win-section-header">
+          <div class="win-section-icon">🔒</div>
+          <h2 class="win-section-title"><span>Laminated Safety</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Laminated glass uses an interlayer between glass panes to help hold fragments together if the glass breaks.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Laminated Safety Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🎨</span>
-          <h3>Decorative & Leaded Glass</h3>
-          <p>Add a classic or contemporary touch with frosted, etched, stained or leaded glass designs. Perfect for
-            front doors, side panels and bathroom windows.</p>
+      <section class="win-section" id="acoustic">
+        <div class="win-section-header">
+          <div class="win-section-icon">🔇</div>
+          <h2 class="win-section-title"><span>Acoustic</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Specialist glazing configurations can help reduce the amount of outside noise entering your home.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Acoustic Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🔒</span>
-          <h3>Obscure / Privacy Glass</h3>
-          <p>Provides natural light while maintaining privacy. Available in various obscure levels — ideal for
-            bathrooms, en-suites and side-entrance doors.</p>
+      <section class="win-section" id="solar-control">
+        <div class="win-section-header">
+          <div class="win-section-icon">☀️</div>
+          <h2 class="win-section-title"><span>Solar-Control</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Solar-control glass helps manage solar heat and glare while maintaining natural light, making it a useful option for sunny rooms and conservatories.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Solar-Control Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">☀️</span>
-          <h3>Self-Cleaning Glass</h3>
-          <p>A special coating breaks down organic dirt and allows rainwater to wash it away — keeping your windows
-            cleaner for longer with minimal maintenance.</p>
+      <section class="win-section" id="obscure">
+        <div class="win-section-header">
+          <div class="win-section-icon">🔐</div>
+          <h2 class="win-section-title"><span>Obscure Privacy</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Obscure glass allows natural light into a room while limiting clear views through the glass for added privacy.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Obscure Privacy Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-        <div class="glass-type-card">
-          <span class="card-icon">🔆</span>
-          <h3>Solar Control Glass</h3>
-          <p>Reduces solar heat gain while maintaining excellent light transmission. Keeps rooms cooler in summer and
-            reduces glare — ideal for south-facing windows and conservatories.</p>
+      <section class="win-section" id="frosted">
+        <div class="win-section-header">
+          <div class="win-section-icon">✨</div>
+          <h2 class="win-section-title"><span>Frosted</span> Glass</h2>
         </div>
+        <p class="win-section-desc">Frosted glass provides privacy with a softly diffused appearance, making it a popular choice for bathrooms and entrance doors.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Frosted Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-      </div>
+      <section class="win-section" id="georgian">
+        <div class="win-section-header">
+          <div class="win-section-icon">🪟</div>
+          <h2 class="win-section-title"><span>Georgian Decorative</span> Glass</h2>
+        </div>
+        <p class="win-section-desc">Georgian-style bars add a classic divided-pane look to glazing and can complement both traditional and modern homes.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Georgian Decorative Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
-      <!-- Benefits Strip -->
-      <div class="glass-benefits">
-        <div class="glass-benefit-item">
-          <span class="benefit-icon">🌡️</span>
-          <h4>Energy Efficient</h4>
-          <p>Reduce heating costs with high-performance glazing</p>
+      <section class="win-section" id="leaded">
+        <div class="win-section-header">
+          <div class="win-section-icon">🎨</div>
+          <h2 class="win-section-title"><span>Leaded Decorative</span> Glass</h2>
         </div>
-        <div class="glass-benefit-item">
-          <span class="benefit-icon">🔇</span>
-          <h4>Sound Reduction</h4>
-          <p>Minimise outside noise for a peaceful home</p>
-        </div>
-        <div class="glass-benefit-item">
-          <span class="benefit-icon">🛡️</span>
-          <h4>Enhanced Security</h4>
-          <p>Toughened &amp; laminated options for maximum protection</p>
-        </div>
-        <div class="glass-benefit-item">
-          <span class="benefit-icon">✨</span>
-          <h4>Custom Designs</h4>
-          <p>Decorative options to match your style</p>
-        </div>
-      </div>
+        <p class="win-section-desc">Leaded glass adds decorative detail and a traditional character to windows, doors and side panels.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Leaded Decorative Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
 
+      <section class="win-section" id="tinted">
+        <div class="win-section-header">
+          <div class="win-section-icon">🌤️</div>
+          <h2 class="win-section-title"><span>Tinted</span> Glass</h2>
+        </div>
+        <p class="win-section-desc">Tinted glass can reduce glare and change the appearance of a window while still allowing daylight into the space.</p>
+        <div class="win-section-divider"></div>
+        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Tinted Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <section class="glass-benefits container">
+    <div class="glass-benefit-item">
+      <span class="benefit-icon">🌡️</span>
+      <h4>Energy Efficient</h4>
+      <p>Reduce heating costs with high-performance glazing</p>
+    </div>
+    <div class="glass-benefit-item">
+      <span class="benefit-icon">🔇</span>
+      <h4>Sound Reduction</h4>
+      <p>Minimise outside noise for a peaceful home</p>
+    </div>
+    <div class="glass-benefit-item">
+      <span class="benefit-icon">🛡️</span>
+      <h4>Enhanced Security</h4>
+      <p>Toughened &amp; laminated options for added protection</p>
+    </div>
+    <div class="glass-benefit-item">
+      <span class="benefit-icon">✨</span>
+      <h4>Custom Designs</h4>
+      <p>Decorative options to complement your home</p>
     </div>
   </section>
 
@@ -532,6 +669,34 @@
   </a>
 
   <script src="js/main.js"></script>
+  <script>
+    function showSection(sectionId) {
+      var target = document.getElementById(sectionId);
+      if (!target || !target.classList.contains('win-section')) return;
+
+      document.querySelectorAll('.win-section').forEach(function(section) {
+        section.classList.toggle('active', section === target);
+      });
+
+      document.querySelectorAll('.win-sidenav-link').forEach(function(link) {
+        link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
+      });
+
+      history.replaceState(null, null, '#' + sectionId);
+    }
+
+    document.querySelectorAll('.win-sidenav-link').forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        showSection(this.getAttribute('data-section'));
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var sectionId = window.location.hash.slice(1);
+      if (sectionId) showSection(sectionId);
+    });
+  </script>
 </body>
 
 </html>

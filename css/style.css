@@ -1758,124 +1758,91 @@ ul {
 }
 
 /* ===================================================================
-   THERMAL PERFORMANCE COMPARISON SLIDER
+   DOOR & WINDOW REPLACEMENT SERVICES
    =================================================================== */
-.comparison-section {
+.replacement-section {
   padding: 110px 0;
   background: var(--bg-secondary);
 }
 
-.comparison-wrapper {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.comparison-card {
-  background: #090e17;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-}
-
-.slider-container {
-  position: relative;
-  width: 100%;
-  height: 480px;
-  overflow: hidden;
-  user-select: none;
-}
-
-.slider-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slider-img.img-before {
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-  filter: contrast(0.9) brightness(0.85);
-}
-
-.slider-label {
-  position: absolute;
-  top: 24px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  z-index: 5;
-  backdrop-filter: blur(8px);
-}
-
-.label-before {
-  left: 24px;
-  background: rgba(239, 68, 68, 0.85);
-  color: #fff;
-}
-
-.label-after {
-  right: 24px;
-  background: rgba(91, 155, 213, 0.85);
-  color: #0b0f17;
-}
-
-.slider-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #ffffff;
-  cursor: ew-resize;
-  z-index: 10;
-  transform: translateX(-50%);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-}
-
-.slider-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #ffffff;
-  color: #0b0f17;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  font-size: 1rem;
-}
-
-.comparison-stats-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 24px;
-  background: rgba(14, 22, 52, 0.95);
-  gap: 20px;
-}
-
-.comp-stat-item {
+.replacement-intro {
+  max-width: 840px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 
-.comp-stat-val {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--cyan-primary);
+.replacement-intro .section-title {
+  margin-bottom: 20px;
 }
 
-.comp-stat-label {
-  font-size: 0.8rem;
+.replacement-intro > p,
+.replacement-peace > p {
   color: var(--text-secondary);
+  font-size: 1.02rem;
+  margin: 0 auto 14px;
+}
+
+.replacement-benefits,
+.replacement-peace {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.replacement-benefits h3,
+.replacement-peace h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 24px;
+}
+
+.replacement-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.replacement-benefits-grid li {
+  position: relative;
+  padding: 20px 22px 20px 52px;
+  color: var(--text-secondary);
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  line-height: 1.65;
+}
+
+.replacement-benefits-grid li::before {
+  content: "✓";
+  position: absolute;
+  left: 20px;
+  top: 21px;
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.replacement-benefits-grid strong {
+  color: var(--text-primary);
+}
+
+.replacement-peace {
+  margin-top: 52px;
+  padding: 32px;
+  background: rgba(9, 14, 23, 0.48);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.replacement-peace h3 {
+  color: var(--gold-light);
+  margin-bottom: 14px;
+}
+
+.replacement-tagline {
+  margin-top: 20px !important;
+  color: var(--gold-light) !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 /* ===================================================================
@@ -3153,21 +3120,12 @@ ul {
                 justify-content: center;
               }
 
-              .slider-container {
-                height: 280px;
-              }
-
-              .slider-label {
-                font-size: 0.68rem;
-                padding: 4px 8px;
-                max-width: 45%;
-                line-height: 1.2;
-                top: 14px;
-              }
-
-              .comparison-stats-bar {
+              .replacement-benefits-grid {
                 grid-template-columns: 1fr;
-                gap: 12px;
+              }
+
+              .replacement-peace {
+                padding: 24px 18px;
               }
 
               .export-grid {
@@ -3347,7 +3305,6 @@ ul {
   flex-shrink: 0;
 }
 
-.nav-dropdown:hover > .nav-link .dropdown-arrow,
 .nav-dropdown.open > .nav-link .dropdown-arrow {
   transform: rotate(180deg);
 }
@@ -3371,7 +3328,6 @@ ul {
   z-index: 999;
 }
 
-.nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;

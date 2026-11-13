@@ -1,6 +1,6 @@
 /**
  * PATEL WINDOW & DOOR - Main Website Interactions
- * Mobile Menu, Thermal Slider, Counters, Modals, Forms
+ * Mobile Menu, Counters, Modals, Forms
  */
 
 (function () {
@@ -10,7 +10,6 @@
     initStickyHeader();
     initMobileNav();
     initHero3DSlider();
-    initThermalSlider();
     initProductFilters();
     initProductThumbnails();
     initGalleryFiltersAndLightbox();
@@ -50,6 +49,7 @@
     // Close when clicking any nav link
     document.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', () => {
+        if (link.closest('.nav-dropdown')) return;
         nav.classList.remove('open');
         toggle.classList.remove('active');
         toggle.setAttribute('aria-expanded', 'false');
@@ -361,49 +361,6 @@
     startAutoplay();
   }
 
-  // Interactive Thermal Comparison Slider (Drag before & after)
-  function initThermalSlider() {
-    const container = document.querySelector('.slider-container');
-    const handle = document.querySelector('.slider-handle');
-    const beforeImg = document.querySelector('.img-before');
-
-    if (!container || !handle || !beforeImg) return;
-
-    let isDragging = false;
-
-    function setPosition(xPos) {
-      const rect = container.getBoundingClientRect();
-      let offsetX = xPos - rect.left;
-      if (offsetX < 0) offsetX = 0;
-      if (offsetX > rect.width) offsetX = rect.width;
-
-      const percentage = (offsetX / rect.width) * 100;
-      handle.style.left = `${percentage}%`;
-      beforeImg.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
-    }
-
-    handle.addEventListener('mousedown', () => (isDragging = true));
-    window.addEventListener('mouseup', () => (isDragging = false));
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      setPosition(e.clientX);
-    });
-
-    // Touch support for smartphones/tablets
-    handle.addEventListener('touchstart', () => (isDragging = true), { passive: true });
-    window.addEventListener('touchend', () => (isDragging = false));
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      setPosition(e.touches[0].clientX);
-    }, { passive: true });
-
-    // Click container to move directly
-    container.addEventListener('click', (e) => {
-      setPosition(e.clientX);
-    });
-  }
-
   // Product Category Filters
   function initProductFilters() {
     const filterTabs = document.querySelectorAll('.product-filter-tabs .filter-tab');
@@ -683,40 +640,44 @@
   }
 })();
 
-// ===== WINDOWS DROPDOWN MENU =====
-(function() {
+// ===== NAVIGATION DROPDOWN MENUS =====
+(function () {
   var dropdowns = document.querySelectorAll('.nav-dropdown');
-  
+
   dropdowns.forEach(function(dropdown) {
     var link = dropdown.querySelector('.nav-link');
     var menu = dropdown.querySelector('.nav-dropdown-menu');
-    
-    // Desktop: hover handled by CSS
-    // Mobile: click to toggle
-    if (link) {
-      link.addEventListener('click', function(e) {
-        // Only intercept on mobile
-        if (window.innerWidth <= 900) {
-          e.preventDefault();
-          dropdown.classList.toggle('open');
-        }
+
+    if (!link || !menu) return;
+
+    link.setAttribute('aria-haspopup', 'true');
+    link.setAttribute('aria-expanded', 'false');
+
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isOpen = dropdown.classList.contains('open');
+
+      dropdowns.forEach(function(otherDropdown) {
+        otherDropdown.classList.remove('open');
+        var otherLink = otherDropdown.querySelector('.nav-link');
+        if (otherLink) otherLink.setAttribute('aria-expanded', 'false');
       });
-    }
+
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        link.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
-  
+
   // Close dropdown when clicking outside
   document.addEventListener('click', function(e) {
     dropdowns.forEach(function(dropdown) {
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove('open');
+        var link = dropdown.querySelector('.nav-link');
+        if (link) link.setAttribute('aria-expanded', 'false');
       }
     });
-  });
-  
-  // Close dropdown on window resize to desktop
-  window.addEventListener('resize', function() {
-    if (window.innerWidth > 900) {
-      dropdowns.forEach(function(d) { d.classList.remove('open'); });
-    }
   });
 })();
