@@ -682,3 +682,41 @@
     }
   }
 })();
+
+// ===== WINDOWS DROPDOWN MENU =====
+(function() {
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  
+  dropdowns.forEach(function(dropdown) {
+    var link = dropdown.querySelector('.nav-link');
+    var menu = dropdown.querySelector('.nav-dropdown-menu');
+    
+    // Desktop: hover handled by CSS
+    // Mobile: click to toggle
+    if (link) {
+      link.addEventListener('click', function(e) {
+        // Only intercept on mobile
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          dropdown.classList.toggle('open');
+        }
+      });
+    }
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    dropdowns.forEach(function(dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  });
+  
+  // Close dropdown on window resize to desktop
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) {
+      dropdowns.forEach(function(d) { d.classList.remove('open'); });
+    }
+  });
+})();
