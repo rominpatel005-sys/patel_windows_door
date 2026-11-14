@@ -599,8 +599,21 @@
               Windows</a>
           </div>
         </div>
-        <a href="doors.html" class="nav-link">Doors</a>
-        <a href="conservatories.html" class="nav-link">Conservatories & Roofing</a>
+        <div class="nav-dropdown">
+          <a href="doors.html" class="nav-link">Doors <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single Upvc Doors</a>
+            <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
+            <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
+            <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+          </div>
+        </div>
         <div class="nav-dropdown">
           <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
           <div class="nav-dropdown-menu">
@@ -694,8 +707,8 @@
               light with a beautiful roof lantern, we have the right solution for your home.
             </p>
             <p class="hero-split-p sub">
-              Browse our range of <a href="#visualizer" class="text-link-accent">high-performance windows</a> and <a
-                href="#visualizer" class="text-link-accent">bespoke doors</a> below, or get a free quote today for your
+              Browse our range of <a href="windows.html" class="text-link-accent">high-performance windows</a> and <a
+                href="windows.html" class="text-link-accent">bespoke doors</a> below, or get a free quote today for your
               new or replacement windows and doors!
             </p>
           </div>
@@ -989,281 +1002,7 @@
         </div>
       </div>
     </section>
-
-    <!-- ================= INTERACTIVE VISUALIZER & QUOTE ENGINE ================= -->
-    <section class="visualizer-section" id="visualizer">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">Interactive 2D Elevation Studio</span>
-          <h2 class="section-title">Customize Your Architectural System</h2>
-          <p class="section-subtitle">
-            Configure system dimensions, thermal materials, color coatings, and glass specifications in real-time.
-            Receive custom engineering shop drawings and export quotation for your overseas delivery.
-          </p>
-        </div>
-
-        <div class="visualizer-grid">
-
-          <!-- Left Canvas Stage -->
-          <div class="visualizer-canvas-card">
-            <div class="canvas-header">
-              <!-- View Mode Toggle Pills (3D Interactive vs 2D CAD) -->
-              <div class="view-mode-tabs" role="tablist">
-                <button class="view-tab active" id="view3dTab" type="button" role="tab" aria-selected="true"
-                  title="Switch to 3D Architectural Model">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <path
-                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                    </path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                  </svg>
-                  <span>3D Interactive</span>
-                </button>
-                <button class="view-tab" id="view2dTab" type="button" role="tab" aria-selected="false"
-                  title="Switch to 2D Technical CAD Elevation">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                  </svg>
-                  <span>2D CAD Draft</span>
-                </button>
-              </div>
-
-              <div class="dimension-tags">
-                <div class="dim-tag">Width: <span id="dimTagWidth">12 ft (3658 mm)</span></div>
-                <div class="dim-tag">Height: <span id="dimTagHeight">8 ft (2438 mm)</span></div>
-              </div>
-            </div>
-
-            <!-- Dynamic 3D WebGL & 2D SVG Stage -->
-            <div class="canvas-stage" id="canvasStage">
-              <!-- Three.js 3D WebGL Container -->
-              <div id="visualizer3dStage" class="visualizer-3d-stage"></div>
-
-              <!-- Floating 3D Interaction Control Toolbar -->
-              <div class="stage-3d-overlay" id="stage3dOverlay">
-                <div class="stage-3d-toolbar">
-                  <!-- Door Open/Close Action Button -->
-                  <button class="btn-door-motion" id="doorMotionBtn" type="button"
-                    title="Test Opening and Closing Motion">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2.2">
-                      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                      <path d="M9 3v18"></path>
-                      <circle cx="6" cy="12" r="1" fill="currentColor"></circle>
-                    </svg>
-                    <span id="doorMotionBtnLabel">Open System (3D)</span>
-                  </button>
-
-                  <!-- Camera Angle Presets -->
-                  <div class="cam-angles-group">
-                    <button class="btn-cam-pill active" data-cam="iso" type="button"
-                      title="3D Perspective">Perspective</button>
-                    <button class="btn-cam-pill" data-cam="front" type="button" title="Front Elevation">Front</button>
-                    <button class="btn-cam-pill" data-cam="side" type="button" title="Side Profile">Side</button>
-                  </div>
-
-                  <!-- Reset Camera -->
-                  <button class="btn-cam-icon" id="resetCamBtn" type="button" title="Reset Camera View">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2.2">
-                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                      <polyline points="3 3 3 8 8 8"></polyline>
-                    </svg>
-                  </button>
-                </div>
-
-                <!-- 3D Navigation Hint -->
-                <div class="stage-3d-hint">
-                  <span>🖱️ Left-Click to Rotate 360° • Scroll to Zoom • Right-Click to Pan</span>
-                </div>
-              </div>
-
-              <!-- Dynamic SVG Elevation Drawing Container (CAD 2D) -->
-              <svg id="doorWindowSvg" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-                <!-- Dynamically rendered by visualizer.js -->
-              </svg>
-            </div>
-
-            <div class="canvas-footer">
-              <div class="spec-summary">
-                <div>Type: <span id="systemTagDisplay">BI-FOLD DOOR</span></div>
-                <div>Glass: <span id="glassTagDisplay">DOUBLE LOW-E ARGON</span></div>
-              </div>
-              <button class="btn btn-primary btn-sm" id="applyVisualizerToQuoteBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-                Lock In Configuration & Get Official CAD
-              </button>
-            </div>
-          </div>
-
-          <!-- Right Controls Panel -->
-          <div class="visualizer-controls-card">
-
-            <!-- System Type -->
-            <div class="control-group">
-              <label class="control-label">1. Select System Type</label>
-              <div class="option-pill-grid category-selector" style="grid-template-columns:1fr;gap:8px;">
-                <div class="option-pill category-pill active" data-system="door" data-category="door"
-                  style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
-                  <span style="font-size:1.3rem;">&#128682;</span> Door
-                </div>
-                <div class="option-pill category-pill" data-system="casement" data-category="window"
-                  style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
-                  <span style="font-size:1.3rem;">&#129695;</span> Window
-                </div>
-                <div class="option-pill category-pill" data-system="conservatory" data-category="conservatory"
-                  style="display:flex;align-items:center;gap:10px;padding:12px 18px;font-size:0.95rem;">
-                  <span style="font-size:1.3rem;">&#127968;</span> Conservatories &amp; Roofing
-                </div>
-              </div>
-            </div>
-
-            <!-- Frame Material -->
-            <div class="control-group">
-              <label class="control-label">2. Frame Core Material</label>
-              <div class="option-pill-grid">
-                <div class="option-pill active" data-material="aluminum">Thermal Aluminum</div>
-                <div class="option-pill" data-material="wood_clad">Oak Wood-Alu Clad</div>
-                <div class="option-pill" data-material="upvc">Multi-Chamber UPVC</div>
-              </div>
-            </div>
-
-            <!-- Color Finish -->
-            <div class="control-group">
-              <label class="control-label">3. Architectural Powder Finish</label>
-              <div class="swatch-grid">
-                <div class="color-swatch swatch-black active" data-color="black" title="Matte Obsidian Black"></div>
-                <div class="color-swatch swatch-bronze" data-color="bronze" title="Architectural Bronze Anodized"></div>
-                <div class="color-swatch swatch-charcoal" data-color="charcoal" title="Dark Charcoal Grey (RAL 7016)">
-                </div>
-                <div class="color-swatch swatch-white" data-color="white" title="Pure Traffic White"></div>
-                <div class="color-swatch swatch-wood" data-color="natural_oak" title="Natural Thermo Oak Woodgrain">
-                </div>
-              </div>
-              <!-- Full Colour Range -->
-              <div class="colour-palette-box" style="margin-top:14px;">
-                <p class="colour-palette-title">Full Colour Range — 27 Options</p>
-                <div class="colour-swatches-grid">
-                  <div class="colour-swatch" style="background:#1a2340;" title="Dark Blue" data-colour-key="dark_blue">
-                    <span>Dark Blue</span>
-                  </div>
-                  <div class="colour-swatch" style="background:#f5f0e8;border:1px solid #aaa;" title="Ivory"
-                    data-colour-key="ivory"><span>Ivory</span></div>
-                  <div class="colour-swatch" style="background:#b0b0b0;" title="Light Grey"
-                    data-colour-key="light_grey"><span>Light Grey</span></div>
-                  <div class="colour-swatch" style="background:#6e6e6e;" title="Dark Grey" data-colour-key="dark_grey">
-                    <span>Dark Grey</span>
-                  </div>
-                  <div class="colour-swatch" style="background:#e8e8e8;border:1px solid #aaa;" title="White Foil"
-                    data-colour-key="white_foil"><span>White Foil</span></div>
-                  <div class="colour-swatch" style="background:#3a3a38;" title="Anthracite Matte"
-                    data-colour-key="anthracite_matte"><span>Anthracite Matte</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#8b5e3c,#c49a6c);"
-                    title="Irish Oak" data-colour-key="irish_oak"><span>Irish Oak</span></div>
-                  <div class="colour-swatch" style="background:#f0f0f0;border:1px solid #aaa;" title="White"
-                    data-colour-key="white_plain"><span>White</span></div>
-                  <div class="colour-swatch" style="background:#3c3c3c;" title="Basalt" data-colour-key="basalt">
-                    <span>Basalt</span>
-                  </div>
-                  <div class="colour-swatch" style="background:#7a1a1a;" title="Dark Red" data-colour-key="dark_red">
-                    <span>Dark Red</span>
-                  </div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#9e7c5c,#c8a882);"
-                    title="Winchester" data-colour-key="winchester"><span>Winchester</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#5c3318,#8b5e3c);"
-                    title="Mahogany" data-colour-key="mahogany"><span>Mahogany</span></div>
-                  <div class="colour-swatch" style="background:#6b1f1f;" title="Burgundy" data-colour-key="burgundy">
-                    <span>Burgundy</span>
-                  </div>
-                  <div class="colour-swatch" style="background:#e8dfc8;border:1px solid #aaa;" title="Cream Foil"
-                    data-colour-key="cream_foil"><span>Cream Foil</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#4a4a4a,#5a5a58);"
-                    title="Anthracite Grained" data-colour-key="anthracite_grained"><span>Anthracite Grained</span>
-                  </div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#b89028,#d4b840);"
-                    title="Golden Oak" data-colour-key="golden_oak"><span>Golden Oak</span></div>
-                  <div class="colour-swatch" style="background:#1e3a1e;" title="Dark Green"
-                    data-colour-key="dark_green"><span>Dark Green</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#a07840,#c89a58);"
-                    title="Swamp Oak" data-colour-key="swamp_oak"><span>Swamp Oak</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#c8a060,#dab878);" title="Oregon"
-                    data-colour-key="oregon"><span>Oregon</span></div>
-                  <div class="colour-swatch" style="background:#101B3D;" title="Black Foil"
-                    data-colour-key="black_foil"><span>Black Foil</span></div>
-                  <div class="colour-swatch" style="background:#9ea0a0;" title="Agate Grey"
-                    data-colour-key="agate_grey"><span>Agate Grey</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#a0784a,#c89860);"
-                    title="Cedarwood" data-colour-key="cedarwood"><span>Cedarwood</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#7a5838,#9e7850);"
-                    title="Rustic Oak" data-colour-key="rustic_oak"><span>Rustic Oak</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#5c3c28,#7a5838);" title="Sapeli"
-                    data-colour-key="sapeli"><span>Sapeli</span></div>
-                  <div class="colour-swatch" style="background:linear-gradient(135deg,#8c6840,#b08858);" title="Anteak"
-                    data-colour-key="anteak"><span>Anteak</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dimensions -->
-            <div class="control-group">
-              <div class="control-label">
-                <span>Rough Opening Width</span>
-                <span id="widthVal">12 ft</span>
-              </div>
-              <input type="range" class="range-slider" id="widthRange" min="6" max="24" step="1" value="12">
-            </div>
-
-            <div class="control-group">
-              <div class="control-label">
-                <span>Rough Opening Height</span>
-                <span id="heightVal">8 ft</span>
-              </div>
-              <input type="range" class="range-slider" id="heightRange" min="6" max="14" step="1" value="8">
-            </div>
-
-            <!-- Glass Type -->
-            <div class="control-group">
-              <label class="control-label">4. Glazing & Performance Spec</label>
-              <div class="option-pill-grid">
-                <div class="option-pill active" data-glass="double_lowe">Double Low-E</div>
-                <div class="option-pill" data-glass="triple_glaze">Triple Insulated</div>
-                <div class="option-pill" data-glass="hurricane_impact">Impact Laminate</div>
-              </div>
-            </div>
-
-            <!-- Muntin Grids -->
-            <div class="control-group">
-              <label class="control-label">5. Grid / Muntin Style</label>
-              <div class="option-pill-grid">
-                <div class="option-pill active" data-grid="none">Minimal Glass</div>
-                <div class="option-pill" data-grid="colonial">Colonial Grid</div>
-                <div class="option-pill" data-grid="prairie">Prairie Border</div>
-              </div>
-            </div>
-
-            <!-- Custom Specification & CAD Quote Box -->
-            <div class="quote-estimate-box">
-              <div class="quote-est-header">
-                <span class="quote-est-title">Custom Engineered Solution</span>
-                <div class="quote-est-price" style="font-size:1.2rem; color:var(--cyan-primary);">Bespoke Made-To-Order
-                </div>
-              </div>
-              <p class="quote-est-sub">
-                *Engineered to your exact structural rough openings. Includes precision German hardware, export crating
-                & sea freight to primary port.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
+    
 
     <!-- ================= DOOR & WINDOW REPLACEMENT SERVICES ================= -->
     <section class="replacement-section" id="performance">
@@ -1421,7 +1160,7 @@
             <li><a href="about.html">About Patel Windows & Doors Ltd</a></li>
             <li><a href="#performance">Replacement Services</a></li>
             <li><a href="#export">Steel Crating & Shipping</a></li>
-            <li><a href="#visualizer">Interactive 3D Visualizer</a></li>
+            <li><a href="windows.html">Interactive 3D Visualizer</a></li>
             <li><a href="contact.html">Global Representative Desk</a></li>
           </ul>
         </div>
@@ -1574,12 +1313,12 @@
   </div>
 
   <!-- Three.js 3D Engine & OrbitControls -->
-  <script src="js/three.min.js"></script>
+  
   <script src="js/OrbitControls.js"></script>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
-  <script src="js/visualizer.js"></script>
+  
 </body>
 
 </html>

@@ -55,14 +55,98 @@
       line-height: 1.7;
     }
 
-    /* Category Section */
-    .doors-cat-section {
-      padding: 70px 0 30px;
-      background: linear-gradient(180deg, #0A1230 0%, #080d18 100%);
+    /* Category tabs */
+    .doors-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 600px;
+      background: #080d18;
     }
 
-    .doors-cat-section:last-of-type {
-      padding-bottom: 90px;
+    .doors-sidenav {
+      position: sticky;
+      top: 70px;
+      height: fit-content;
+      padding: 32px 0;
+      background: #0A1230;
+      border-right: 1px solid rgba(214, 179, 106, 0.12);
+    }
+
+    .doors-sidenav-title {
+      padding: 0 20px 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(214, 179, 106, 0.1);
+      color: var(--gold-primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .doors-sidenav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-left: 3px solid transparent;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .doors-sidenav-link:hover,
+    .doors-sidenav-link.active {
+      border-left-color: var(--gold-primary);
+      background: rgba(214, 179, 106, 0.07);
+      color: #fff;
+    }
+
+    .doors-sidenav-link .sn-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 5px;
+      background: rgba(214, 179, 106, 0.12);
+      color: var(--gold-primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .doors-sidenav-link.active .sn-num {
+      background: var(--gold-primary);
+      color: #101B3D;
+    }
+
+    .doors-content {
+      min-width: 0;
+      padding: 48px 40px;
+    }
+
+    .doors-cat-section {
+      display: none;
+      padding: 0;
+      background: transparent;
+      animation: doorsFadeIn 0.4s ease;
+    }
+
+    .doors-cat-section.active {
+      display: block;
+    }
+
+    .doors-cat-section > .container {
+      width: 100%;
+      max-width: none;
+      padding: 0;
+    }
+
+    @keyframes doorsFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .doors-cat-header {
@@ -257,6 +341,45 @@
       }
     }
 
+    @media (max-width: 900px) {
+      .doors-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .doors-sidenav {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(214, 179, 106, 0.12);
+      }
+
+      .doors-sidenav-title {
+        display: none;
+      }
+
+      .doors-sidenav-link {
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 14px;
+        border-bottom: 3px solid transparent;
+        border-left: none;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+
+      .doors-sidenav-link.active,
+      .doors-sidenav-link:hover {
+        border-right-color: transparent;
+        border-bottom-color: var(--gold-primary);
+      }
+
+      .doors-content {
+        padding: 28px 20px;
+      }
+    }
+
     @media (max-width: 600px) {
       .doors-img-grid {
         grid-template-columns: 1fr;
@@ -267,9 +390,6 @@
         font-size: 1.4rem;
       }
 
-      .doors-cat-section {
-        padding: 50px 0 20px;
-      }
     }
   </style>
 </head>
@@ -327,8 +447,21 @@
             <a href="windows.html#bespoke" class="nav-dropdown-item"><span class="item-num">12</span> Bespoke Windows</a>
           </div>
         </div>
-        <a href="doors.html" class="nav-link active">Doors</a>
-        <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing</a>
+        <div class="nav-dropdown">
+          <a href="doors.html" class="nav-link active">Doors <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single Upvc Doors</a>
+            <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
+            <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
+            <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+          </div>
+        </div>
         <div class="nav-dropdown">
           <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
           <div class="nav-dropdown-menu">
@@ -378,8 +511,18 @@
     </div>
   </section>
 
+  <!-- ===== DOOR TYPES ===== -->
+  <div class="doors-layout">
+    <aside class="doors-sidenav" aria-label="Door types">
+      <div class="doors-sidenav-title">Door Types</div>
+      <a class="doors-sidenav-link active" href="#single-upvc-doors" data-section="single-upvc-doors"><span class="sn-num">1</span> Single Upvc Doors</a>
+      <a class="doors-sidenav-link" href="#composite-doors" data-section="composite-doors"><span class="sn-num">2</span> Composite Doors</a>
+      <a class="doors-sidenav-link" href="#bifold-doors" data-section="bifold-doors"><span class="sn-num">3</span> Bifold Doors</a>
+    </aside>
+    <main class="doors-content">
+
   <!-- ===== SINGLE DOORS ===== -->
-  <section class="doors-cat-section">
+  <section class="doors-cat-section active" id="single-upvc-doors">
     <div class="container">
       <div class="doors-cat-header">
         <div class="doors-cat-icon">&#128682;</div>
@@ -407,10 +550,6 @@
           <img src="assets/images/products/single-door-7.jpg" alt="Single Door - Black with Round Glass"
             loading="lazy" />
         </div>
-        <div class="doors-img-card" data-src="assets/images/products/single-door-8.jpg">
-          <img src="assets/images/products/single-door-8.jpg"
-            alt="Single UPVC Door - Grey Composite with Decorative Glass" loading="lazy" />
-        </div>
         <div class="doors-img-card" data-src="assets/images/products/single-door-9.jpg">
           <img src="assets/images/products/single-door-9.jpg" alt="Single UPVC Door - White Half Glass on Brick"
             loading="lazy" />
@@ -428,7 +567,7 @@
   </section>
 
   <!-- ===== COMPOSITE DOORS ===== -->
-  <section class="doors-cat-section">
+  <section class="doors-cat-section" id="composite-doors">
     <div class="container">
       <div class="doors-cat-header">
         <div class="doors-cat-icon">&#128682;</div>
@@ -462,7 +601,7 @@
   </section>
 
   <!-- ===== BIFOLD DOORS ===== -->
-  <section class="doors-cat-section">
+  <section class="doors-cat-section" id="bifold-doors">
     <div class="container">
       <div class="doors-cat-header">
         <div class="doors-cat-icon">&#128306;</div>
@@ -499,6 +638,9 @@
       </div>
     </div>
   </section>
+
+    </main>
+  </div>
 
   <!-- ===== CTA STRIP ===== -->
   <section style="background:#0A1230; padding:60px 0; border-top:1px solid rgba(255,255,255,0.06);">
@@ -550,8 +692,8 @@
       <div class="footer-col">
         <h4 class="footer-heading">Our Doors</h4>
         <ul class="footer-links">
-          <li><a href="doors.html#composite-grid">Composite Doors</a></li>
-          <li><a href="doors.html#bifold-grid">Bifold Doors</a></li>
+          <li><a href="doors.html#composite-doors">Composite Doors</a></li>
+          <li><a href="doors.html#bifold-doors">Bifold Doors</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -588,6 +730,36 @@
   </a>
 
   <script>
+    // ===== DOOR CATEGORY TABS =====
+    function showDoorSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      if (!target || !target.classList.contains('doors-cat-section')) return;
+
+      document.querySelectorAll('.doors-cat-section').forEach((section) => {
+        section.classList.remove('active');
+      });
+      target.classList.add('active');
+
+      document.querySelectorAll('.doors-sidenav-link').forEach((link) => {
+        link.classList.toggle('active', link.dataset.section === sectionId);
+      });
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      history.replaceState(null, null, '#' + sectionId);
+    }
+
+    document.querySelectorAll('.doors-sidenav-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showDoorSection(link.dataset.section);
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const sectionId = window.location.hash.slice(1);
+      if (sectionId) showDoorSection(sectionId);
+    });
+
     // ===== Mobile Menu =====
     const toggle = document.getElementById('mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -597,6 +769,42 @@
         toggle.setAttribute('aria-expanded', isOpen);
       });
     }
+
+    // ===== Navigation Dropdowns =====
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach((dropdown) => {
+      const link = dropdown.querySelector('.nav-link');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      if (!link || !menu) return;
+
+      link.setAttribute('aria-haspopup', 'true');
+      link.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isOpen = dropdown.classList.contains('open');
+
+        dropdowns.forEach((otherDropdown) => {
+          otherDropdown.classList.remove('open');
+          const otherLink = otherDropdown.querySelector('.nav-link');
+          if (otherLink) otherLink.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          dropdown.classList.add('open');
+          link.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('open');
+          const link = dropdown.querySelector('.nav-link');
+          if (link) link.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
 
     // ===== Sticky Header =====
     const header = document.getElementById('site-header');

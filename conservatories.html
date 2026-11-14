@@ -55,14 +55,98 @@
       line-height: 1.7;
     }
 
-    /* Category Section */
-    .conserv-cat-section {
-      padding: 70px 0 30px;
-      background: linear-gradient(180deg, #0A1230 0%, #080d18 100%);
+    /* Category tabs */
+    .conserv-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 600px;
+      background: #080d18;
     }
 
-    .conserv-cat-section:last-of-type {
-      padding-bottom: 90px;
+    .conserv-sidenav {
+      position: sticky;
+      top: 70px;
+      height: fit-content;
+      padding: 32px 0;
+      background: #0A1230;
+      border-right: 1px solid rgba(214, 179, 106, 0.12);
+    }
+
+    .conserv-sidenav-title {
+      padding: 0 20px 16px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(214, 179, 106, 0.1);
+      color: var(--gold-primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .conserv-sidenav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-left: 3px solid transparent;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .conserv-sidenav-link:hover,
+    .conserv-sidenav-link.active {
+      border-left-color: var(--gold-primary);
+      background: rgba(214, 179, 106, 0.07);
+      color: #fff;
+    }
+
+    .conserv-sidenav-link .sn-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 5px;
+      background: rgba(214, 179, 106, 0.12);
+      color: var(--gold-primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .conserv-sidenav-link.active .sn-num {
+      background: var(--gold-primary);
+      color: #101B3D;
+    }
+
+    .conserv-content {
+      min-width: 0;
+      padding: 48px 40px;
+    }
+
+    .conserv-cat-section {
+      display: none;
+      padding: 0;
+      background: transparent;
+      animation: conservFadeIn 0.4s ease;
+    }
+
+    .conserv-cat-section.active {
+      display: block;
+    }
+
+    .conserv-cat-section > .container {
+      width: 100%;
+      max-width: none;
+      padding: 0;
+    }
+
+    @keyframes conservFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .conserv-cat-header {
@@ -308,6 +392,45 @@
       }
     }
 
+    @media (max-width: 900px) {
+      .conserv-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .conserv-sidenav {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        padding: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(214, 179, 106, 0.12);
+      }
+
+      .conserv-sidenav-title {
+        display: none;
+      }
+
+      .conserv-sidenav-link {
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 14px;
+        border-bottom: 3px solid transparent;
+        border-left: none;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+
+      .conserv-sidenav-link.active,
+      .conserv-sidenav-link:hover {
+        border-right-color: transparent;
+        border-bottom-color: var(--gold-primary);
+      }
+
+      .conserv-content {
+        padding: 28px 20px;
+      }
+    }
+
     @media (max-width: 600px) {
       .conserv-img-grid {
         grid-template-columns: 1fr;
@@ -322,9 +445,6 @@
         font-size: 1.4rem;
       }
 
-      .conserv-cat-section {
-        padding: 50px 0 20px;
-      }
     }
   </style>
 </head>
@@ -381,8 +501,21 @@
             <a href="windows.html#bespoke" class="nav-dropdown-item"><span class="item-num">12</span> Bespoke Windows</a>
           </div>
         </div>
-          <a href="doors.html" class="nav-link">Doors</a>
-          <a href="conservatories.html" class="nav-link active">Conservatories &amp; Roofing</a>
+          <div class="nav-dropdown">
+            <a href="doors.html" class="nav-link">Doors <span class="dropdown-arrow"></span></a>
+            <div class="nav-dropdown-menu">
+              <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single Upvc Doors</a>
+              <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
+              <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <a href="conservatories.html" class="nav-link active">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+            <div class="nav-dropdown-menu">
+              <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
+              <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+            </div>
+          </div>
           <div class="nav-dropdown">
           <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
           <div class="nav-dropdown-menu">
@@ -432,8 +565,17 @@
     </div>
   </section>
 
+  <!-- ===== CATEGORY TABS ===== -->
+  <div class="conserv-layout">
+    <aside class="conserv-sidenav" aria-label="Conservatory and roofing types">
+      <div class="conserv-sidenav-title">Conservatories &amp; Roofing</div>
+      <a class="conserv-sidenav-link active" href="#roof-lanterns" data-section="roof-lanterns"><span class="sn-num">1</span> Roof Lanterns</a>
+      <a class="conserv-sidenav-link" href="#conservatory" data-section="conservatory"><span class="sn-num">2</span> Conservatory</a>
+    </aside>
+    <main class="conserv-content">
+
   <!-- ===== ROOF LANTERNS SECTION ===== -->
-  <section class="conserv-cat-section" id="roof-lanterns">
+  <section class="conserv-cat-section active" id="roof-lanterns">
     <div class="container">
       <div class="conserv-cat-header">
         <div class="conserv-cat-icon">&#127968;</div>
@@ -483,11 +625,37 @@
     </div>
   </section>
 
+  <!-- ===== CONSERVATORY SECTION ===== -->
+  <section class="conserv-cat-section" id="conservatory">
+    <div class="container">
+      <div class="conserv-cat-header">
+        <div class="conserv-cat-icon">&#127968;</div>
+        <h2 class="conserv-cat-title"><span>Conservatory</span></h2>
+      </div>
+      <p class="conserv-cat-desc">Create a bright, comfortable space for relaxing and entertaining with a conservatory designed to complement your home. Explore a selection of styles, from classic glazed extensions to contemporary living spaces.</p>
+      <div class="conserv-cat-divider"></div>
+      <div class="conserv-img-grid" id="conservatory-grid">
+        <div class="conserv-img-card" data-src="assets/images/conservatory-1.jpg">
+          <img src="assets/images/conservatory-1.jpg" alt="White uPVC gabled conservatory" loading="lazy" />
+        </div>
+        <div class="conserv-img-card" data-src="assets/images/conservatory-2.jpg">
+          <img src="assets/images/conservatory-2.jpg" alt="Conservatory interior and exterior" loading="lazy" />
+        </div>
+        <div class="conserv-img-card" data-src="assets/images/conservatory-3.jpg">
+          <img src="assets/images/conservatory-3.jpg" alt="Conservatory with a warm evening interior" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    </main>
+  </div>
+
   <!-- ===== CTA STRIP ===== -->
   <section style="background:#0A1230; padding:60px 0; border-top:1px solid rgba(255,255,255,0.06);">
     <div class="container" style="text-align:center;">
       <h3 style="font-family:var(--font-heading);font-size:1.9rem;font-weight:700;color:#fff;margin-bottom:12px;">
-        Interested in a Roof Lantern?</h3>
+        Interested in Conservatories &amp; Roofing?</h3>
       <p style="color:var(--text-secondary);max-width:520px;margin:0 auto 28px;line-height:1.65;">Get in touch today for
         a <strong style="color:var(--gold-primary);">FREE, no-obligation quote</strong>. We survey, supply and install
         across the UK.</p>
@@ -533,9 +701,10 @@
       <div class="footer-col">
         <h4 class="footer-heading">Our Products</h4>
         <ul class="footer-links">
-          <li><a href="doors.html">Composite Doors</a></li>
-          <li><a href="doors.html#bifold-grid">Bifold Doors</a></li>
+          <li><a href="doors.html#composite-doors">Composite Doors</a></li>
+          <li><a href="doors.html#bifold-doors">Bifold Doors</a></li>
           <li><a href="conservatories.html#roof-lanterns">Roof Lanterns</a></li>
+          <li><a href="conservatories.html#conservatory">Conservatory</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -572,6 +741,36 @@
   </a>
 
   <script>
+    // ===== CONSERVATORY CATEGORY TABS =====
+    function showConservSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      if (!target || !target.classList.contains('conserv-cat-section')) return;
+
+      document.querySelectorAll('.conserv-cat-section').forEach((section) => {
+        section.classList.remove('active');
+      });
+      target.classList.add('active');
+
+      document.querySelectorAll('.conserv-sidenav-link').forEach((link) => {
+        link.classList.toggle('active', link.dataset.section === sectionId);
+      });
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      history.replaceState(null, null, '#' + sectionId);
+    }
+
+    document.querySelectorAll('.conserv-sidenav-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showConservSection(link.dataset.section);
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const sectionId = window.location.hash.slice(1);
+      if (sectionId) showConservSection(sectionId);
+    });
+
     // ===== Mobile Menu =====
     const toggle = document.getElementById('mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -581,6 +780,42 @@
         toggle.setAttribute('aria-expanded', isOpen);
       });
     }
+
+    // ===== Navigation Dropdowns =====
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach((dropdown) => {
+      const link = dropdown.querySelector('.nav-link');
+      const menu = dropdown.querySelector('.nav-dropdown-menu');
+      if (!link || !menu) return;
+
+      link.setAttribute('aria-haspopup', 'true');
+      link.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isOpen = dropdown.classList.contains('open');
+
+        dropdowns.forEach((otherDropdown) => {
+          otherDropdown.classList.remove('open');
+          const otherLink = otherDropdown.querySelector('.nav-link');
+          if (otherLink) otherLink.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          dropdown.classList.add('open');
+          link.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(event.target)) {
+          dropdown.classList.remove('open');
+          const link = dropdown.querySelector('.nav-link');
+          if (link) link.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
 
     // ===== Sticky Header =====
     const header = document.getElementById('site-header');

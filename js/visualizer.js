@@ -9,7 +9,7 @@
   // Application State
   const state = {
     system: 'door',      // door, window (casement), conservatory
-    category: 'door',   // door, window, conservatory
+    category: 'door',   // door, window, conservatory, glass
     material: 'aluminum',
     color: 'black',
     glass: 'double_lowe',
@@ -98,6 +98,14 @@
     hurricane_impact: { color: 0x5689a3, opacity: 0.36, roughness: 0.05, transmission: 0.75 }
   };
 
+  const referenceImages = {
+    door: { path: 'assets/images/products/bifold-2.jpg', aspect: 828 / 499 },
+    window: { path: 'assets/images/products/flush-casement-1.png', aspect: 1.5 },
+    conservatory: { path: 'assets/images/conservatory-1.jpg', aspect: 1024 / 683 },
+    glass: { path: 'assets/images/sliding-doors-living.jpg', aspect: 1200 / 730 }
+  };
+  const referenceTextureCache = new Map();
+
   // DOM Elements
   const stage3dEl = document.getElementById('visualizer3dStage');
   const stageOverlayEl = document.getElementById('stage3dOverlay');
@@ -172,7 +180,7 @@
       });
     }
 
-    // System / Category selector pills (Door, Window, Conservatory)
+    // System / Category selector pills
     document.querySelectorAll('[data-system]').forEach((el) => {
       el.addEventListener('click', () => {
         document.querySelectorAll('[data-system]').forEach((p) => p.classList.remove('active'));
@@ -186,6 +194,8 @@
           state.system = 'casement';
         } else if (cat === 'conservatory') {
           state.system = 'conservatory';
+        } else if (cat === 'glass') {
+          state.system = 'sliding';
         } else {
           state.system = el.getAttribute('data-system');
         }
@@ -473,19 +483,27 @@
     const w = state.widthFt * s;
     const h = state.heightFt * s;
     const targetY = h * 0.5;
+    const targetX = w * 0.435;
+    const aspect = stage3dEl.clientWidth / Math.max(stage3dEl.clientHeight, 1);
+    const referenceWidth = w * 1.87;
+    const referenceHeight = Math.max(h, w * 0.64 / 1.5);
+    const fitDistance = Math.max(
+      referenceWidth / (2 * Math.tan(Math.PI / 9) * Math.max(aspect, 0.5)),
+      referenceHeight / (2 * Math.tan(Math.PI / 9))
+    ) * 1.12;
 
-    targetCamLookAt = new THREE.Vector3(0, targetY, 0);
+    targetCamLookAt = new THREE.Vector3(targetX, targetY, 0);
 
     if (preset === 'front') {
-      const dist = Math.max(w * 1.35, h * 1.55, 6.2);
-      targetCamPos = new THREE.Vector3(0, targetY, dist);
+      const dist = Math.max(fitDistance, 7.5);
+      targetCamPos = new THREE.Vector3(targetX, targetY, dist);
     } else if (preset === 'side') {
       const distSide = Math.max(w * 0.85, 4.5);
-      targetCamPos = new THREE.Vector3(distSide, targetY + 0.4, 2.5);
+      targetCamPos = new THREE.Vector3(targetX + distSide, targetY + 0.4, 2.5);
     } else {
       // Perspective / Iso (default)
-      const distZ = Math.max(w * 1.05, h * 1.25, 5.8);
-      targetCamPos = new THREE.Vector3(w * 0.45, targetY + h * 0.25 + 0.3, distZ);
+      const distZ = Math.max(fitDistance, 8);
+      targetCamPos = new THREE.Vector3(targetX + w * 0.2, targetY + h * 0.25 + 0.3, distZ);
     }
   }
 
@@ -774,6 +792,7 @@
     const renderSys = cat === 'door' ? 'bifold'
                     : cat === 'window' ? 'casement'
                     : cat === 'conservatory' ? 'conservatory'
+                    : cat === 'glass' ? 'sliding'
                     : sys;
 
     if (renderSys === 'bifold') {
@@ -1015,6 +1034,42 @@
       animatedKinematics.push(() => {});
     }
 
+    // Product photo reference displayed as a framed, orbitable 3D panel.
+    const reference = referenceImages[state.category];
+    if (reference) {
+      let referenceTexture = referenceTextureCache.get(reference.path);
+      if (!referenceTexture) {
+        referenceTexture = new THREE.TextureLoader().load(
+          reference.path,
+          undefined,
+          undefined,
+          (error) => console.error('Unable to load 3D product reference image:', reference.path, error)
+        );
+        referenceTextureCache.set(reference.path, referenceTexture);
+      }
+
+      const referenceWidth = width * 0.64;
+      const referenceHeight = referenceWidth / reference.aspect;
+      const referenceGroup = new THREE.Group();
+      const referenceFrame = new THREE.Mesh(
+        new THREE.BoxGeometry(referenceWidth + 0.12, referenceHeight + 0.12, 0.08),
+        frameMaterial
+      );
+      referenceFrame.position.z = -0.02;
+      referenceFrame.castShadow = true;
+      referenceFrame.receiveShadow = true;
+      referenceGroup.add(referenceFrame);
+
+      const referencePhoto = new THREE.Mesh(
+        new THREE.PlaneGeometry(referenceWidth, referenceHeight),
+        new THREE.MeshBasicMaterial({ map: referenceTexture })
+      );
+      referencePhoto.position.z = 0.03;
+      referenceGroup.add(referencePhoto);
+      referenceGroup.position.set(width * 1.05, height * 0.5, 0);
+      doorRootGroup.add(referenceGroup);
+    }
+
     scene.add(doorRootGroup);
 
     // Apply current open progress immediately
@@ -1042,7 +1097,12 @@
     if (dimTagWidth) dimTagWidth.textContent = `${state.widthFt} ft (${Math.round(state.widthFt * 304.8)} mm)`;
     if (dimTagHeight) dimTagHeight.textContent = `${state.heightFt} ft (${Math.round(state.heightFt * 304.8)} mm)`;
     if (systemTagDisplay) {
-      const labelMap = { door: 'DOOR', window: 'WINDOW', conservatory: 'CONSERVATORIES & ROOFING' };
+      const labelMap = {
+        door: 'DOOR',
+        window: 'WINDOW',
+        conservatory: 'CONSERVATORIES & ROOFING',
+        glass: 'GLASS'
+      };
       systemTagDisplay.textContent = labelMap[state.category] || state.system.replace('_', ' ').toUpperCase();
     }
     if (glassTagDisplay) glassTagDisplay.textContent = state.glass.replace('_', ' ').toUpperCase();
