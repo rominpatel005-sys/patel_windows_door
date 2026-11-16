@@ -525,6 +525,70 @@
       transition: opacity 1s ease;
       pointer-events: none;
     }
+
+    /* ---- MOBILE RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      .di-scene {
+        width: min(340px, 88vw);
+        height: min(420px, 72vh);
+        perspective: 900px;
+        perspective-origin: 50% 42%;
+      }
+
+      .di-frame-top {
+        height: 22px !important;
+      }
+
+      .di-door {
+        top: 22px !important;
+      }
+
+      .di-welcome-inner {
+        padding: 16px 12px !important;
+        gap: 10px !important;
+      }
+
+      .di-title {
+        font-size: clamp(1.3rem, 6.5vw, 1.9rem) !important;
+      }
+
+      .di-sub {
+        font-size: 0.6rem !important;
+        letter-spacing: 0.15em !important;
+      }
+
+      .di-est {
+        font-size: 0.52rem !important;
+        letter-spacing: 0.12em !important;
+      }
+
+      .di-logo-wrap svg {
+        width: 50px !important;
+        height: 50px !important;
+      }
+
+      .di-gold-line {
+        width: 80px !important;
+      }
+
+      #door-intro.doors-opening #diDoorL {
+        transform: perspective(900px) rotateY(-92deg) !important;
+      }
+
+      #door-intro.doors-opening #diDoorR {
+        transform: perspective(900px) rotateY(92deg) !important;
+      }
+
+      .di-floor {
+        left: -20px !important;
+        right: -20px !important;
+        bottom: -25px !important;
+      }
+
+      .di-step {
+        height: 14px !important;
+      }
+    }
   </style>
 
   <script>
