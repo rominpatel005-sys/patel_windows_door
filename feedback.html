@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Feedback | Patel Windows &amp; Doors Ltd</title>
+  <meta name="description" content="Share your feedback with Patel Windows &amp; Doors Ltd. We value your experience and suggestions.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e17'/><rect x='15' y='15' width='70' height='70' rx='6' fill='none' stroke='%23d4af37' stroke-width='8'/><line x1='50' y1='15' x2='50' y2='85' stroke='%23d4af37' stroke-width='6'/><line x1='15' y1='50' x2='85' y2='50' stroke='%23d4af37' stroke-width='6'/></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Star Rating */
+    .star-rating {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .star-rating .star {
+      font-size: 2.4rem;
+      color: rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: color 0.15s ease, transform 0.15s ease;
+      line-height: 1;
+      user-select: none;
+    }
+    .star-rating .star.active,
+    .star-rating .star.hover {
+      color: #D6B36A;
+      transform: scale(1.2);
+    }
+
+    .feedback-hero {
+      background: linear-gradient(135deg, #0d1a3a 0%, #101B3D 50%, #0a0e17 100%);
+      padding: 60px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid rgba(214,179,106,0.15);
+    }
+
+    .feedback-hero .eyebrow {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .feedback-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .feedback-hero h1 span {
+      color: #D6B36A;
+    }
+
+    .feedback-hero p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .feedback-card {
+      background: var(--bg-glass-card);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      box-shadow: var(--shadow-md);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .feedback-card {
+        padding: 28px 20px;
+      }
+      .star-rating .star {
+        font-size: 2rem;
+      }
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      transition: color 0.15s;
+    }
+
+    .radio-label:hover {
+      color: #D6B36A;
+    }
+
+    .radio-label input[type="radio"] {
+      accent-color: #D6B36A;
+      width: 16px;
+      height: 16px;
+    }
+
+    .thanks-box {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .thanks-box .thanks-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .thanks-box h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: #D6B36A;
+      margin-bottom: 10px;
+    }
+
+    .thanks-box p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Patel Windows &amp; Doors Ltd Home">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="color:var(--gold-primary);">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="12" y1="3" x2="12" y2="21" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">PATEL <span>WINDOWS &amp; DOORS LTD</span></span>
+          <span class="logo-tagline">ARCHITECTURAL SYSTEMS • GLOBAL EXPORT</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-dropdown">
+          <a href="windows.html" class="nav-link">Windows <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="windows.html#upvc" class="nav-dropdown-item"><span class="item-num">1</span> uPVC Windows</a>
+            <a href="windows.html#aluminium" class="nav-dropdown-item"><span class="item-num">2</span> Aluminium Windows</a>
+            <a href="windows.html#flush-casement" class="nav-dropdown-item"><span class="item-num">3</span> Flush Casement Windows</a>
+            <a href="windows.html#sliding-sash" class="nav-dropdown-item"><span class="item-num">4</span> Sliding Sash Windows</a>
+            <a href="windows.html#tilt-turn" class="nav-dropdown-item"><span class="item-num">5</span> Tilt and Turn Windows</a>
+            <a href="windows.html#french-casement" class="nav-dropdown-item"><span class="item-num">6</span> French Casement Windows</a>
+            <a href="windows.html#bay-bow" class="nav-dropdown-item"><span class="item-num">7</span> Bay and Bow Windows</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="windows.html#heritage" class="nav-dropdown-item"><span class="item-num">8</span> Heritage Windows</a>
+            <a href="windows.html#timber" class="nav-dropdown-item"><span class="item-num">9</span> Timber Windows</a>
+            <a href="windows.html#roof-skylights" class="nav-dropdown-item"><span class="item-num">10</span> Roof Windows &amp; Skylights</a>
+            <a href="windows.html#commercial" class="nav-dropdown-item"><span class="item-num">11</span> Commercial Windows</a>
+            <a href="windows.html#bespoke" class="nav-dropdown-item"><span class="item-num">12</span> Bespoke Windows</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="doors.html" class="nav-link">Doors <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single Upvc Doors</a>
+            <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
+            <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
+            <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="glass.html#clear-double" class="nav-dropdown-item"><span class="item-num">1</span> Clear Double Glazing</a>
+            <a href="glass.html#triple-glazing" class="nav-dropdown-item"><span class="item-num">2</span> Triple Glazing</a>
+            <a href="glass.html#low-e" class="nav-dropdown-item"><span class="item-num">3</span> Low-E Glass</a>
+            <a href="glass.html#toughened" class="nav-dropdown-item"><span class="item-num">4</span> Toughened Safety Glass</a>
+            <a href="glass.html#laminated" class="nav-dropdown-item"><span class="item-num">5</span> Laminated Safety Glass</a>
+            <a href="glass.html#acoustic" class="nav-dropdown-item"><span class="item-num">6</span> Acoustic Glass</a>
+            <a href="glass.html#solar-control" class="nav-dropdown-item"><span class="item-num">7</span> Solar-Control Glass</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="glass.html#obscure" class="nav-dropdown-item"><span class="item-num">8</span> Obscure Privacy Glass</a>
+            <a href="glass.html#frosted" class="nav-dropdown-item"><span class="item-num">9</span> Frosted Glass</a>
+            <a href="glass.html#georgian" class="nav-dropdown-item"><span class="item-num">10</span> Georgian Decorative Glass</a>
+            <a href="glass.html#leaded" class="nav-dropdown-item"><span class="item-num">11</span> Leaded Decorative Glass</a>
+            <a href="glass.html#tinted" class="nav-dropdown-item"><span class="item-num">12</span> Tinted Glass</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="mobile-nav-actions">
+          <a href="feedback.html" class="btn btn-primary btn-sm mobile-quote-btn quote-img-btn">Feedback</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="feedback.html" class="btn btn-primary btn-sm quote-img-btn active">Feedback</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <div class="feedback-hero">
+      <div class="container">
+        <span class="eyebrow">Share Your Experience</span>
+        <h1>Customer <span>Feedback</span></h1>
+        <p>We'd love to hear about your experience with Patel Windows &amp; Doors Ltd. Your feedback helps us serve you better!</p>
+      </div>
+    </div>
+
+    <!-- Feedback Form Section -->
+    <section style="padding: 60px 0 80px; background: var(--bg-primary);">
+      <div class="container">
+        <div class="feedback-card">
+
+          <!-- Form -->
+          <form id="feedbackForm" onsubmit="submitFeedback(event)">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fbName">Your Name *</label>
+                <input type="text" id="fbName" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fbEmail">Email Address</label>
+                <input type="email" id="fbEmail" class="form-input" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fbProduct">Product / Service Used</label>
+              <select id="fbProduct" class="form-select">
+                <option value="">Select a product or service...</option>
+                <option value="upvc-windows">uPVC Windows</option>
+                <option value="aluminium-windows">Aluminium Windows</option>
+                <option value="flush-casement">Flush Casement Windows</option>
+                <option value="composite-doors">Composite Doors</option>
+                <option value="upvc-doors">uPVC Doors</option>
+                <option value="bifold-doors">Bifold Doors</option>
+                <option value="conservatory">Conservatory</option>
+                <option value="roof-lantern">Roof Lantern</option>
+                <option value="glass">Glass / Glazing</option>
+                <option value="repairs">Repair Service</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Star Rating -->
+            <div class="form-group">
+              <label class="form-label">Overall Rating *</label>
+              <div class="star-rating" id="starRating">
+                <span class="star" data-val="1" title="1 Star">★</span>
+                <span class="star" data-val="2" title="2 Stars">★</span>
+                <span class="star" data-val="3" title="3 Stars">★</span>
+                <span class="star" data-val="4" title="4 Stars">★</span>
+                <span class="star" data-val="5" title="5 Stars">★</span>
+              </div>
+              <input type="hidden" id="fbRating" value="">
+              <p id="ratingError" style="color:#e05;font-size:0.82rem;margin:4px 0 0;display:none;">Please select a rating.</p>
+            </div>
+
+            <!-- Feedback -->
+            <div class="form-group">
+              <label class="form-label" for="fbMessage">Your Feedback *</label>
+              <textarea id="fbMessage" class="form-textarea" rows="4"
+                placeholder="Tell us about your experience — quality of product, installation, customer service..." required></textarea>
+            </div>
+
+            <!-- Recommend -->
+            <div class="form-group">
+              <label class="form-label">Would you recommend us to friends or family?</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="fbRecommend" value="yes"> 👍 Yes, definitely!
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="fbRecommend" value="maybe"> 🤔 Maybe
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="fbRecommend" value="no"> 👎 Not sure
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem; padding: 14px; margin-top: 8px;">
+              ✉&nbsp; Submit Feedback
+            </button>
+          </form>
+
+          <!-- Thank You -->
+          <div class="thanks-box" id="fbThanks">
+            <span class="thanks-icon">🎉</span>
+            <h2>Thank You!</h2>
+            <p>We really appreciate you taking the time to share your feedback.<br>Your experience matters to us and helps us improve every day.</p>
+            <a href="index.html" class="btn btn-primary">← Back to Home</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Patel Windows &amp; Doors Ltd. Architectural Fenestration Systems.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/447344168124" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+    </svg>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ===== STAR RATING =====
+    (function () {
+      var stars = document.querySelectorAll('.star-rating .star');
+      var ratingInput = document.getElementById('fbRating');
+      var selected = 0;
+
+      stars.forEach(function (star) {
+        star.addEventListener('mouseover', function () {
+          var val = parseInt(this.dataset.val);
+          stars.forEach(function (s, i) { s.classList.toggle('hover', i < val); });
+        });
+        star.addEventListener('mouseout', function () {
+          stars.forEach(function (s, i) {
+            s.classList.remove('hover');
+            s.classList.toggle('active', i < selected);
+          });
+        });
+        star.addEventListener('click', function () {
+          selected = parseInt(this.dataset.val);
+          ratingInput.value = selected;
+          document.getElementById('ratingError').style.display = 'none';
+          stars.forEach(function (s, i) { s.classList.toggle('active', i < selected); });
+        });
+      });
+    })();
+
+    // ===== FORM SUBMIT =====
+    function submitFeedback(e) {
+      e.preventDefault();
+      var rating = document.getElementById('fbRating').value;
+      if (!rating) {
+        document.getElementById('ratingError').style.display = 'block';
+        document.getElementById('starRating').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      document.getElementById('feedbackForm').style.display = 'none';
+      document.getElementById('fbThanks').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>

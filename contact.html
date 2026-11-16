@@ -20,6 +20,25 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    @media (max-width: 768px) {
+      .contact-main-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+    }
+    /* Star Rating */
+    .star-rating { display: flex; gap: 8px; margin-top: 6px; }
+    .star-rating .star {
+      font-size: 2rem;
+      color: rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: color 0.15s ease, transform 0.15s ease;
+      line-height: 1;
+    }
+    .star-rating .star.active,
+    .star-rating .star.hover { color: #D6B36A; transform: scale(1.15); }
+  </style>
 </head>
 
 <body>
@@ -98,7 +117,7 @@
         <a href="about.html" class="nav-link">About Us</a>
         <a href="contact.html" class="nav-link active">Contact</a>
         <div class="mobile-nav-actions">
-          <a href="contact.html" class="btn btn-primary btn-sm mobile-quote-btn">Request CAD Quote</a>
+          <a href="feedback.html" class="btn btn-primary btn-sm mobile-quote-btn">Feedback</a>
         </div>
       </nav>
 
@@ -294,6 +313,102 @@
         </div>
       </div>
     </section>
+
+    <!-- ================= FEEDBACK SECTION ================= -->
+    <section id="feedback" style="padding: 72px 0 60px; background: var(--bg-primary); scroll-margin-top: 80px;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom: 36px; text-align: center;">
+          <span class="eyebrow">Share Your Experience</span>
+          <h2 class="section-title">Customer Feedback</h2>
+          <p class="section-subtitle">We value your feedback! Help us improve our service by sharing your experience with Patel Windows & Doors Ltd.</p>
+        </div>
+
+        <div style="max-width: 680px; margin: 0 auto;">
+          <div style="background: var(--bg-glass-card); border: 1px solid var(--border-active); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md);">
+
+            <form id="feedbackForm" onsubmit="submitFeedback(event)">
+
+              <!-- Name -->
+              <div class="form-group">
+                <label class="form-label" for="fbName">Your Name *</label>
+                <input type="text" id="fbName" class="form-input" placeholder="Your full name" required>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label class="form-label" for="fbEmail">Email Address</label>
+                <input type="email" id="fbEmail" class="form-input" placeholder="your@email.com">
+              </div>
+
+              <!-- Product Used -->
+              <div class="form-group">
+                <label class="form-label" for="fbProduct">Product / Service</label>
+                <select id="fbProduct" class="form-select">
+                  <option value="">Select a product or service...</option>
+                  <option value="upvc-windows">uPVC Windows</option>
+                  <option value="aluminium-windows">Aluminium Windows</option>
+                  <option value="composite-doors">Composite Doors</option>
+                  <option value="upvc-doors">uPVC Doors</option>
+                  <option value="bifold-doors">Bifold Doors</option>
+                  <option value="conservatory">Conservatory</option>
+                  <option value="roof-lantern">Roof Lantern</option>
+                  <option value="glass">Glass / Glazing</option>
+                  <option value="repairs">Repair Service</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <!-- Star Rating -->
+              <div class="form-group">
+                <label class="form-label">Overall Rating *</label>
+                <div class="star-rating" id="starRating">
+                  <span class="star" data-val="1">★</span>
+                  <span class="star" data-val="2">★</span>
+                  <span class="star" data-val="3">★</span>
+                  <span class="star" data-val="4">★</span>
+                  <span class="star" data-val="5">★</span>
+                </div>
+                <input type="hidden" id="fbRating" value="">
+              </div>
+
+              <!-- Feedback Message -->
+              <div class="form-group">
+                <label class="form-label" for="fbMessage">Your Feedback *</label>
+                <textarea id="fbMessage" class="form-textarea" rows="4" placeholder="Tell us about your experience with our products or service..." required></textarea>
+              </div>
+
+              <!-- Would Recommend -->
+              <div class="form-group">
+                <label class="form-label">Would you recommend us?</label>
+                <div style="display: flex; gap: 16px; margin-top: 8px;">
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                    <input type="radio" name="fbRecommend" value="yes" style="accent-color: var(--gold-primary);"> Yes, definitely!
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                    <input type="radio" name="fbRecommend" value="maybe" style="accent-color: var(--gold-primary);"> Maybe
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);">
+                    <input type="radio" name="fbRecommend" value="no" style="accent-color: var(--gold-primary);"> No
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.02rem; margin-top: 8px;">
+                ✉ Submit Feedback
+              </button>
+
+              <!-- Thank you message -->
+              <div id="fbThanks" style="display:none; margin-top: 20px; padding: 16px; border-radius: 10px; background: rgba(214,179,106,0.1); border: 1px solid rgba(214,179,106,0.3); text-align: center;">
+                <p style="color: var(--gold-light); font-weight: 600; margin: 0;">🎉 Thank you for your feedback!</p>
+                <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 6px 0 0;">We really appreciate you taking the time to share your experience with us.</p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -307,6 +422,58 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Star Rating
+    (function() {
+      var stars = document.querySelectorAll('.star-rating .star');
+      var ratingInput = document.getElementById('fbRating');
+      var selected = 0;
+
+      stars.forEach(function(star) {
+        star.addEventListener('mouseover', function() {
+          var val = parseInt(this.dataset.val);
+          stars.forEach(function(s, i) {
+            s.classList.toggle('hover', i < val);
+          });
+        });
+        star.addEventListener('mouseout', function() {
+          stars.forEach(function(s, i) {
+            s.classList.remove('hover');
+            s.classList.toggle('active', i < selected);
+          });
+        });
+        star.addEventListener('click', function() {
+          selected = parseInt(this.dataset.val);
+          ratingInput.value = selected;
+          stars.forEach(function(s, i) {
+            s.classList.toggle('active', i < selected);
+          });
+        });
+      });
+    })();
+
+    // Feedback Form Submit
+    function submitFeedback(e) {
+      e.preventDefault();
+      var rating = document.getElementById('fbRating').value;
+      if (!rating) {
+        alert('Please select a star rating!');
+        return;
+      }
+      document.getElementById('feedbackForm').style.display = 'none';
+      document.getElementById('fbThanks').style.display = 'block';
+      // Scroll to thank you message
+      document.getElementById('fbThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Auto-scroll to feedback section if URL has #feedback
+    if (window.location.hash === '#feedback') {
+      setTimeout(function() {
+        var el = document.getElementById('feedback');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  </script>
 </body>
 
 </html>
