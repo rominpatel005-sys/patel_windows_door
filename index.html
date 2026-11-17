@@ -119,7 +119,12 @@
   ============================================================ */
     #door-intro {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      width: 100vw;
+      height: 100vh;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -528,11 +533,22 @@
 
     /* ---- MOBILE RESPONSIVE ---- */
     @media (max-width: 600px) {
+      #door-intro {
+        /* Extra mobile safety - use JS-set height */
+        height: 100vh !important;
+        height: -webkit-fill-available !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
       .di-scene {
-        width: min(340px, 88vw);
-        height: min(420px, 72vh);
-        perspective: 900px;
-        perspective-origin: 50% 42%;
+        width: 92vw !important;
+        height: 60vh !important;
+        perspective: 900px !important;
+        perspective-origin: 50% 50% !important;
+        transform: scale(0.72);
+        transform-origin: center center;
+        flex-shrink: 0;
       }
 
       .di-frame-top {
@@ -545,30 +561,30 @@
 
       .di-welcome-inner {
         padding: 16px 12px !important;
-        gap: 10px !important;
+        gap: 8px !important;
       }
 
       .di-title {
-        font-size: clamp(1.3rem, 6.5vw, 1.9rem) !important;
+        font-size: clamp(1.2rem, 6vw, 1.8rem) !important;
       }
 
       .di-sub {
-        font-size: 0.6rem !important;
-        letter-spacing: 0.15em !important;
+        font-size: 0.58rem !important;
+        letter-spacing: 0.14em !important;
       }
 
       .di-est {
-        font-size: 0.52rem !important;
-        letter-spacing: 0.12em !important;
+        font-size: 0.5rem !important;
+        letter-spacing: 0.1em !important;
       }
 
       .di-logo-wrap svg {
-        width: 50px !important;
-        height: 50px !important;
+        width: 46px !important;
+        height: 46px !important;
       }
 
       .di-gold-line {
-        width: 80px !important;
+        width: 70px !important;
       }
 
       #door-intro.doors-opening #diDoorL {
@@ -596,6 +612,15 @@
       var intro = document.getElementById('door-intro');
       if (!intro) return;
       document.body.style.overflow = 'hidden';
+
+      // FIX: Set real viewport height for mobile browsers (address bar issue)
+      function setMobileHeight() {
+        var vh = window.innerHeight;
+        intro.style.height = vh + 'px';
+        intro.style.width = window.innerWidth + 'px';
+      }
+      setMobileHeight();
+      window.addEventListener('resize', setMobileHeight);
 
       // Open doors at 500ms
       setTimeout(function () { intro.classList.add('doors-opening'); }, 500);
