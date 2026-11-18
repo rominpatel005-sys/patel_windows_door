@@ -393,66 +393,11 @@
     }
   </style>
 
-  <style id="page-transition-css">
-    /* ===== PAGE TRANSITION OVERLAY ===== */
-    #page-transition {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw; height: 100vh;
-      z-index: 999999;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 50% 60%, #1e2f60 0%, #101B3D 55%, #060d20 100%);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    #page-transition.pt-active {
-      opacity: 1 !important;
-      pointer-events: all !important;
-    }
-    /* scene wrapper inside transition */
-    .pt-scene {
-      position: relative;
-      width: min(520px, 86vw);
-      height: min(600px, 80vh);
-      perspective: 1800px;
-      perspective-origin: 50% 38%;
-      flex-shrink: 0;
-    }
-    /* door open transforms for page-transition */
-    #page-transition.pt-open #ptDoorL {
-      transform: perspective(1800px) rotateY(-96deg) !important;
-      box-shadow: 30px 0 60px rgba(0,0,0,0.6) !important;
-    }
-    #page-transition.pt-open #ptDoorR {
-      transform: perspective(1800px) rotateY(96deg) !important;
-      box-shadow: -30px 0 60px rgba(0,0,0,0.6) !important;
-    }
-    @media (max-width: 768px) {
-      .pt-scene {
-        width: 86vw !important;
-        height: 72vh !important;
-        max-width: 360px !important;
-        max-height: 500px !important;
-        perspective: 700px !important;
-      }
-      #page-transition.pt-open #ptDoorL {
-        transform: perspective(700px) rotateY(-86deg) !important;
-      }
-      #page-transition.pt-open #ptDoorR {
-        transform: perspective(700px) rotateY(86deg) !important;
-      }
-    }
-  </style>
-
 </head>
 
 <body>
 
-  <!-- ======= PAGE TRANSITION OVERLAY (door animation on nav click) ======= -->
+  <!-- ======= PAGE TRANSITION OVERLAY ======= -->
   <div id="page-transition" aria-hidden="true" style="display:none;">
     <div class="di-bg">
       <div class="di-particle" style="left:10%;animation-delay:0s;"></div>
@@ -476,8 +421,6 @@
             <div class="di-door-inset di-inset-4"></div>
             <div class="di-door-glass"></div>
           </div>
-          <div class="di-door-side di-door-side-left"></div>
-          <div class="di-door-top"></div>
           <div class="di-handle di-handle-r"></div>
         </div>
         <div class="di-door di-door-right" id="ptDoorR">
@@ -488,8 +431,6 @@
             <div class="di-door-inset di-inset-4"></div>
             <div class="di-door-glass"></div>
           </div>
-          <div class="di-door-side di-door-side-right"></div>
-          <div class="di-door-top"></div>
           <div class="di-handle di-handle-l"></div>
         </div>
         <div class="di-seam"></div>
@@ -497,6 +438,7 @@
     </div>
   </div>
   <!-- /#page-transition -->
+
 
 
   <!-- ===== SITE HEADER ===== -->
@@ -963,58 +905,59 @@
     });
   </script>
 
+
   <script id="page-transition-js">
-  /* ===== PAGE TRANSITION — door opens on nav click ===== */
+  /* ===== PAGE TRANSITION - door opens on nav click ===== */
   (function () {
     var pt = document.getElementById('page-transition');
     if (!pt) return;
 
+    var navigating = false;
+
     function runTransition(href) {
-      // show overlay
+      if (navigating) return;
+      navigating = true;
+
+      // Show overlay
       pt.style.display = 'flex';
-      pt.style.opacity = '0';
-      pt.style.pointerEvents = 'all';
 
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
+          // Fade in overlay
           pt.classList.add('pt-active');
-          // open doors after 180ms
+
+          // Open doors after 200ms
           setTimeout(function () {
             pt.classList.add('pt-open');
-            // navigate after doors open (1.3s)
+
+            // Navigate after doors open
             setTimeout(function () {
               window.location.href = href;
-            }, 1300);
-          }, 180);
+            }, 1200);
+          }, 200);
         });
       });
     }
 
-    // Intercept nav links
-    var selectors = [
-      '.nav-link',
-      '.nav-dropdown-item',
-      '.mobile-nav-link',
-      '.footer-link',
-      '.hero-btn',
-      '.btn-primary',
-      '.btn-outline',
-      '[data-page-link]'
-    ];
+    // All internal page links
+    var links = document.querySelectorAll(
+      'a[href].nav-link, a[href].nav-dropdown-item, a[href].brand-logo, ' +
+      'a[href].footer-link, a[href].hero-cta, a[href].service-card-link, ' +
+      'a[href][class*="btn"]'
+    );
 
-    document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+    links.forEach(function (el) {
       var href = el.getAttribute('href');
-      if (!href) return;
-      if (href === '#' || href === '' || href === window.location.pathname.split('/').pop()) return;
-      if (/^(mailto:|tel:|https?:\/\/wa\.me|#)/.test(href)) return;
-      // skip same page
-      if (window.location.href.endsWith(href)) return;
+      if (!href || href.charAt(0) === '#' || href === '') return;
+      if (href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+      if (href.indexOf('http') === 0 && href.indexOf(window.location.hostname) === -1) return;
 
       el.addEventListener('click', function (e) {
         if (e.ctrlKey || e.metaKey || e.shiftKey) return;
         e.preventDefault();
+        e.stopPropagation();
         runTransition(href);
-      });
+      }, true);
     });
   })();
   </script>
