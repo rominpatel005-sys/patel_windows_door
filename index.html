@@ -103,11 +103,11 @@
           </svg>
         </div>
         <div class="di-gold-line"></div>
-        <p class="di-sub">— WELCOME TO —</p>
+        <p class="di-sub">â€” WELCOME TO â€”</p>
         <h1 class="di-title">Patel Windows<br><span>&amp; Doors Ltd</span></h1>
-        <p class="di-tagline">Quality You Can See &nbsp;·&nbsp; Service You Can Trust</p>
+        <p class="di-tagline">Quality You Can See &nbsp;Â·&nbsp; Service You Can Trust</p>
         <div class="di-gold-line"></div>
-        <p class="di-est">EST. ARCHITECTURAL SYSTEMS &nbsp;·&nbsp; </p>
+        <p class="di-est">EST. ARCHITECTURAL SYSTEMS &nbsp;Â·&nbsp; </p>
       </div>
     </div>
 
@@ -533,7 +533,7 @@
 
     /* ---- MOBILE RESPONSIVE ---- */
     @media (max-width: 768px) {
-      /* Force full-screen overlay */
+      /* Force full-screen overlay with flex centering */
       #door-intro {
         position: fixed !important;
         top: 0 !important;
@@ -542,16 +542,18 @@
         bottom: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         overflow: hidden !important;
       }
 
-      /* Absolute centering - more reliable than flex on mobile 3D */
+      /* Scene sizing for mobile â€” let flex center it */
       .di-scene {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
         width: 86vw !important;
         height: 72vh !important;
         max-width: 360px !important;
@@ -559,6 +561,7 @@
         perspective: 700px !important;
         perspective-origin: 50% 50% !important;
         margin: 0 !important;
+        flex-shrink: 0 !important;
       }
 
       .di-frame-top {
@@ -637,10 +640,13 @@
           intro.style.left = '0';
           intro.style.right = '0';
           intro.style.bottom = '0';
-          intro.style.width = window.innerWidth + 'px';
+          intro.style.width = '100vw';
           intro.style.height = window.innerHeight + 'px';
           intro.style.overflow = 'hidden';
           intro.style.zIndex = '99999';
+          intro.style.display = 'flex';
+          intro.style.alignItems = 'center';
+          intro.style.justifyContent = 'center';
         }
       }
       setMobileHeight();
@@ -678,7 +684,7 @@
         </div>
         <div class="logo-text">
           <span class="logo-title">PATEL <span>WINDOWS & DOORS LTD</span></span>
-          <span class="logo-tagline">ARCHITECTURAL SYSTEMS • GLOBAL EXPORT</span>
+          <span class="logo-tagline">ARCHITECTURAL SYSTEMS â€¢ GLOBAL EXPORT</span>
         </div>
       </a>
 
@@ -806,7 +812,7 @@
               property.
             </p>
             <p class="hero-split-p sub">
-              Whether you’re upgrading your existing windows, choosing a stunning new composite front door, installing
+              Whether youâ€™re upgrading your existing windows, choosing a stunning new composite front door, installing
               modern aluminium frames, creating the perfect indoor-outdoor space with bifold doors or adding natural
               light with a beautiful roof lantern, we have the right solution for your home.
             </p>
@@ -835,7 +841,7 @@
                   <span class="service-bullet-icon">&bull;</span>
                   <div class="service-content">
                     <strong class="service-name">Composite Doors</strong> &ndash; <span class="service-desc">Beautiful,
-                      secure and durable entrance doors to enhance your home’s appearance.</span>
+                      secure and durable entrance doors to enhance your homeâ€™s appearance.</span>
                   </div>
                 </li>
                 <li class="hero-service-item">
@@ -1178,7 +1184,7 @@
                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
             <div>
-              <span class="badge-name">ENERGY STAR®</span>
+              <span class="badge-name">ENERGY STARÂ®</span>
               <span class="badge-sub">Certified Efficiency Partner</span>
             </div>
           </div>
@@ -1207,7 +1213,7 @@
           <p>Looking to upgrade your doors and windows? We provide professional door and window replacement services,
             offering quality workmanship, reliable service, and complete peace of mind.</p>
           <p>We take pride in delivering high-quality installations using carefully selected materials to improve your
-            property’s appearance, security, energy efficiency, and comfort.</p>
+            propertyâ€™s appearance, security, energy efficiency, and comfort.</p>
         </div>
 
         <div class="replacement-benefits">
@@ -1224,7 +1230,7 @@
               long-lasting results.</li>
             <li><strong>Energy Efficiency:</strong> Modern doors and windows can help reduce heat loss and improve
               insulation.</li>
-            <li><strong>Enhanced Security:</strong> Upgrade your property’s security with modern, secure door and window
+            <li><strong>Enhanced Security:</strong> Upgrade your propertyâ€™s security with modern, secure door and window
               systems.</li>
             <li><strong>Clean &amp; Tidy Workmanship:</strong> We respect your home and leave the work area clean and
               tidy.</li>
@@ -1579,6 +1585,122 @@
     setTimeout(function(){ initSlider('heroSlider2','h3sTrack2','h3sPrev2','h3sNext2','h3sDots2'); }, 1300);
     setTimeout(function(){ initSlider('heroSlider3','h3sTrack3','h3sPrev3','h3sNext3','h3sDots3'); }, 2600);
     setTimeout(function(){ initSlider('heroSlider4','h3sTrack4','h3sPrev4','h3sNext4','h3sDots4'); }, 800);
+  })();
+  </script>
+
+  <!-- âœ¨ BUTTON SCROLL-REVEAL ANIMATION -->
+  <style>
+    /* Initial hidden state for animated buttons */
+    .btn-animate {
+      opacity: 0;
+      transform: translateY(28px) scale(0.94);
+      transition: none;
+    }
+
+    /* Animate in */
+    .btn-animate.btn-revealed {
+      animation: btnReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes btnReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.94);
+        box-shadow: 0 0 0 rgba(214, 179, 106, 0);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(214, 179, 106, 0.35);
+      }
+      80% {
+        transform: translateY(2px) scale(0.99);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        box-shadow: 0 4px 18px rgba(214, 179, 106, 0.18);
+      }
+    }
+
+    /* Gold shimmer sweep after reveal */
+    .btn-animate.btn-revealed::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      animation: btnShimmer 0.9s ease 0.5s forwards;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    @keyframes btnShimmer {
+      0%   { left: -60%; }
+      100% { left: 130%; }
+    }
+
+    /* Stagger delay classes */
+    .btn-delay-1 { animation-delay: 0.08s !important; }
+    .btn-delay-2 { animation-delay: 0.18s !important; }
+    .btn-delay-3 { animation-delay: 0.28s !important; }
+    .btn-delay-4 { animation-delay: 0.38s !important; }
+
+    /* Pulse glow on hover after reveal */
+    .btn-animate.btn-revealed:hover {
+      animation: btnHoverPulse 0.4s ease forwards !important;
+    }
+
+    @keyframes btnHoverPulse {
+      0%   { transform: translateY(0) scale(1); box-shadow: 0 4px 18px rgba(214,179,106,0.18); }
+      50%  { transform: translateY(-3px) scale(1.04); box-shadow: 0 12px 36px rgba(214,179,106,0.42); }
+      100% { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 28px rgba(214,179,106,0.3); }
+    }
+  </style>
+
+  <script>
+  (function(){
+    // Add btn-animate class to all .btn elements on the page (except navbar ones)
+    var allBtns = document.querySelectorAll('.btn:not(.mobile-quote-btn):not(.header-actions .btn)');
+    var delays = ['btn-delay-1','btn-delay-2','btn-delay-3','btn-delay-4'];
+    var groupMap = {};
+
+    allBtns.forEach(function(btn) {
+      btn.classList.add('btn-animate');
+      btn.style.position = btn.style.position || 'relative';
+      btn.style.overflow = 'hidden';
+
+      // Group buttons by their parent section for stagger
+      var section = btn.closest('section') || btn.closest('div');
+      var key = section ? (section.id || section.className.slice(0,30)) : 'root';
+      if (!groupMap[key]) groupMap[key] = [];
+      groupMap[key].push(btn);
+    });
+
+    // Apply stagger delays within groups
+    Object.keys(groupMap).forEach(function(key) {
+      groupMap[key].forEach(function(btn, i) {
+        btn.classList.add(delays[i % delays.length]);
+      });
+    });
+
+    // IntersectionObserver â€” trigger when button enters viewport
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('btn-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    allBtns.forEach(function(btn) {
+      observer.observe(btn);
+    });
   })();
   </script>
 
