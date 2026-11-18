@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fascia & Gutterings | Patel Windows & Doors Ltd</title>
+  <meta name="description" content="Premium fascia boards, soffits and guttering systems from Patel Windows & Doors Ltd. Quality uPVC and aluminium fascia & guttering installation.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0e17'/><rect x='15' y='15' width='70' height='70' rx='6' fill='none' stroke='%23d4af37' stroke-width='8'/><line x1='50' y1='15' x2='50' y2='85' stroke='%23d4af37' stroke-width='6'/><line x1='15' y1='50' x2='85' y2='50' stroke='%23d4af37' stroke-width='6'/></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .fascia-hero {
+      background: linear-gradient(135deg, #060d20 0%, #101B3D 50%, #0d1835 100%);
+      padding: 120px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fascia-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(214,179,106,0.08) 0%, transparent 65%);
+    }
+    .fascia-hero .eyebrow {
+      display: inline-block;
+      background: rgba(214,179,106,0.12);
+      border: 1px solid rgba(214,179,106,0.3);
+      color: #D6B36A;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .fascia-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .fascia-hero h1 span { color: #D6B36A; }
+    .fascia-hero p {
+      color: rgba(200,210,230,0.82);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .fascia-hero .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Products Grid */
+    .fascia-section {
+      padding: 80px 0;
+    }
+    .fascia-section:nth-child(even) {
+      background: rgba(255,255,255,0.015);
+    }
+    .fascia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .fascia-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(214,179,106,0.18);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .fascia-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #D6B36A, transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .fascia-card:hover {
+      border-color: rgba(214,179,106,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    .fascia-card:hover::before { opacity: 1; }
+    .fascia-card-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(214,179,106,0.1);
+      border: 1px solid rgba(214,179,106,0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    .fascia-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .fascia-card p {
+      color: rgba(200,210,230,0.75);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .fascia-card ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .fascia-card ul li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(200,210,230,0.7);
+      font-size: 0.88rem;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .fascia-card ul li:last-child { border-bottom: none; }
+    .fascia-card ul li::before {
+      content: '✓';
+      color: #D6B36A;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Why Choose section */
+    .fascia-why {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #080f22 0%, #101B3D 100%);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .why-item {
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .why-item .why-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #D6B36A;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .why-item h4 {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .why-item p {
+      color: rgba(200,210,230,0.65);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    /* CTA section */
+    .fascia-cta {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .fascia-cta h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .fascia-cta h2 span { color: #D6B36A; }
+    .fascia-cta p {
+      color: rgba(200,210,230,0.75);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+    .fascia-cta .cta-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 600px) {
+      .fascia-hero { padding: 100px 0 50px; }
+      .fascia-section { padding: 50px 0; }
+      .fascia-grid { grid-template-columns: 1fr; gap: 18px; }
+      .fascia-card { padding: 24px 20px; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER (same as other pages) -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Patel Windows & Doors Ltd Home">
+        <div class="logo-icon">
+          <svg width="44" height="44" viewBox="0 0 100 100" fill="none">
+            <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4"/>
+            <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6"/>
+            <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="5"/>
+            <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name">PATEL WINDOWS &amp; DOORS LTD</span>
+          <span class="logo-sub">ARCHITECTURAL SYSTEMS • GLOBAL EXPORT</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="nav-menu" role="navigation">
+        <div class="nav-dropdown">
+          <a href="windows.html" class="nav-link">Windows <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="windows.html#upvc" class="nav-dropdown-item"><span class="item-num">1</span> uPVC Windows</a>
+            <a href="windows.html#aluminium" class="nav-dropdown-item"><span class="item-num">2</span> Aluminium Windows</a>
+            <a href="windows.html#flush-casement" class="nav-dropdown-item"><span class="item-num">3</span> Flush Casement</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="doors.html" class="nav-link">Doors <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> uPVC Doors</a>
+            <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
+            <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
+            <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="glass.html" class="nav-link">Glass <span class="dropdown-arrow"></span></a>
+          <div class="nav-dropdown-menu">
+            <a href="glass.html#clear-double" class="nav-dropdown-item"><span class="item-num">1</span> Clear Double Glazing</a>
+            <a href="glass.html#triple-glazing" class="nav-dropdown-item"><span class="item-num">2</span> Triple Glazing</a>
+            <a href="glass.html#toughened" class="nav-dropdown-item"><span class="item-num">3</span> Toughened Glass</a>
+          </div>
+        </div>
+        <a href="fascia.html" class="nav-link active-link" style="white-space:nowrap;">Fascia &amp; Gutterings</a>
+        <div class="mobile-nav-actions">
+          <a href="feedback.html" class="btn btn-primary btn-sm mobile-quote-btn">Feedback</a>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <a href="feedback.html" class="btn btn-primary btn-sm">Feedback</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="fascia-hero">
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="eyebrow">🏠 Premium Quality</span>
+      <h1>Fascia, Soffits &amp; <span>Guttering Systems</span></h1>
+      <p>Protect and beautify your home with our high-quality fascia boards, soffits and guttering systems. Durable, low-maintenance and stylish solutions for every property.</p>
+      <div class="hero-btns">
+        <a href="feedback.html" class="btn btn-primary">Get a Free Quote</a>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="fascia-section">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-eyebrow">Our Range</span>
+        <h2 class="section-title">Fascia &amp; Guttering Products</h2>
+        <p class="section-desc">Complete range of uPVC and aluminium fascia, soffit and guttering systems</p>
+      </div>
+
+      <div class="fascia-grid">
+
+        <!-- Fascia Boards -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🏠</div>
+          <h3>Fascia Boards</h3>
+          <p>Premium uPVC and aluminium fascia boards that protect the roof edge while enhancing your home's appearance.</p>
+          <ul>
+            <li>uPVC Fascia Boards</li>
+            <li>Aluminium Fascia Boards</li>
+            <li>Ogee Profile Fascia</li>
+            <li>Square Edge Fascia</li>
+            <li>Bullnose Fascia</li>
+            <li>Various colours &amp; finishes</li>
+          </ul>
+        </div>
+
+        <!-- Soffits -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🔲</div>
+          <h3>Soffits</h3>
+          <p>High-quality soffit boards that close the underside of roof overhangs, keeping pests out and your roof protected.</p>
+          <ul>
+            <li>Solid uPVC Soffits</li>
+            <li>Vented Soffits</li>
+            <li>Hollow Soffits</li>
+            <li>Woodgrain Effect Soffits</li>
+            <li>White, Cream &amp; Foiled finishes</li>
+            <li>Easy clip-fit installation</li>
+          </ul>
+        </div>
+
+        <!-- Guttering Systems -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">💧</div>
+          <h3>Guttering Systems</h3>
+          <p>Effective and stylish guttering systems to channel rainwater away from your property safely and efficiently.</p>
+          <ul>
+            <li>Half-Round Guttering</li>
+            <li>Square/Box Guttering</li>
+            <li>Ogee Guttering</li>
+            <li>Hi-Capacity Guttering</li>
+            <li>Cast Iron Effect Guttering</li>
+            <li>Seamless Aluminium Gutters</li>
+          </ul>
+        </div>
+
+        <!-- Downpipes -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">⬇️</div>
+          <h3>Downpipes</h3>
+          <p>Round and square downpipes in various sizes to match your guttering system and home style perfectly.</p>
+          <ul>
+            <li>Round Downpipes 68mm &amp; 110mm</li>
+            <li>Square Downpipes 65mm &amp; 75mm</li>
+            <li>Offset Bends &amp; Branches</li>
+            <li>Shoe &amp; Clip Accessories</li>
+            <li>White, Black, Grey &amp; more</li>
+            <li>uPVC &amp; Aluminium options</li>
+          </ul>
+        </div>
+
+        <!-- Cladding -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🧱</div>
+          <h3>Cladding</h3>
+          <p>Transform the exterior of your property with our stylish and durable uPVC cladding systems.</p>
+          <ul>
+            <li>Tongue &amp; Groove Cladding</li>
+            <li>Shiplap Cladding</li>
+            <li>Weatherboard Cladding</li>
+            <li>Ash &amp; Oak woodgrain effect</li>
+            <li>Low maintenance &amp; long lasting</li>
+            <li>Fully insulated options</li>
+          </ul>
+        </div>
+
+        <!-- Repair & Replacement -->
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🔧</div>
+          <h3>Repair &amp; Replacement</h3>
+          <p>Professional repair and replacement service for damaged or ageing fascia, soffits and guttering systems.</p>
+          <ul>
+            <li>Fascia board replacement</li>
+            <li>Gutter repair &amp; resealing</li>
+            <li>Downpipe replacement</li>
+            <li>Soffit replacement</li>
+            <li>Full roofline surveys</li>
+            <li>Same-day emergency repairs</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section class="fascia-why">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-eyebrow">Why Us</span>
+        <h2 class="section-title">Why Choose Patel for Fascia &amp; Guttering?</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-num">10+</span>
+          <h4>Years Experience</h4>
+          <p>Over a decade of installing fascia and guttering systems across the region</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">500+</span>
+          <h4>Installations</h4>
+          <p>Hundreds of satisfied customers with our quality roofline products</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">25yr</span>
+          <h4>Product Warranty</h4>
+          <p>Long-lasting uPVC products backed by manufacturer warranties</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">Free</span>
+          <h4>Survey &amp; Quote</h4>
+          <p>No obligation free survey and competitive quote for all jobs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="fascia-section">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="section-eyebrow">Benefits</span>
+        <h2 class="section-title">Benefits of uPVC Fascia &amp; Guttering</h2>
+      </div>
+      <div class="fascia-grid" style="margin-top:40px;">
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🛡️</div>
+          <h3>Weather Protection</h3>
+          <p>Protects your roof timbers and walls from rain, damp and weather damage throughout the year.</p>
+        </div>
+        <div class="fascia-card">
+          <div class="fascia-card-icon">🎨</div>
+          <h3>Kerb Appeal</h3>
+          <p>Fresh, clean fascia and guttering instantly improves the appearance and value of your property.</p>
+        </div>
+        <div class="fascia-card">
+          <div class="fascia-card-icon">⚡</div>
+          <h3>Low Maintenance</h3>
+          <p>uPVC never needs painting, treating or varnishing — just an occasional wipe down to keep clean.</p>
+        </div>
+        <div class="fascia-card">
+          <div class="fascia-card-icon">💷</div>
+          <h3>Cost Effective</h3>
+          <p>Long-lasting materials mean fewer repairs and replacements, saving you money in the long run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fascia-cta">
+    <div class="container">
+      <h2>Ready to Upgrade Your <span>Fascia &amp; Guttering?</span></h2>
+      <p>Contact us today for a free no-obligation survey and quote. Our experts are ready to help.</p>
+      <div class="cta-btns">
+        <a href="feedback.html" class="btn btn-primary">Get a Free Quote</a>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        <a href="tel:+441234567890" class="btn btn-outline">📞 Call Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo footer-logo">
+            <div class="logo-icon">
+              <svg width="38" height="38" viewBox="0 0 100 100" fill="none">
+                <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4"/>
+                <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6"/>
+                <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="5"/>
+                <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="5"/>
+              </svg>
+            </div>
+            <div class="logo-text">
+              <span class="logo-name">PATEL WINDOWS &amp; DOORS LTD</span>
+              <span class="logo-sub">ARCHITECTURAL SYSTEMS • GLOBAL EXPORT</span>
+            </div>
+          </a>
+          <p class="footer-desc">Premium fascia, soffits, guttering and roofline products. Quality you can trust.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="windows.html">Windows</a></li>
+            <li><a href="doors.html">Doors</a></li>
+            <li><a href="conservatories.html">Conservatories</a></li>
+            <li><a href="glass.html">Glass</a></li>
+            <li><a href="fascia.html">Fascia &amp; Gutterings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="#fascia">Fascia Boards</a></li>
+            <li><a href="#soffits">Soffits</a></li>
+            <li><a href="#guttering">Guttering Systems</a></li>
+            <li><a href="#downpipes">Downpipes</a></li>
+            <li><a href="#cladding">Cladding</a></li>
+            <li><a href="#repairs">Repair &amp; Replacement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Get in Touch</a></li>
+            <li><a href="feedback.html">Leave Feedback</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Patel Windows &amp; Doors Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a href="https://wa.me/447700000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp Chat">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
