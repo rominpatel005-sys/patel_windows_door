@@ -83,8 +83,29 @@
         <div class="di-seam"></div>
       </div>
     </div>
+    <!-- Brand name shown behind opening doors -->
+    <div class="di-welcome pt-welcome">
+      <div class="di-welcome-inner">
+        <div class="di-logo-wrap">
+          <svg width="72" height="72" viewBox="0 0 100 100" fill="none">
+            <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4" />
+            <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6" />
+            <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="4.5" />
+            <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="4.5" />
+          </svg>
+        </div>
+        <div class="di-gold-line"></div>
+        <p class="di-sub">— WELCOME TO —</p>
+        <h1 class="di-title">Patel Windows<br><span>&amp; Doors Ltd</span></h1>
+        <p class="di-tagline">Quality You Can See &nbsp;&middot;&nbsp; Service You Can Trust</p>
+        <div class="di-gold-line"></div>
+      </div>
+    </div>
   </div>
   <!-- /#page-transition -->
+
+
+  <!-- ======= PAGE TRANSITION OVERLAY ======= -->
 
 
 
@@ -534,19 +555,13 @@
       if (navigating) return;
       navigating = true;
 
-      // Show overlay
       pt.style.display = 'flex';
 
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          // Fade in overlay
           pt.classList.add('pt-active');
-
-          // Open doors after 200ms
           setTimeout(function () {
             pt.classList.add('pt-open');
-
-            // Navigate after doors open
             setTimeout(function () {
               window.location.href = href;
             }, 1200);
@@ -555,7 +570,6 @@
       });
     }
 
-    // All internal page links
     var links = document.querySelectorAll(
       'a[href].nav-link, a[href].nav-dropdown-item, a[href].brand-logo, ' +
       'a[href].footer-link, a[href].hero-cta, a[href].service-card-link, ' +
