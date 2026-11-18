@@ -533,95 +533,92 @@
 
     /* ---- MOBILE RESPONSIVE ---- */
     @media (max-width: 768px) {
+      /* Force full-screen overlay */
       #door-intro {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        display: block !important;
         overflow: hidden !important;
       }
 
+      /* Absolute centering - more reliable than flex on mobile 3D */
       .di-scene {
-        position: relative !important;
-        width: 280px !important;
-        height: 380px !important;
-        max-width: 85vw !important;
-        max-height: 65vh !important;
-        perspective: 800px !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 86vw !important;
+        height: 72vh !important;
+        max-width: 360px !important;
+        max-height: 500px !important;
+        perspective: 700px !important;
         perspective-origin: 50% 50% !important;
-        transform: none !important;
-        flex-shrink: 0 !important;
-        margin: 0 auto !important;
+        margin: 0 !important;
       }
 
       .di-frame-top {
-        height: 20px !important;
+        height: 18px !important;
       }
 
       .di-door {
-        top: 20px !important;
+        top: 18px !important;
       }
 
       .di-welcome-inner {
-        padding: 14px 10px !important;
+        padding: 12px 8px !important;
         gap: 6px !important;
       }
 
       .di-title {
-        font-size: clamp(1rem, 5.5vw, 1.6rem) !important;
+        font-size: clamp(1.1rem, 6vw, 1.7rem) !important;
       }
 
       .di-sub {
-        font-size: 0.56rem !important;
-        letter-spacing: 0.12em !important;
+        font-size: 0.55rem !important;
+        letter-spacing: 0.1em !important;
       }
 
       .di-est {
-        font-size: 0.48rem !important;
+        font-size: 0.45rem !important;
         letter-spacing: 0.08em !important;
       }
 
       .di-logo-wrap svg {
-        width: 42px !important;
-        height: 42px !important;
+        width: 44px !important;
+        height: 44px !important;
       }
 
       .di-gold-line {
-        width: 60px !important;
+        width: 65px !important;
       }
 
       #door-intro.doors-opening #diDoorL {
-        transform: perspective(800px) rotateY(-88deg) !important;
+        transform: perspective(700px) rotateY(-86deg) !important;
       }
 
       #door-intro.doors-opening #diDoorR {
-        transform: perspective(800px) rotateY(88deg) !important;
+        transform: perspective(700px) rotateY(86deg) !important;
       }
 
       .di-floor {
-        left: -15px !important;
-        right: -15px !important;
-        bottom: -20px !important;
-        height: 50px !important;
+        left: -10px !important;
+        right: -10px !important;
+        bottom: -15px !important;
+        height: 40px !important;
       }
 
       .di-step {
-        height: 12px !important;
+        height: 10px !important;
       }
 
       .di-frame-left,
       .di-frame-right {
-        width: 18px !important;
-      }
-
-      .di-frame-top-arch {
-        display: none !important;
+        width: 16px !important;
       }
     }
   </style>
@@ -632,28 +629,23 @@
       if (!intro) return;
       document.body.style.overflow = 'hidden';
 
-      // FIX: Force door intro to cover full viewport on mobile
+      // FIX: Lock door intro to full viewport on mobile
       function setMobileHeight() {
-        var isMobile = window.innerWidth <= 768;
-        if (isMobile) {
-          // Reset any inline styles that may have been set
-          intro.style.cssText = '';
+        if (window.innerWidth <= 768) {
           intro.style.position = 'fixed';
           intro.style.top = '0';
           intro.style.left = '0';
           intro.style.right = '0';
           intro.style.bottom = '0';
-          intro.style.width = '100%';
-          intro.style.height = '100%';
-          intro.style.display = 'flex';
-          intro.style.alignItems = 'center';
-          intro.style.justifyContent = 'center';
+          intro.style.width = window.innerWidth + 'px';
+          intro.style.height = window.innerHeight + 'px';
           intro.style.overflow = 'hidden';
           intro.style.zIndex = '99999';
         }
       }
       setMobileHeight();
       window.addEventListener('resize', setMobileHeight);
+      window.addEventListener('orientationchange', function(){ setTimeout(setMobileHeight, 100); });
 
       // Open doors at 500ms
       setTimeout(function () { intro.classList.add('doors-opening'); }, 500);
