@@ -696,6 +696,15 @@
     (function () {
       var intro = document.getElementById('door-intro');
       if (!intro) return;
+
+      // If navigated via page-transition animation, skip startup door intro
+      if (sessionStorage.getItem('pt_navigated') === '1') {
+        sessionStorage.removeItem('pt_navigated');
+        if (intro.parentNode) intro.parentNode.removeChild(intro);
+        document.body.style.overflow = '';
+        return;
+      }
+
       document.body.style.overflow = 'hidden';
 
       // FIX: Lock door intro to full viewport on mobile

@@ -639,6 +639,10 @@
           setTimeout(function () {
             pt.classList.add('pt-open');
             setTimeout(function () {
+              // Signal index.html to skip its startup door animation
+              if (href === 'index.html' || href.endsWith('/index.html') || href.endsWith('/')) {
+                sessionStorage.setItem('pt_navigated', '1');
+              }
               window.location.href = href;
             }, 1200);
           }, 200);
