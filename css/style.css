@@ -2329,6 +2329,17 @@ ul {
   transition: border-color var(--transition-fast);
 }
 
+.form-select option {
+  background: #101B3D;
+  color: #ffffff;
+}
+
+.form-select option:checked,
+.form-select option:hover {
+  background: #1a2d5a;
+  color: #D6B36A;
+}
+
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
@@ -3470,4 +3481,177 @@ ul {
   .nav-dropdown-item:hover {
     padding-left: 20px !important;
   }
+}
+
+
+/* ============================================================
+   3D HERO IMAGE SLIDER
+   ============================================================ */
+
+.hero-3d-slider {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #060d20;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(214,179,106,0.18);
+  perspective: 1200px;
+}
+
+.h3s-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Slides */
+.h3s-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease;
+  transform: translateX(100%) rotateY(-25deg) scale(0.88);
+  transform-origin: center center;
+}
+
+.h3s-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+/* Active slide */
+.h3s-slide.h3s-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0) rotateY(0deg) scale(1);
+}
+
+/* Enter from right */
+.h3s-slide.h3s-enter-right {
+  transform: translateX(100%) rotateY(-25deg) scale(0.88);
+  opacity: 0;
+}
+
+/* Enter from left */
+.h3s-slide.h3s-enter-left {
+  transform: translateX(-100%) rotateY(25deg) scale(0.88);
+  opacity: 0;
+}
+
+/* Exit to left */
+.h3s-slide.h3s-exit-left {
+  opacity: 0;
+  transform: translateX(-80%) rotateY(20deg) scale(0.85);
+  transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
+}
+
+/* Exit to right */
+.h3s-slide.h3s-exit-right {
+  opacity: 0;
+  transform: translateX(80%) rotateY(-20deg) scale(0.85);
+  transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
+}
+
+/* Slide label */
+.h3s-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 36px 20px 18px;
+  background: linear-gradient(to top, rgba(10,14,23,0.92) 0%, transparent 100%);
+  color: #D6B36A;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  border-radius: 0 0 18px 18px;
+}
+
+/* Prev/Next buttons */
+.h3s-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(10,14,23,0.75);
+  border: 1px solid rgba(214,179,106,0.35);
+  color: #D6B36A;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.h3s-btn:hover {
+  background: rgba(214,179,106,0.18);
+  border-color: #D6B36A;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.h3s-prev { left: 12px; }
+.h3s-next { right: 12px; }
+
+/* Dots */
+.h3s-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 10;
+}
+
+.h3s-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding: 0;
+}
+
+.h3s-dot.active {
+  background: #D6B36A;
+  transform: scale(1.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 992px) {
+  .hero-3d-slider {
+    height: 320px;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+  .h3s-label { font-size: 0.95rem; }
+  .h3s-btn { width: 36px; height: 36px; font-size: 1.3rem; }
+}
+
+@media (max-width: 600px) {
+  .hero-3d-slider {
+    height: 240px;
+    border-radius: 10px;
+  }
+  .h3s-label { font-size: 0.85rem; padding: 24px 14px 12px; }
+  .h3s-btn { width: 32px; height: 32px; font-size: 1.1rem; }
+  .h3s-dot { width: 6px; height: 6px; }
 }

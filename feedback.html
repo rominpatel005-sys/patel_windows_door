@@ -90,6 +90,39 @@
       }
     }
 
+    /* Fix dropdown option visibility on all browsers */
+    .form-select {
+      background-color: #101B3D !important;
+      color: #ffffff !important;
+      appearance: auto;
+    }
+
+    .form-select option {
+      background-color: #101B3D !important;
+      color: #ffffff !important;
+      padding: 10px 16px;
+    }
+
+    .form-select option:checked {
+      background-color: #1a2d5a !important;
+      color: #D6B36A !important;
+    }
+
+    .form-select optgroup {
+      background-color: #0a0e17 !important;
+      color: #D6B36A !important;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    .form-select optgroup option {
+      background-color: #101B3D !important;
+      color: #ffffff !important;
+      font-weight: 400;
+      padding-left: 8px;
+    }
+
     .radio-group {
       display: flex;
       gap: 20px;
@@ -269,17 +302,57 @@
               <label class="form-label" for="fbProduct">Product / Service Used</label>
               <select id="fbProduct" class="form-select">
                 <option value="">Select a product or service...</option>
-                <option value="upvc-windows">uPVC Windows</option>
-                <option value="aluminium-windows">Aluminium Windows</option>
-                <option value="flush-casement">Flush Casement Windows</option>
-                <option value="composite-doors">Composite Doors</option>
-                <option value="upvc-doors">uPVC Doors</option>
-                <option value="bifold-doors">Bifold Doors</option>
-                <option value="conservatory">Conservatory</option>
-                <option value="roof-lantern">Roof Lantern</option>
-                <option value="glass">Glass / Glazing</option>
-                <option value="repairs">Repair Service</option>
-                <option value="other">Other</option>
+
+                <!-- Windows -->
+                <optgroup label="── Windows ──">
+                  <option value="upvc-windows">uPVC Windows</option>
+                  <option value="aluminium-windows">Aluminium Windows</option>
+                  <option value="flush-casement">Flush Casement Windows</option>
+                  <option value="sliding-sash">Sliding Sash Windows</option>
+                  <option value="tilt-turn">Tilt &amp; Turn Windows</option>
+                  <option value="french-casement">French Casement Windows</option>
+                  <option value="bay-bow">Bay &amp; Bow Windows</option>
+                  <option value="heritage">Heritage Windows</option>
+                  <option value="timber">Timber Windows</option>
+                  <option value="roof-skylights">Roof Skylights</option>
+                  <option value="commercial-windows">Commercial Windows</option>
+                  <option value="bespoke-windows">Bespoke Windows</option>
+                </optgroup>
+
+                <!-- Doors -->
+                <optgroup label="── Doors ──">
+                  <option value="upvc-doors">uPVC Doors</option>
+                  <option value="composite-doors">Composite Doors</option>
+                  <option value="bifold-doors">Bifold Doors</option>
+                </optgroup>
+
+                <!-- Conservatories & Roofing -->
+                <optgroup label="── Conservatories &amp; Roofing ──">
+                  <option value="conservatory">Conservatory</option>
+                  <option value="roof-lantern">Roof Lantern</option>
+                </optgroup>
+
+                <!-- Glass -->
+                <optgroup label="── Glass &amp; Glazing ──">
+                  <option value="clear-double">Clear Double Glazing</option>
+                  <option value="triple-glazing">Triple Glazing</option>
+                  <option value="low-e">Low-E Glass</option>
+                  <option value="toughened">Toughened Glass</option>
+                  <option value="laminated">Laminated Glass</option>
+                  <option value="acoustic">Acoustic Glass</option>
+                  <option value="solar-control">Solar Control Glass</option>
+                  <option value="obscure">Obscure Glass</option>
+                  <option value="frosted">Frosted Glass</option>
+                  <option value="georgian">Georgian Glass</option>
+                  <option value="leaded">Leaded Glass</option>
+                  <option value="tinted">Tinted Glass</option>
+                </optgroup>
+
+                <!-- Other -->
+                <optgroup label="── Other ──">
+                  <option value="repairs">Repair Service</option>
+                  <option value="other">Other</option>
+                </optgroup>
               </select>
             </div>
 
