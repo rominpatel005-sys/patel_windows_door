@@ -1798,11 +1798,7 @@
       });
     }
 
-    var links = document.querySelectorAll(
-      'a[href].nav-link, a[href].nav-dropdown-item, a[href].brand-logo, ' +
-      'a[href].footer-link, a[href].hero-cta, a[href].service-card-link, ' +
-      'a[href][class*="btn"]'
-    );
+    var links = document.querySelectorAll('a[href]');
 
     links.forEach(function (el) {
       var href = el.getAttribute('href');
@@ -2000,7 +1996,8 @@
       border-color: #D6B36A;
       background: rgba(214,179,106,0.07);
     }
-    .inq-field select option { background: #101B3D; }
+    .inq-field select option { background: #101B3D; color: #fff; }
+    .inq-field select optgroup { background: #0a1430; color: #D6B36A; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em; }
     .inq-field textarea { resize: vertical; min-height: 90px; }
     .inq-submit {
       display: flex;
