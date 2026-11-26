@@ -38,7 +38,9 @@
       line-height: 1.15;
     }
 
-    .win-page-hero h1 span { color: var(--gold-primary); }
+    .win-page-hero h1 span {
+      color: var(--gold-primary);
+    }
 
     .win-page-hero p {
       font-size: 1.08rem;
@@ -58,7 +60,7 @@
 
     .win-sidenav {
       background: #0A1230;
-      border-right: 1px solid rgba(214,179,106,0.12);
+      border-right: 1px solid rgba(214, 179, 106, 0.12);
       padding: 32px 0;
       position: sticky;
       top: 70px;
@@ -72,7 +74,7 @@
       color: var(--gold-primary);
       text-transform: uppercase;
       padding: 0 20px 16px;
-      border-bottom: 1px solid rgba(214,179,106,0.1);
+      border-bottom: 1px solid rgba(214, 179, 106, 0.1);
       margin-bottom: 8px;
     }
 
@@ -81,7 +83,7 @@
       align-items: center;
       gap: 10px;
       padding: 10px 20px;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 0.88rem;
       font-weight: 500;
       transition: all 0.2s;
@@ -93,7 +95,7 @@
     .win-sidenav-link:hover,
     .win-sidenav-link.active {
       color: #fff;
-      background: rgba(214,179,106,0.07);
+      background: rgba(214, 179, 106, 0.07);
       border-left-color: var(--gold-primary);
     }
 
@@ -103,7 +105,7 @@
       justify-content: center;
       width: 20px;
       height: 20px;
-      background: rgba(214,179,106,0.12);
+      background: rgba(214, 179, 106, 0.12);
       border-radius: 5px;
       font-size: 0.72rem;
       font-weight: 700;
@@ -120,12 +122,25 @@
       padding: 48px 40px;
     }
 
-    .win-section { display: none; animation: fadeInSection 0.4s ease; }
-    .win-section.active { display: block; }
+    .win-section {
+      display: none;
+      animation: fadeInSection 0.4s ease;
+    }
+
+    .win-section.active {
+      display: block;
+    }
 
     @keyframes fadeInSection {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .win-section-header {
@@ -138,8 +153,8 @@
     .win-section-icon {
       width: 48px;
       height: 48px;
-      background: rgba(214,179,106,0.12);
-      border: 1px solid rgba(214,179,106,0.35);
+      background: rgba(214, 179, 106, 0.12);
+      border: 1px solid rgba(214, 179, 106, 0.35);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -156,7 +171,9 @@
       margin: 0;
     }
 
-    .win-section-title span { color: var(--gold-primary); }
+    .win-section-title span {
+      color: var(--gold-primary);
+    }
 
     .win-section-desc {
       color: var(--text-secondary);
@@ -168,7 +185,7 @@
 
     .win-section-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(214,179,106,0.3) 40%, rgba(214,179,106,0.3) 60%, transparent);
+      background: linear-gradient(90deg, transparent, rgba(214, 179, 106, 0.3) 40%, rgba(214, 179, 106, 0.3) 60%, transparent);
       margin-bottom: 36px;
     }
 
@@ -178,14 +195,17 @@
       align-items: center;
       justify-content: center;
       min-height: 300px;
-      background: rgba(255,255,255,0.03);
-      border: 2px dashed rgba(214,179,106,0.2);
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px dashed rgba(214, 179, 106, 0.2);
       border-radius: 20px;
       text-align: center;
       padding: 48px;
     }
 
-    .win-coming-soon .cs-icon { font-size: 3rem; margin-bottom: 16px; }
+    .win-coming-soon .cs-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
 
     .win-coming-soon h3 {
       font-family: var(--font-heading);
@@ -195,7 +215,11 @@
       margin-bottom: 10px;
     }
 
-    .win-coming-soon p { color: var(--text-secondary); font-size: 0.95rem; margin: 0; }
+    .win-coming-soon p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0;
+    }
 
     /* Benefits strip */
     .glass-benefits {
@@ -264,17 +288,22 @@
     }
 
     @media (max-width: 900px) {
-      .win-layout { grid-template-columns: 1fr; }
+      .win-layout {
+        grid-template-columns: 1fr;
+      }
+
       .win-sidenav {
         position: static;
         display: flex;
         overflow-x: auto;
         padding: 0;
         border-right: none;
-        border-bottom: 1px solid rgba(214,179,106,0.12);
+        border-bottom: 1px solid rgba(214, 179, 106, 0.12);
       }
 
-      .win-sidenav-title { display: none; }
+      .win-sidenav-title {
+        display: none;
+      }
 
       .win-sidenav-link {
         flex-direction: column;
@@ -292,7 +321,10 @@
         border-bottom-color: var(--gold-primary);
       }
 
-      .win-content { padding: 28px 20px; }
+      .win-content {
+        padding: 28px 20px;
+      }
+
       .glass-benefits {
         padding: 32px 24px;
         gap: 24px;
@@ -300,6 +332,83 @@
     }
   </style>
 
+
+  <style id="glass-spec-css">
+    /* ===== GLASS SPEC LAYOUT ===== */
+    .gs-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .gs-spec-box,
+    .gs-features-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(214, 179, 106, 0.18);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .gs-spec-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D6B36A;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(214, 179, 106, 0.2);
+    }
+
+    .gs-spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .gs-spec-table tr+tr td {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gs-label {
+      font-size: 0.8rem;
+      color: rgba(200, 208, 224, 0.65);
+      padding: 6px 8px 6px 0;
+      width: 42%;
+      font-weight: 500;
+    }
+
+    .gs-value {
+      font-size: 0.85rem;
+      color: #fff;
+      padding: 6px 0;
+      font-weight: 500;
+    }
+
+    .gs-features-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .gs-features-list li {
+      font-size: 0.84rem;
+      color: #C8D0E0;
+      padding-left: 4px;
+    }
+
+    .gs-features-list li::before {
+      content: "";
+    }
+  </style>
 </head>
 
 <body>
@@ -429,16 +538,22 @@
           <div class="nav-dropdown">
             <a href="doors.html" class="nav-link">Doors <span class="dropdown-arrow"></span></a>
             <div class="nav-dropdown-menu">
-              <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single Upvc Doors</a>
-              <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite Doors</a>
-              <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold Doors</a>
+              <a href="doors.html#single-upvc-doors" class="nav-dropdown-item"><span class="item-num">1</span> Single
+                Upvc Doors</a>
+              <a href="doors.html#composite-doors" class="nav-dropdown-item"><span class="item-num">2</span> Composite
+                Doors</a>
+              <a href="doors.html#bifold-doors" class="nav-dropdown-item"><span class="item-num">3</span> Bifold
+                Doors</a>
             </div>
           </div>
           <div class="nav-dropdown">
-            <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span class="dropdown-arrow"></span></a>
+            <a href="conservatories.html" class="nav-link">Conservatories &amp; Roofing <span
+                class="dropdown-arrow"></span></a>
             <div class="nav-dropdown-menu">
-              <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof Lanterns</a>
-              <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span> Conservatory</a>
+              <a href="conservatories.html#roof-lanterns" class="nav-dropdown-item"><span class="item-num">1</span> Roof
+                Lanterns</a>
+              <a href="conservatories.html#conservatory" class="nav-dropdown-item"><span class="item-num">2</span>
+                Conservatory</a>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -468,13 +583,22 @@
             </div>
           </div>
           <a href="fascia.html" class="nav-link" style="white-space:nowrap;">Fascia &amp; Gutterings</a>
-        <div class="mobile-nav-actions">
-          <a href="#" class="btn btn-outline btn-sm mobile-quote-btn inq-open-btn" style="border-color:#D6B36A;color:#D6B36A;white-space:nowrap;">Inquiry</a>
+          <div class="mobile-nav-actions">
+            <a href="#" class="btn btn-outline btn-sm mobile-quote-btn inq-open-btn"
+              style="border-color:#D6B36A;color:#D6B36A;white-space:nowrap;">Inquiry</a>
             <a href="feedback.html" class="btn btn-primary btn-sm mobile-quote-btn">Feedback</a>
           </div>
         </nav>
         <div class="header-actions">
-          <a href="contact.html" class="btn btn-primary">
+          <a href="#" class="btn btn-outline inq-open-btn"
+            style="border-color:#D6B36A;color:#D6B36A;font-size:0.95rem;padding:10px 20px;font-weight:700;display:inline-flex;align-items:center;gap:7px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Inquiry
+          </a>
+          <a href="feedback.html" class="btn btn-primary"
+            style="font-size:0.95rem;padding:10px 20px;font-weight:700;display:inline-flex;align-items:center;gap:7px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14 2 14 8 20 8"></polyline>
@@ -507,17 +631,26 @@
   <div class="win-layout">
     <aside class="win-sidenav" aria-label="Glass types">
       <div class="win-sidenav-title">Glass Types</div>
-      <a class="win-sidenav-link active" href="#clear-double" data-section="clear-double"><span class="sn-num">1</span> Clear Double Glazing</a>
-      <a class="win-sidenav-link" href="#triple-glazing" data-section="triple-glazing"><span class="sn-num">2</span> Triple Glazing</a>
+      <a class="win-sidenav-link active" href="#clear-double" data-section="clear-double"><span class="sn-num">1</span>
+        Clear Double Glazing</a>
+      <a class="win-sidenav-link" href="#triple-glazing" data-section="triple-glazing"><span class="sn-num">2</span>
+        Triple Glazing</a>
       <a class="win-sidenav-link" href="#low-e" data-section="low-e"><span class="sn-num">3</span> Low-E Glass</a>
-      <a class="win-sidenav-link" href="#toughened" data-section="toughened"><span class="sn-num">4</span> Toughened Safety Glass</a>
-      <a class="win-sidenav-link" href="#laminated" data-section="laminated"><span class="sn-num">5</span> Laminated Safety Glass</a>
-      <a class="win-sidenav-link" href="#acoustic" data-section="acoustic"><span class="sn-num">6</span> Acoustic Glass</a>
-      <a class="win-sidenav-link" href="#solar-control" data-section="solar-control"><span class="sn-num">7</span> Solar-Control Glass</a>
-      <a class="win-sidenav-link" href="#obscure" data-section="obscure"><span class="sn-num">8</span> Obscure Privacy Glass</a>
+      <a class="win-sidenav-link" href="#toughened" data-section="toughened"><span class="sn-num">4</span> Toughened
+        Safety Glass</a>
+      <a class="win-sidenav-link" href="#laminated" data-section="laminated"><span class="sn-num">5</span> Laminated
+        Safety Glass</a>
+      <a class="win-sidenav-link" href="#acoustic" data-section="acoustic"><span class="sn-num">6</span> Acoustic
+        Glass</a>
+      <a class="win-sidenav-link" href="#solar-control" data-section="solar-control"><span class="sn-num">7</span>
+        Solar-Control Glass</a>
+      <a class="win-sidenav-link" href="#obscure" data-section="obscure"><span class="sn-num">8</span> Obscure Privacy
+        Glass</a>
       <a class="win-sidenav-link" href="#frosted" data-section="frosted"><span class="sn-num">9</span> Frosted Glass</a>
-      <a class="win-sidenav-link" href="#georgian" data-section="georgian"><span class="sn-num">10</span> Georgian Decorative Glass</a>
-      <a class="win-sidenav-link" href="#leaded" data-section="leaded"><span class="sn-num">11</span> Leaded Decorative Glass</a>
+      <a class="win-sidenav-link" href="#georgian" data-section="georgian"><span class="sn-num">10</span> Georgian
+        Decorative Glass</a>
+      <a class="win-sidenav-link" href="#leaded" data-section="leaded"><span class="sn-num">11</span> Leaded Decorative
+        Glass</a>
       <a class="win-sidenav-link" href="#tinted" data-section="tinted"><span class="sn-num">12</span> Tinted Glass</a>
     </aside>
 
@@ -527,12 +660,52 @@
           <div class="win-section-icon">🏠</div>
           <h2 class="win-section-title"><span>Clear Double</span> Glazing</h2>
         </div>
-        <p class="win-section-desc">Two panes of clear glass with an insulating cavity help reduce heat loss and outside noise while keeping your rooms bright.</p>
+        <p class="win-section-desc">Two panes of clear glass with an insulating cavity help reduce heat loss and outside
+          noise while keeping your rooms bright.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon">
-          <div class="cs-icon">📸</div>
-          <h3>Images Coming Soon</h3>
-          <p>Our Clear Double Glazing gallery will be updated shortly.<br>Contact us to see samples in person.</p>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Panes</td>
+                  <td class="gs-value">2 glass panes</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Gap</td>
+                  <td class="gs-value">16–20mm argon-filled cavity</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">U-Value</td>
+                  <td class="gs-value">1.2–1.4 W/m²K</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Noise Reduction</td>
+                  <td class="gs-value">30–35 dB</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Lifespan</td>
+                  <td class="gs-value">20–25 years</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Frame Options</td>
+                  <td class="gs-value">uPVC, Aluminium, Timber</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Reduces heat loss by up to 50%</li>
+                <li>✓ Cuts outside noise significantly</li>
+                <li>✓ Prevents condensation on inner pane</li>
+                <li>✓ Argon gas filled for better insulation</li>
+                <li>✓ Available in all frame styles</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -541,9 +714,53 @@
           <div class="win-section-icon">❄️</div>
           <h2 class="win-section-title"><span>Triple</span> Glazing</h2>
         </div>
-        <p class="win-section-desc">Three panes of glass provide an additional insulating layer and can help improve comfort and reduce outside noise.</p>
+        <p class="win-section-desc">Three panes of glass provide an additional insulating layer and can help improve
+          comfort and reduce outside noise.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Triple Glazing gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Panes</td>
+                  <td class="gs-value">3 glass panes</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Gap</td>
+                  <td class="gs-value">2× 14mm argon-filled cavities</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">U-Value</td>
+                  <td class="gs-value">0.6–0.8 W/m²K</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Noise Reduction</td>
+                  <td class="gs-value">38–42 dB</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Lifespan</td>
+                  <td class="gs-value">25–30 years</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Frame Options</td>
+                  <td class="gs-value">uPVC, Aluminium, Timber</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Superior thermal performance</li>
+                <li>✓ Ideal for cold & noisy environments</li>
+                <li>✓ Reduces energy bills further</li>
+                <li>✓ Condensation free inner surface</li>
+                <li>✓ Best for north-facing rooms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="low-e">
@@ -551,9 +768,53 @@
           <div class="win-section-icon">🌡️</div>
           <h2 class="win-section-title"><span>Low-E</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Low-emissivity glass has a special coating designed to reflect heat back into the room while allowing natural light to pass through.</p>
+        <p class="win-section-desc">Low-emissivity glass has a special coating designed to reflect heat back into the
+          room while allowing natural light to pass through.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Low-E Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Coating</td>
+                  <td class="gs-value">Microscopically thin metallic layer</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">U-Value</td>
+                  <td class="gs-value">1.0–1.2 W/m²K</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Light Transmission</td>
+                  <td class="gs-value">72–78%</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Solar Gain (g-value)</td>
+                  <td class="gs-value">0.60–0.65</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Lifespan</td>
+                  <td class="gs-value">20+ years</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Finish</td>
+                  <td class="gs-value">Clear, Neutral or Solar</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Reflects heat back into the room</li>
+                <li>✓ Allows daylight in without heat loss</li>
+                <li>✓ Reduces glare</li>
+                <li>✓ Prevents UV fading of furniture</li>
+                <li>✓ Works in double or triple units</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="toughened">
@@ -561,9 +822,53 @@
           <div class="win-section-icon">🛡️</div>
           <h2 class="win-section-title"><span>Toughened Safety</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Heat-treated glass designed for increased strength. When broken, it typically fragments into smaller pieces than standard glass.</p>
+        <p class="win-section-desc">Heat-treated glass designed for increased strength. When broken, it typically
+          fragments into smaller pieces than standard glass.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Toughened Safety Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Strength</td>
+                  <td class="gs-value">4–5× stronger than standard glass</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Thickness</td>
+                  <td class="gs-value">4mm, 6mm, 8mm, 10mm, 12mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Break Pattern</td>
+                  <td class="gs-value">Small, blunt granules</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Heat Treatment</td>
+                  <td class="gs-value">620°C thermal process</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Standard</td>
+                  <td class="gs-value">EN 12150</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Applications</td>
+                  <td class="gs-value">Doors, low-level panes, roofs</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Safety rated — cannot be cut after tempering</li>
+                <li>✓ Resists thermal shock & impact</li>
+                <li>✓ Safe breakage pattern</li>
+                <li>✓ Required by building regulations for critical locations</li>
+                <li>✓ Available in clear, tinted or coated</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="laminated">
@@ -571,9 +876,53 @@
           <div class="win-section-icon">🔒</div>
           <h2 class="win-section-title"><span>Laminated Safety</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Laminated glass uses an interlayer between glass panes to help hold fragments together if the glass breaks.</p>
+        <p class="win-section-desc">Laminated glass uses an interlayer between glass panes to help hold fragments
+          together if the glass breaks.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Laminated Safety Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Construction</td>
+                  <td class="gs-value">2 panes + interlayer PVB film</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Thickness</td>
+                  <td class="gs-value">6.4mm, 8.8mm, 10.8mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Break Pattern</td>
+                  <td class="gs-value">Stays in frame — no shattering</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Sound Reduction</td>
+                  <td class="gs-value">Up to 42 dB</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Security Rating</td>
+                  <td class="gs-value">P1A to P6B</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">UV Blocking</td>
+                  <td class="gs-value">Up to 99%</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Glass holds together when broken</li>
+                <li>✓ Provides enhanced security</li>
+                <li>✓ Excellent noise insulation</li>
+                <li>✓ Blocks 99% of UV radiation</li>
+                <li>✓ Ideal for overhead glazing & rooflights</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="acoustic">
@@ -581,9 +930,53 @@
           <div class="win-section-icon">🔇</div>
           <h2 class="win-section-title"><span>Acoustic</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Specialist glazing configurations can help reduce the amount of outside noise entering your home.</p>
+        <p class="win-section-desc">Specialist glazing configurations can help reduce the amount of outside noise
+          entering your home.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Acoustic Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Noise Reduction</td>
+                  <td class="gs-value">40–50 dB</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Construction</td>
+                  <td class="gs-value">Asymmetric laminated panes</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Typical Thickness</td>
+                  <td class="gs-value">10.8mm + cavity + 6.4mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">U-Value</td>
+                  <td class="gs-value">1.1 W/m²K</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Applications</td>
+                  <td class="gs-value">Road/rail noise, airports, studios</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Certification</td>
+                  <td class="gs-value">BS EN ISO 10140</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Specialist interlayer absorbs sound vibrations</li>
+                <li>✓ Asymmetric pane widths disrupt resonance</li>
+                <li>✓ Maintains clear visibility</li>
+                <li>✓ Available as double or triple unit</li>
+                <li>✓ Ideal for busy streets & transport corridors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="solar-control">
@@ -591,9 +984,53 @@
           <div class="win-section-icon">☀️</div>
           <h2 class="win-section-title"><span>Solar-Control</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Solar-control glass helps manage solar heat and glare while maintaining natural light, making it a useful option for sunny rooms and conservatories.</p>
+        <p class="win-section-desc">Solar-control glass helps manage solar heat and glare while maintaining natural
+          light, making it a useful option for sunny rooms and conservatories.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Solar-Control Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Solar Factor (g)</td>
+                  <td class="gs-value">0.20–0.35</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Light Transmission</td>
+                  <td class="gs-value">30–62%</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Coating</td>
+                  <td class="gs-value">Magnetron-sputtered metallic</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">U-Value</td>
+                  <td class="gs-value">1.0–1.3 W/m²K</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Colour Options</td>
+                  <td class="gs-value">Neutral, Blue, Green, Bronze</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Lifespan</td>
+                  <td class="gs-value">20+ years</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Reduces solar heat gain by up to 70%</li>
+                <li>✓ Keeps interiors cooler in summer</li>
+                <li>✓ Reduces glare from direct sunlight</li>
+                <li>✓ Maintains natural daylight</li>
+                <li>✓ Lowers air-conditioning costs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="obscure">
@@ -601,9 +1038,53 @@
           <div class="win-section-icon">🔐</div>
           <h2 class="win-section-title"><span>Obscure Privacy</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Obscure glass allows natural light into a room while limiting clear views through the glass for added privacy.</p>
+        <p class="win-section-desc">Obscure glass allows natural light into a room while limiting clear views through
+          the glass for added privacy.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Obscure Privacy Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Obscurity Level</td>
+                  <td class="gs-value">1–5 (Reeded to Opaque)</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Patterns</td>
+                  <td class="gs-value">Satin, Reeded, Stippolyte, Warwick</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Thickness</td>
+                  <td class="gs-value">4mm, 6mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Light Transmission</td>
+                  <td class="gs-value">60–80%</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Applications</td>
+                  <td class="gs-value">Bathrooms, ensuites, side panels</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Available As</td>
+                  <td class="gs-value">Single, double or triple glazed</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Provides privacy while admitting light</li>
+                <li>✓ Wide range of patterns & textures</li>
+                <li>✓ Can be combined with any glazing unit</li>
+                <li>✓ Maintains clean, modern look</li>
+                <li>✓ Ideal for bathrooms and street-facing rooms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="frosted">
@@ -611,9 +1092,53 @@
           <div class="win-section-icon">✨</div>
           <h2 class="win-section-title"><span>Frosted</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Frosted glass provides privacy with a softly diffused appearance, making it a popular choice for bathrooms and entrance doors.</p>
+        <p class="win-section-desc">Frosted glass provides privacy with a softly diffused appearance, making it a
+          popular choice for bathrooms and entrance doors.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Frosted Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Process</td>
+                  <td class="gs-value">Acid-etched or sandblasted</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Finish</td>
+                  <td class="gs-value">Matt white, translucent</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Thickness</td>
+                  <td class="gs-value">4mm, 6mm, 8mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Privacy Level</td>
+                  <td class="gs-value">High — no clear sightlines</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Cleanability</td>
+                  <td class="gs-value">Sealed acid-etch — wipes clean</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Applications</td>
+                  <td class="gs-value">Partitions, doors, bathrooms</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Fully opaque while letting in light</li>
+                <li>✓ Available in full or partial coverage</li>
+                <li>✓ One-sided or both-sided etching</li>
+                <li>✓ Modern & timeless aesthetic</li>
+                <li>✓ Can include bespoke patterns or logos</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="georgian">
@@ -621,9 +1146,53 @@
           <div class="win-section-icon">🪟</div>
           <h2 class="win-section-title"><span>Georgian Decorative</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Georgian-style bars add a classic divided-pane look to glazing and can complement both traditional and modern homes.</p>
+        <p class="win-section-desc">Georgian-style bars add a classic divided-pane look to glazing and can complement
+          both traditional and modern homes.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Georgian Decorative Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Style</td>
+                  <td class="gs-value">Grid/bar pattern within unit</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Bar Material</td>
+                  <td class="gs-value">Aluminium or plastic</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Bar Width</td>
+                  <td class="gs-value">19mm, 25mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Glazing Unit</td>
+                  <td class="gs-value">Double or triple</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Period Styles</td>
+                  <td class="gs-value">Classic 6-pane, 9-pane, 12-pane</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Maintenance</td>
+                  <td class="gs-value">No painting required</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Traditional period character</li>
+                <li>✓ Bars sealed inside glazing unit — easy to clean</li>
+                <li>✓ No condensation on bars</li>
+                <li>✓ Suits heritage & conservation areas</li>
+                <li>✓ Pairs well with sash & casement frames</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="leaded">
@@ -631,9 +1200,53 @@
           <div class="win-section-icon">🎨</div>
           <h2 class="win-section-title"><span>Leaded Decorative</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Leaded glass adds decorative detail and a traditional character to windows, doors and side panels.</p>
+        <p class="win-section-desc">Leaded glass adds decorative detail and a traditional character to windows, doors
+          and side panels.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Leaded Decorative Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Style</td>
+                  <td class="gs-value">Leaded pattern between panes</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Lead Type</td>
+                  <td class="gs-value">Zinc or lead cames, various widths</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Unit Type</td>
+                  <td class="gs-value">Pre-sealed double glazed unit</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Pattern Options</td>
+                  <td class="gs-value">Diamond, Square, Floral, Bespoke</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Colour Options</td>
+                  <td class="gs-value">Clear, coloured, stained glass</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Maintenance</td>
+                  <td class="gs-value">Fully sealed — no lead exposure</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Authentic traditional look</li>
+                <li>✓ Sealed between panes for insulation</li>
+                <li>✓ No maintenance or repainting of lead</li>
+                <li>✓ Available in bespoke designs</li>
+                <li>✓ Suits cottage, heritage & Victorian properties</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="win-section" id="tinted">
@@ -641,9 +1254,53 @@
           <div class="win-section-icon">🌤️</div>
           <h2 class="win-section-title"><span>Tinted</span> Glass</h2>
         </div>
-        <p class="win-section-desc">Tinted glass can reduce glare and change the appearance of a window while still allowing daylight into the space.</p>
+        <p class="win-section-desc">Tinted glass can reduce glare and change the appearance of a window while still
+          allowing daylight into the space.</p>
         <div class="win-section-divider"></div>
-        <div class="win-coming-soon"><div class="cs-icon">📸</div><h3>Images Coming Soon</h3><p>Our Tinted Glass gallery will be updated shortly.<br>Contact us to see samples in person.</p></div>
+
+        <div class="gs-layout" style="grid-template-columns:1fr;">
+          <div class="gs-info">
+            <div class="gs-spec-box">
+              <div class="gs-spec-title">Technical Specifications</div>
+              <table class="gs-spec-table">
+                <tr>
+                  <td class="gs-label">Tint Colours</td>
+                  <td class="gs-value">Bronze, Grey, Green, Blue</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Light Transmission</td>
+                  <td class="gs-value">14–75% depending on tint</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Solar Control</td>
+                  <td class="gs-value">Moderate (g-value 0.4–0.6)</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Thickness</td>
+                  <td class="gs-value">4mm, 6mm, 8mm</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Glare Reduction</td>
+                  <td class="gs-value">Up to 60%</td>
+                </tr>
+                <tr>
+                  <td class="gs-label">Available As</td>
+                  <td class="gs-value">Single, double or triple glazed</td>
+                </tr>
+              </table>
+            </div>
+            <div class="gs-features-box">
+              <div class="gs-spec-title">Key Features</div>
+              <ul class="gs-features-list">
+                <li>✓ Reduces glare and solar gain</li>
+                <li>✓ Provides daytime privacy</li>
+                <li>✓ Adds colour & character to facade</li>
+                <li>✓ Available in multiple tint depths</li>
+                <li>✓ Can be combined with Low-E or acoustic interlayers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </div>
@@ -747,25 +1404,25 @@
       var target = document.getElementById(sectionId);
       if (!target || !target.classList.contains('win-section')) return;
 
-      document.querySelectorAll('.win-section').forEach(function(section) {
+      document.querySelectorAll('.win-section').forEach(function (section) {
         section.classList.toggle('active', section === target);
       });
 
-      document.querySelectorAll('.win-sidenav-link').forEach(function(link) {
+      document.querySelectorAll('.win-sidenav-link').forEach(function (link) {
         link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
       });
 
       history.replaceState(null, null, '#' + sectionId);
     }
 
-    document.querySelectorAll('.win-sidenav-link').forEach(function(link) {
-      link.addEventListener('click', function(event) {
+    document.querySelectorAll('.win-sidenav-link').forEach(function (link) {
+      link.addEventListener('click', function (event) {
         event.preventDefault();
         showSection(this.getAttribute('data-section'));
       });
     });
 
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', function () {
       var sectionId = window.location.hash.slice(1);
       if (sectionId) showSection(sectionId);
     });
@@ -773,70 +1430,71 @@
 
 
   <script id="page-transition-js">
-  /* ===== PAGE TRANSITION - door opens on nav click ===== */
-  (function () {
-    var pt = document.getElementById('page-transition');
-    if (!pt) return;
+    /* ===== PAGE TRANSITION - door opens on nav click ===== */
+    (function () {
+      var pt = document.getElementById('page-transition');
+      if (!pt) return;
 
-    var navigating = false;
+      var navigating = false;
 
-    function runTransition(href) {
-      if (navigating) return;
-      navigating = true;
+      function runTransition(href) {
+        if (navigating) return;
+        navigating = true;
 
-      pt.style.display = 'flex';
+        pt.style.display = 'flex';
 
-      requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          pt.classList.add('pt-active');
-          setTimeout(function () {
-            pt.classList.add('pt-open');
+          requestAnimationFrame(function () {
+            pt.classList.add('pt-active');
             setTimeout(function () {
-              // Signal index.html to skip its startup door animation
-              if (href === 'index.html' || href.endsWith('/index.html') || href.endsWith('/')) {
-                sessionStorage.setItem('pt_navigated', '1');
-              }
-              window.location.href = href;
-            }, 1200);
-          }, 200);
+              pt.classList.add('pt-open');
+              setTimeout(function () {
+                // Signal index.html to skip its startup door animation
+                if (href === 'index.html' || href.endsWith('/index.html') || href.endsWith('/')) {
+                  sessionStorage.setItem('pt_navigated', '1');
+                }
+                window.location.href = href;
+              }, 1200);
+            }, 200);
+          });
         });
+      }
+
+      var links = document.querySelectorAll(
+        'a[href].nav-link, a[href].nav-dropdown-item, ' +
+        'a[href].brand-logo, a[href].footer-link, ' +
+        'a[href][class*="btn"], a[href].mobile-quote-btn, ' +
+        'a[href].inq-open-btn'
+      );
+
+      links.forEach(function (el) {
+        var href = el.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href === '') return;
+        if (href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+        if (href.indexOf('http') === 0 && href.indexOf(window.location.hostname) === -1) return;
+
+        el.addEventListener('click', function (e) {
+          if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+          e.preventDefault();
+          e.stopPropagation();
+          runTransition(href);
+        }, true);
       });
-    }
-
-    var links = document.querySelectorAll(
-      'a[href].nav-link, a[href].nav-dropdown-item, ' +
-      'a[href].brand-logo, a[href].footer-link, ' +
-      'a[href][class*="btn"], a[href].mobile-quote-btn, ' +
-      'a[href].inq-open-btn'
-    );
-
-    links.forEach(function (el) {
-      var href = el.getAttribute('href');
-      if (!href || href.charAt(0) === '#' || href === '') return;
-      if (href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
-      if (href.indexOf('http') === 0 && href.indexOf(window.location.hostname) === -1) return;
-
-      el.addEventListener('click', function (e) {
-        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-        e.preventDefault();
-        e.stopPropagation();
-        runTransition(href);
-      }, true);
-    });
-  })();
+    })();
   </script>
 
 
   <!-- ======= INQUIRY MODAL ======= -->
-  <div id="inquiry-modal" class="inq-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="inqModalTitle">
+  <div id="inquiry-modal" class="inq-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="inqModalTitle">
     <div class="inq-box">
       <button class="inq-close" id="inqClose" aria-label="Close">&times;</button>
       <div class="inq-header">
         <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
-          <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4"/>
-          <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6"/>
-          <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="4.5"/>
-          <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="4.5"/>
+          <rect width="100" height="100" rx="20" fill="#101B3D" stroke="#D6B36A" stroke-width="4" />
+          <rect x="13" y="13" width="74" height="74" rx="6" fill="none" stroke="#D6B36A" stroke-width="6" />
+          <line x1="50" y1="13" x2="50" y2="87" stroke="#D6B36A" stroke-width="4.5" />
+          <line x1="13" y1="50" x2="87" y2="50" stroke="#D6B36A" stroke-width="4.5" />
         </svg>
         <div>
           <h2 id="inqModalTitle" class="inq-title">Make an Enquiry</h2>
@@ -895,19 +1553,28 @@
         </div>
         <div class="inq-field">
           <label for="inqMsg">Message / Additional Details</label>
-          <textarea id="inqMsg" name="message" rows="4" placeholder="Tell us about your project, measurements, preferences..."></textarea>
+          <textarea id="inqMsg" name="message" rows="4"
+            placeholder="Tell us about your project, measurements, preferences..."></textarea>
         </div>
         <button type="submit" class="inq-submit">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
           Send Enquiry
         </button>
-        <p class="inq-privacy">By submitting, you agree to be contacted by Patel Windows &amp; Doors Ltd regarding your enquiry.</p>
+        <p class="inq-privacy">By submitting, you agree to be contacted by Patel Windows &amp; Doors Ltd regarding your
+          enquiry.</p>
       </form>
       <div id="inqSuccess" class="inq-success" style="display:none;">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D6B36A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D6B36A" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="9 12 11 14 15 10" />
+        </svg>
         <h3>Enquiry Sent!</h3>
         <p>Thank you! We will contact you within 24 hours.</p>
-        <button class="inq-submit" onclick="document.getElementById('inquiry-modal').classList.remove('inq-open');document.body.style.overflow='';">Close</button>
+        <button class="inq-submit"
+          onclick="document.getElementById('inquiry-modal').classList.remove('inq-open');document.body.style.overflow='';">Close</button>
       </div>
     </div>
   </div>
@@ -927,13 +1594,15 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
     .inq-overlay.inq-open {
       display: flex;
       opacity: 1;
     }
+
     .inq-box {
       background: linear-gradient(145deg, #152046 0%, #101B3D 100%);
-      border: 1px solid rgba(214,179,106,0.3);
+      border: 1px solid rgba(214, 179, 106, 0.3);
       border-radius: 16px;
       padding: 32px;
       width: 100%;
@@ -941,57 +1610,97 @@
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
       animation: inqSlideUp 0.35s ease;
     }
+
     @keyframes inqSlideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
+
     .inq-close {
       position: absolute;
-      top: 14px; right: 16px;
-      background: none; border: none;
-      color: rgba(214,179,106,0.7);
-      font-size: 1.8rem; cursor: pointer;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: rgba(214, 179, 106, 0.7);
+      font-size: 1.8rem;
+      cursor: pointer;
       line-height: 1;
       transition: color 0.2s;
     }
-    .inq-close:hover { color: #D6B36A; }
+
+    .inq-close:hover {
+      color: #D6B36A;
+    }
+
     .inq-header {
       display: flex;
       align-items: center;
       gap: 14px;
       margin-bottom: 24px;
       padding-bottom: 18px;
-      border-bottom: 1px solid rgba(214,179,106,0.2);
+      border-bottom: 1px solid rgba(214, 179, 106, 0.2);
     }
+
     .inq-title {
       font-size: 1.3rem;
       font-weight: 700;
       color: #D6B36A;
       margin: 0 0 2px;
     }
+
     .inq-sub {
       font-size: 0.82rem;
-      color: rgba(200,208,224,0.65);
+      color: rgba(200, 208, 224, 0.65);
       margin: 0;
     }
-    .inq-form { display: flex; flex-direction: column; gap: 16px; }
-    .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 480px) { .inq-row { grid-template-columns: 1fr; } }
-    .inq-field { display: flex; flex-direction: column; gap: 6px; }
+
+    .inq-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .inq-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .inq-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .inq-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
     .inq-field label {
       font-size: 0.82rem;
       font-weight: 600;
       color: #C8D0E0;
       letter-spacing: 0.03em;
     }
+
     .inq-field input,
     .inq-field select,
     .inq-field textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(214,179,106,0.25);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(214, 179, 106, 0.25);
       border-radius: 8px;
       color: #fff;
       padding: 10px 14px;
@@ -1000,15 +1709,32 @@
       outline: none;
       transition: border-color 0.2s;
     }
+
     .inq-field input:focus,
     .inq-field select:focus,
     .inq-field textarea:focus {
       border-color: #D6B36A;
-      background: rgba(214,179,106,0.07);
+      background: rgba(214, 179, 106, 0.07);
     }
-    .inq-field select option { background: #101B3D; color: #fff; }
-    .inq-field select optgroup { background: #0a1430; color: #D6B36A; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em; }
-    .inq-field textarea { resize: vertical; min-height: 90px; }
+
+    .inq-field select option {
+      background: #101B3D;
+      color: #fff;
+    }
+
+    .inq-field select optgroup {
+      background: #0a1430;
+      color: #D6B36A;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    .inq-field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
     .inq-submit {
       display: flex;
       align-items: center;
@@ -1025,13 +1751,19 @@
       transition: transform 0.2s, box-shadow 0.2s;
       margin-top: 4px;
     }
-    .inq-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(214,179,106,0.35); }
+
+    .inq-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(214, 179, 106, 0.35);
+    }
+
     .inq-privacy {
       font-size: 0.74rem;
-      color: rgba(200,208,224,0.45);
+      color: rgba(200, 208, 224, 0.45);
       text-align: center;
       margin: 0;
     }
+
     .inq-success {
       text-align: center;
       padding: 20px 0;
@@ -1040,60 +1772,69 @@
       align-items: center;
       gap: 12px;
     }
-    .inq-success h3 { color: #D6B36A; font-size: 1.4rem; margin: 0; }
-    .inq-success p  { color: #C8D0E0; margin: 0; }
+
+    .inq-success h3 {
+      color: #D6B36A;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .inq-success p {
+      color: #C8D0E0;
+      margin: 0;
+    }
   </style>
 
   <script id="inquiry-modal-js">
-  (function(){
-    var modal   = document.getElementById('inquiry-modal');
-    var form    = document.getElementById('inquiryForm');
-    var success = document.getElementById('inqSuccess');
-    var closeBtn= document.getElementById('inqClose');
-    if (!modal) return;
+    (function () {
+      var modal = document.getElementById('inquiry-modal');
+      var form = document.getElementById('inquiryForm');
+      var success = document.getElementById('inqSuccess');
+      var closeBtn = document.getElementById('inqClose');
+      if (!modal) return;
 
-    function openModal() {
-      modal.style.display = 'flex';
-      requestAnimationFrame(function(){
-        modal.classList.add('inq-open');
+      function openModal() {
+        modal.style.display = 'flex';
+        requestAnimationFrame(function () {
+          modal.classList.add('inq-open');
+        });
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('inq-open');
+        setTimeout(function () { modal.style.display = 'none'; }, 300);
+        document.body.style.overflow = '';
+      }
+
+      // Open on all Inquiry buttons
+      document.querySelectorAll('.inq-open-btn').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openModal();
+        });
       });
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      modal.classList.remove('inq-open');
-      setTimeout(function(){ modal.style.display = 'none'; }, 300);
-      document.body.style.overflow = '';
-    }
 
-    // Open on all Inquiry buttons
-    document.querySelectorAll('.inq-open-btn').forEach(function(btn){
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        openModal();
-      });
-    });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
-
-    if (form) {
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        // Basic validation
-        var name  = document.getElementById('inqName').value.trim();
-        var phone = document.getElementById('inqPhone').value.trim();
-        var email = document.getElementById('inqEmail').value.trim();
-        if (!name || !phone || !email) {
-          alert('Please fill in Name, Phone and Email fields.');
-          return;
-        }
-        // Show success
-        form.style.display = 'none';
-        success.style.display = 'flex';
-      });
-    }
-  })();
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Basic validation
+          var name = document.getElementById('inqName').value.trim();
+          var phone = document.getElementById('inqPhone').value.trim();
+          var email = document.getElementById('inqEmail').value.trim();
+          if (!name || !phone || !email) {
+            alert('Please fill in Name, Phone and Email fields.');
+            return;
+          }
+          // Show success
+          form.style.display = 'none';
+          success.style.display = 'flex';
+        });
+      }
+    })();
   </script>
 
 </body>
