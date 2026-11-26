@@ -85,7 +85,7 @@
           </svg>
         </div>
         <div class="di-gold-line"></div>
-        <p class="di-sub">â€” WELCOME TO â€”</p>
+        <p class="di-sub">&mdash; WELCOME TO &mdash;</p>
         <h1 class="di-title">Patel Windows<br><span>&amp; Doors Ltd</span></h1>
         <p class="di-tagline">Quality You Can See &nbsp;&middot;&nbsp; Service You Can Trust</p>
         <div class="di-gold-line"></div>
@@ -171,9 +171,9 @@
         <div class="di-gold-line"></div>
         <p class="di-sub">Ã¢â‚¬â€ WELCOME TO Ã¢â‚¬â€</p>
         <h1 class="di-title">Patel Windows<br><span>&amp; Doors Ltd</span></h1>
-        <p class="di-tagline">Quality You Can See &nbsp;Ã‚Â·&nbsp; Service You Can Trust</p>
+        <p class="di-tagline">Quality You Can See &nbsp;Ã‚&middot;&nbsp; Service You Can Trust</p>
         <div class="di-gold-line"></div>
-        <p class="di-est">EST. ARCHITECTURAL SYSTEMS &nbsp;Ã‚Â·&nbsp; </p>
+        <p class="di-est">EST. ARCHITECTURAL SYSTEMS &nbsp;Ã‚&middot;&nbsp; </p>
       </div>
     </div>
 
@@ -1798,7 +1798,12 @@
       });
     }
 
-    var links = document.querySelectorAll('a[href]');
+    var links = document.querySelectorAll(
+      'a[href].nav-link, a[href].nav-dropdown-item, ' +
+      'a[href].brand-logo, a[href].footer-link, ' +
+      'a[href][class*="btn"], a[href].mobile-quote-btn, ' +
+      'a[href].inq-open-btn'
+    );
 
     links.forEach(function (el) {
       var href = el.getAttribute('href');

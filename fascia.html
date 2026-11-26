@@ -652,7 +652,12 @@
       });
     }
 
-    var links = document.querySelectorAll('a[href]');
+    var links = document.querySelectorAll(
+      'a[href].nav-link, a[href].nav-dropdown-item, ' +
+      'a[href].brand-logo, a[href].footer-link, ' +
+      'a[href][class*="btn"], a[href].mobile-quote-btn, ' +
+      'a[href].inq-open-btn'
+    );
 
     links.forEach(function (el) {
       var href = el.getAttribute('href');
